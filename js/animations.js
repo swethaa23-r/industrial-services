@@ -45,6 +45,8 @@ function initResponsiveAnimations() {
         initProcessAnimation(isMobile);
         initTestimonialAnimation(isMobile);
         initFooterAnimation(isMobile);
+        initGravityFormAnimation(isMobile);
+        initClipPathReveals(isMobile);
     });
 }
 
@@ -813,5 +815,59 @@ function initCascadeReveal(isMobile = false) {
             stagger: 0.1,
             ease: "power4.out"
         });
+    });
+}
+
+function initGravityFormAnimation(isMobile) {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+
+    const formElements = contactForm.querySelectorAll('.form-group, .form-row');
+    if (formElements.length > 0) {
+        gsap.from(formElements, {
+            scrollTrigger: {
+                trigger: contactForm,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            y: -100, // Drop from top
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.15,
+            ease: "bounce.out" // Gravity bounce effect
+        });
+    }
+}
+
+function initClipPathReveals(isMobile) {
+    const figures = document.querySelectorAll('.global-impact-image figure, .global-impact-map-image figure');
+    
+    figures.forEach(figure => {
+        const img = figure.querySelector('img');
+        
+        // Ensure figure has overflow hidden for scale to work
+        figure.style.overflow = 'hidden';
+        figure.style.display = 'block';
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: figure,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        tl.fromTo(figure, 
+            { clipPath: "inset(0 100% 0 0)" },
+            { clipPath: "inset(0 0% 0 0)", duration: 1.2, ease: "power3.inOut" }
+        );
+        
+        if (img) {
+            tl.fromTo(img,
+                { scale: 1.3 },
+                { scale: 1, duration: 1.2, ease: "power3.inOut" },
+                0
+            );
+        }
     });
 }

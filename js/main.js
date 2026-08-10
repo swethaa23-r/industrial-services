@@ -22,12 +22,23 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Brief delay to let the user register the 100% completion before fading out
             setTimeout(() => {
-                loader.style.opacity = '0';
-                loader.style.transition = 'opacity 0.4s ease';
+                // Curtain Reveal Animation
+                // 1. Fade out inner content
+                Array.from(loader.children).forEach(child => {
+                    child.style.transition = 'opacity 0.3s ease';
+                    child.style.opacity = '0';
+                });
+
+                // 2. Slide the curtain up
                 setTimeout(() => {
-                    loader.style.display = 'none';
-                    window.dispatchEvent(new Event('loaderFinished'));
-                }, 400);
+                    loader.style.transition = 'transform 0.8s cubic-bezier(0.77, 0, 0.175, 1)';
+                    loader.style.transform = 'translateY(-100%)';
+                    
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        window.dispatchEvent(new Event('loaderFinished'));
+                    }, 800);
+                }, 300);
             }, 150);
         };
 
