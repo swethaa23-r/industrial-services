@@ -184,6 +184,9 @@ ul {
 .btn i {
   margin-left: 10px;
   transition: transform var(--transition-normal);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  display: inline-block;
+  margin-left: 8px;
 }
 
 .btn:hover i {
@@ -193,10 +196,28 @@ ul {
 .btn-primary {
   background-color: var(--c-orange);
   color: var(--c-white);
+  z-index: 1;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--c-orange-hover);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: -1;
+}
+
+.btn-primary:hover::before {
+  transform: scaleX(1);
 }
 
 .btn-primary:hover {
-  background-color: var(--c-orange-hover);
   color: var(--c-white);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(242, 140, 40, 0.3);
@@ -570,3 +591,55 @@ ul {
         text-align: center;
     }
 }
+
+/* --------------------------------------------------------------------------
+   Mobile Touch Optimization
+   -------------------------------------------------------------------------- */
+.mobile-toggle-btn, .btn {
+    min-height: 44px;
+}
+.nav-menu li a, .footer-links a, .footer-contact a {
+    min-height: 44px;
+    display: inline-block;
+}
+
+/* --------------------------------------------------------------------------
+   Navigation Hover States
+   -------------------------------------------------------------------------- */
+.nav-menu li a {
+    position: relative;
+}
+.nav-menu li a::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--c-orange);
+    transition: width 0.3s ease;
+}
+.nav-menu li a:hover::after, .nav-menu li a.active::after {
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Footer Enhancements
+   -------------------------------------------------------------------------- */
+.footer-map iframe {
+    filter: grayscale(100%) opacity(0.8);
+    transition: filter 0.4s ease;
+}
+.footer-map iframe:hover {
+    filter: grayscale(0%) opacity(1);
+}
+
+.footer-socials a {
+    transition: all 0.3s ease;
+}
+.footer-socials a:hover {
+    box-shadow: 0 0 15px rgba(255, 115, 0, 0.6);
+    transform: translateY(-3px);
+    color: #fff !important;
+}
+

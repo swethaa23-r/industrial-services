@@ -3,6 +3,36 @@
  * Core functionality, navigation, filtering, and sliders.
  */
 
+/* --------------------------------------------------------------------------
+   Lenis Smooth Scroll Initialization
+   -------------------------------------------------------------------------- */
+if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        smoothTouch: false,
+        touchMultiplier: 2
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    if (typeof ScrollTrigger !== 'undefined') {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     
     /* --------------------------------------------------------------------------
@@ -434,6 +464,76 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    /* --------------------------------------------------------------------------
+       Page Transitions (Exit)
+       -------------------------------------------------------------------------- */
+    const links = document.querySelectorAll('a[href]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const target = link.getAttribute('target');
+            const href = link.getAttribute('href');
+            
+            if (target === '_blank' || 
+                href.startsWith('#') || 
+                href.startsWith('mailto:') || 
+                href.startsWith('tel:') || 
+                href.startsWith('javascript:')) {
+                return;
+            }
+
+            e.preventDefault();
+            
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100vw';
+            overlay.style.height = '100vh';
+            overlay.style.backgroundColor = '#0b162c';
+            overlay.style.zIndex = '999999';
+            overlay.style.opacity = '0';
+            overlay.style.pointerEvents = 'none';
+            document.body.appendChild(overlay);
+
+            gsap.to(overlay, {
+                opacity: 1,
+                duration: 0.5,
+                ease: 'power2.inOut',
+                onComplete: () => {
+                    window.location.href = href;
+                }
+            });
+        });
+    });
+
+    /* --------------------------------------------------------------------------
+       Magnetic Buttons
+       -------------------------------------------------------------------------- */
+    const magneticBtns = document.querySelectorAll('.btn');
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            gsap.to(btn, {
+                x: x * 0.3,
+                y: y * 0.3,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, {
+                x: 0,
+                y: 0,
+                duration: 0.5,
+                ease: "elastic.out(1, 0.3)"
+            });
+        });
+    });
 
 });
 
