@@ -1,0 +1,534 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Stackly - Engineering Progress</title>
+  <meta name="description" content="Learn about STACKLY's history, mission, and the certified engineers driving industrial progress worldwide.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="about-page">
+
+  <!-- Loading Screen -->
+      <div id="loader" style="z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: var(--c-navy); position: fixed; inset: 0;">
+        <div class="loader-content text-center">
+            <div class="industrial-spinner mb-4" style="animation: spin 3s linear infinite;">
+                <i class="fa-solid fa-gear fa-spin" style="font-size: 3.5rem; color: var(--c-orange);"></i>
+            </div>
+            <div class="loader-text mb-3">
+                <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo" style="max-height: 50px;">
+            </div>
+            <div class="loader-status" id="loaderStatus" style="font-family: var(--font-heading); color: rgba(255,255,255,0.7); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Initializing Systems...</div>
+        </div>
+        <div class="loader-progress-wrap mt-4" style="width: 250px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; height: 4px;">
+            <div class="loader-progress" id="loaderProgress" style="height: 100%; background: var(--c-orange); width: 0%; transition: width 0.1s ease;"></div>
+        </div>
+    </div>
+
+  <!-- Header / Navbar -->
+  <header class="site-header" id="header">
+    <div class="container header-inner" style="height: 80px;">
+      <a href="index.html" class="logo">
+        <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+      </a>
+      
+      <nav class="desktop-nav">
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link active">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="blog.html" class="nav-link">Blog</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-actions">
+        <a href="login.html" class="btn btn-primary d-none-mobile" style="padding: 10px 24px; border-radius: 4px;">Client Login <i class="fa-solid fa-arrow-right"></i></a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Offcanvas Menu -->
+  <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="logo text-white"><img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo"></a>
+      <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="login.html" class="nav-link">Login</a></li>
+    </ul>
+  </div>
+
+
+  <main>
+    <!-- Section 1: Inner Hero -->
+    <section class="inner-hero" style="height: 450px; display: flex; align-items: center; justify-content: center; position: relative;">
+      <div class="hero-bg-img" style="background-image: url('https://images.unsplash.com/photo-1565514020179-026b92b84bb6?ixlib=rb-4.0.3&fit=crop&w=1920&q=50&fm=webp');"></div>
+      <div class="blueprint-overlay"></div>
+      <div class="inner-hero-overlay"></div>
+      <div class="container relative z-10 text-center">
+        <h1 class="text-white mb-3 gs-clip-text">Engineering Experience. Industrial Confidence.</h1>
+        <p class="text-light lead-text mb-4" style="color: rgba(255,255,255,0.8) !important; max-width: 800px; margin: 0 auto;">Building reliable industrial solutions through expertise, technology, and disciplined execution.</p>
+        <div class="breadcrumbs justify-content-center d-flex mt-4">
+          <a href="index.html">Home</a> <span>/</span> <span class="current">About</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Company Story Timeline -->
+    <section class="section-padding bg-white">
+      <div class="container">
+        <div class="section-header center ">
+          <span class="subtitle">Our Journey</span>
+          <h2>Built to Solve Industrial Challenges</h2>
+        </div>
+        
+        <div class="vertical-timeline journey-timeline">
+                    <div class="journey-line"></div>
+          <div class="v-step ">
+            <div class="v-icon journey-dot">01</div>
+            <div class="v-content journey-content">
+              <h4>Foundation</h4>
+              <p>Established as a specialized mechanical engineering firm focused on heavy industries.</p>
+            </div>
+          </div>
+          <div class="v-step ">
+            <div class="v-icon journey-dot">02</div>
+            <div class="v-content journey-content">
+              <h4>Engineering Expansion</h4>
+              <p>Scaled operations globally, offering comprehensive plant design and implementation.</p>
+            </div>
+          </div>
+          <div class="v-step ">
+            <div class="v-icon journey-dot">03</div>
+            <div class="v-content journey-content">
+              <h4>Technology Integration</h4>
+              <p>Pioneered the integration of early industrial automation and smart monitoring systems.</p>
+            </div>
+          </div>
+          <div class="v-step ">
+            <div class="v-icon journey-dot">04</div>
+            <div class="v-content journey-content">
+              <h4>Industrial Growth</h4>
+              <p>Expanded into electrical and safety engineering, becoming a unified service provider.</p>
+            </div>
+          </div>
+          <div class="v-step ">
+            <div class="v-icon journey-dot">05</div>
+            <div class="v-content journey-content">
+              <h4>Today</h4>
+              <p>A trusted global partner delivering end-to-end industrial technology and engineering.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 & 4: Mission, Vision & Values -->
+    <section class="section-padding bg-navy text-white">
+      <div class="container">
+        <div class="mission-vision-grid">
+          <div class="mv-card-card " data-delay="0.1">
+            <i class="fa-solid fa-bullseye"></i>
+            <h3>Our Mission</h3>
+            <p>Deliver dependable industrial solutions that improve safety, efficiency, and operational performance.</p>
+          </div>
+          <div class="mv-card-card " data-delay="0.2">
+            <i class="fa-solid fa-eye"></i>
+            <h3>Our Vision</h3>
+            <p>Become a trusted technology-driven partner for smarter and safer industrial operations.</p>
+          </div>
+        </div>
+
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <!-- Section 5: Professional Expertise Grid -->
+      <section class="expertise-pro-section section-padding bg-navy text-white">
+        <div class="container">
+          <div class="section-header center mb-5">
+            <span class="subtitle" style="color: var(--c-orange);">Global Scale</span>
+            <h2>Our Expertise</h2>
+            <p class="text-light mt-3" style="max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.7) !important;">Delivering world-class engineering, automation, and maintenance solutions tailored for heavy industrial environments.</p>
+          </div>
+
+          <!-- 3x2 Grid -->
+          <div class="expertise-pro-grid">
+            
+            <div class="pro-card gs-sys-pro-card">
+              <div class="pro-card-header">
+                <div class="pro-icon-box">
+                  <i class="fa-solid fa-compass-drafting"></i>
+                </div>
+                <h4>Engineering</h4>
+              </div>
+              <div class="pro-card-body">
+                <p>Complete plant design and implementation combining structural integrity with operational efficiency.</p>
+              </div>
+            </div>
+
+            <div class="pro-card gs-sys-pro-card">
+              <div class="pro-card-header">
+                <div class="pro-icon-box">
+                  <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+                <h4>Maintenance</h4>
+              </div>
+              <div class="pro-card-body">
+                <p>Proactive and reactive maintenance strategies maximizing equipment lifespan and minimizing downtime.</p>
+              </div>
+            </div>
+
+            <div class="pro-card gs-sys-pro-card">
+              <div class="pro-card-header">
+                <div class="pro-icon-box">
+                  <i class="fa-solid fa-microchip"></i>
+                </div>
+                <h4>Automation</h4>
+              </div>
+              <div class="pro-card-body">
+                <p>Integrating smart monitoring and control systems to optimize heavy industrial operations.</p>
+              </div>
+            </div>
+
+            <div class="pro-card gs-sys-pro-card">
+              <div class="pro-card-header">
+                <div class="pro-icon-box">
+                  <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h4>Electrical</h4>
+              </div>
+              <div class="pro-card-body">
+                <p>High-voltage engineering, distribution, and control panels built for harsh industrial environments.</p>
+              </div>
+            </div>
+
+            <div class="pro-card gs-sys-pro-card">
+              <div class="pro-card-header">
+                <div class="pro-icon-box">
+                  <i class="fa-solid fa-shield-cat"></i>
+                </div>
+                <h4>Safety</h4>
+              </div>
+              <div class="pro-card-body">
+                <p>Comprehensive safety audits, system implementations, and compliance with global industrial standards.</p>
+              </div>
+            </div>
+
+            <div class="pro-card gs-sys-pro-card">
+              <div class="pro-card-header">
+                <div class="pro-icon-box">
+                  <i class="fa-solid fa-medal"></i>
+                </div>
+                <h4>Quality</h4>
+              </div>
+              <div class="pro-card-body">
+                <p>Rigorous quality control and assurance protocols guaranteeing defect-free industrial execution.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Statistics Grid -->
+          <div class="stats-grid gs-sys-stats mt-5 pt-5" style="border-top: 1px solid rgba(255,255,255,0.1);">
+            <div class="stat-card">
+              <div class="stat-num-wrap d-flex justify-content-center align-items-baseline">
+                <h3 class="counter-num exp-counter m-0" data-target="15">0</h3>
+                <span class="stat-plus" style="font-size: 2rem; color: var(--c-orange); margin-left: 5px;">+</span>
+              </div>
+              <p class="mt-2 text-uppercase letter-spacing-1 font-14">Years Experience</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num-wrap d-flex justify-content-center align-items-baseline">
+                <h3 class="counter-num exp-counter m-0" data-target="450">0</h3>
+                <span class="stat-plus" style="font-size: 2rem; color: var(--c-orange); margin-left: 5px;">+</span>
+              </div>
+              <p class="mt-2 text-uppercase letter-spacing-1 font-14">Projects</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num-wrap d-flex justify-content-center align-items-baseline">
+                <h3 class="counter-num exp-counter m-0" data-target="98">0</h3>
+                <span class="stat-plus" style="font-size: 2rem; color: var(--c-orange); margin-left: 5px;">%</span>
+              </div>
+              <p class="mt-2 text-uppercase letter-spacing-1 font-14">Client Retention</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num-wrap d-flex justify-content-center align-items-baseline">
+                <h3 class="counter-num exp-counter m-0" data-target="24">0</h3>
+                <span class="stat-plus" style="font-size: 2rem; color: var(--c-orange); margin-left: 5px;">/7</span>
+              </div>
+              <p class="mt-2 text-uppercase letter-spacing-1 font-14">Support</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section 6: Leadership/Team -->
+    <section class="section-padding bg-white">
+      <div class="container">
+        <div class="section-header center ">
+          <span class="subtitle">Our Experts</span>
+          <h2>Leadership Team</h2>
+        </div>
+        
+        <div class="team-marquee-wrap">
+          <div class="team-marquee">
+            <div class="team-member " >
+            <div class="tm-img">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&fit=crop&w=400&q=50&fm=webp" alt="Michael Harrison" loading="lazy" decoding="async">
+              <div class="tm-social">
+                <a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="tm-info">
+              <h4>Michael Harrison</h4>
+              <span>Managing Director</span>
+            </div>
+          </div>
+          
+          <div class="team-member " >
+            <div class="tm-img">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&fit=crop&w=400&q=50&fm=webp" alt="Sarah Jenkins" loading="lazy" decoding="async">
+              <div class="tm-social">
+                <a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="tm-info">
+              <h4>Sarah Jenkins</h4>
+              <span>Engineering Director</span>
+            </div>
+          </div>
+          
+          <div class="team-member " >
+            <div class="tm-img">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&fit=crop&w=400&q=50&fm=webp" alt="David Chen" loading="lazy" decoding="async">
+              <div class="tm-social">
+                <a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="tm-info">
+              <h4>David Chen</h4>
+              <span>Operations Manager</span>
+            </div>
+          </div>
+          
+          <div class="team-member " >
+            <div class="tm-img">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&fit=crop&w=400&q=50&fm=webp" alt="Elena Rodriguez" loading="lazy" decoding="async">
+              <div class="tm-social">
+                <a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="tm-info">
+              <h4>Elena Rodriguez</h4>
+              <span>Safety Manager</span>
+            </div>
+          </div>
+          <!-- Duplicated for Loop -->
+          <div class="team-member " >
+            <div class="tm-img">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&fit=crop&w=400&q=50&fm=webp" alt="Michael Harrison" loading="lazy" decoding="async">
+              <div class="tm-social">
+                <a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="tm-info">
+              <h4>Michael Harrison</h4>
+              <span>Managing Director</span>
+            </div>
+          </div>
+          
+          <div class="team-member " >
+            <div class="tm-img">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&fit=crop&w=400&q=50&fm=webp" alt="Sarah Jenkins" loading="lazy" decoding="async">
+              <div class="tm-social">
+                <a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="tm-info">
+              <h4>Sarah Jenkins</h4>
+              <span>Engineering Director</span>
+            </div>
+          </div>
+          
+          <div class="team-member " >
+            <div class="tm-img">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&fit=crop&w=400&q=50&fm=webp" alt="David Chen" loading="lazy" decoding="async">
+              <div class="tm-social">
+                <a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="tm-info">
+              <h4>David Chen</h4>
+              <span>Operations Manager</span>
+            </div>
+          </div>
+          
+          <div class="team-member " >
+            <div class="tm-img">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&fit=crop&w=400&q=50&fm=webp" alt="Elena Rodriguez" loading="lazy" decoding="async">
+              <div class="tm-social">
+                <a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="tm-info">
+              <h4>Elena Rodriguez</h4>
+              <span>Safety Manager</span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Certifications -->
+    <section class="section-padding bg-offwhite border-top">
+      <div class="container text-center ">
+        <span class="subtitle">Quality Guaranteed</span>
+        <h2 class="mb-5">Global Certifications</h2>
+        
+        <div class="cert-flex">
+          <div class="cert-item"><i class="fa-solid fa-award"></i> ISO 9001:2015</div>
+          <div class="cert-item"><i class="fa-solid fa-award"></i> ISO 14001:2015</div>
+          <div class="cert-item"><i class="fa-solid fa-award"></i> ISO 45001:2018</div>
+          <div class="cert-item"><i class="fa-solid fa-certificate"></i> ASME Certified</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta gs-sys-cta bg-navy">
+      <div class="container text-center ">
+        <h2 class="text-white">Let's Build the Future of Industry Together</h2>
+        <div class="d-flex justify-content-center mt-5" style="gap: 20px; flex-wrap: wrap;">
+          <a href="404.html" class="btn btn-primary">Contact Our Team</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Footer CTA -->
+  <section class="footer-cta ">
+    <div class="footer-cta-bg" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&fit=crop&w=1920&q=50&fm=webp');"></div>
+    <div class="container position-relative z-2 text-center">
+      <h2 class="text-white mb-3">Engineering Solutions. Built for Performance.</h2>
+      <p class="text-light mx-auto mb-4" style="max-width: 600px;">From industrial engineering and maintenance to automation and safety, STACKLY helps businesses operate smarter, safer, and more efficiently.</p>
+      <a href="404.html" class="btn btn-primary">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+    <!-- Main Footer -->
+  <footer class="stackly-footer-new" id="mainFooter">
+    <div class="footer-top-accent"></div>
+    <div class="footer-blueprint-bg"></div>
+    
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Column 1: STACKLY -->
+        <div class="footer-col">
+          <a href="index.html" class="logo">
+            <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+          </a>
+          <p class="footer-desc">Advanced industrial engineering and maintenance solutions built for precision, safety, and performance.</p>
+          <div class="footer-socials">
+            <a href="404.html" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 3: Location Map -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Location Map</h4>
+                    <div class="footer-map" style="border-radius: 8px; overflow: hidden; width: 100%; height: 200px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <iframe class="lazy-map" src="" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15630.932912444102!2d78.16335195!3d11.66723225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf0c5a242c733%3A0x6fbca83dbfb4a36f!2sChinna%20Thirupathi%2C%20Salem%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1683000000000!5m2!1sen!2sin&q=MMR+Complex,+chinna+thirupathi,+near+chinna+muniyappan+kovil,+salem+-636008" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+        
+        <!-- Column 4: Contact Us -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Contact Us</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>MMR Complex, chinna thirupathi, near chinna muniyappan kovil, salem -636008</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:6364321780">6364321780</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:info@stackly.example">info@stackly.example</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              <span>Monâ€“Fri, 10amâ€“10pm</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 STACKLY. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <span class="sep">|</span>
+          <a href="#">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  
+
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/forms.js"></script>
+</body>
+</html>

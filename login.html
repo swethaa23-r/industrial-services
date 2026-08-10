@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Stackly - Engineering Progress</title>
+    <meta name="description" content="Sign in to access your STACKLY dashboard.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="auth-page">
+
+    
+
+    <div class="split-layout">
+        <!-- Left Side: Visual -->
+        <div class="split-left" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&fit=crop&w=1920&q=50&fm=webp');">
+            <div class="split-overlay"></div>
+            <div class="split-content gs-reveal-up">
+                <a href="index.html" class="logo text-white mb-5 d-inline-block">
+                    <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+                </a>
+                <h1 class="text-white">Powering Industry Through Better Engineering</h1>
+                <p class="text-light mt-3" style="color: rgba(255,255,255,0.8) !important; max-width: 400px;">Join the world's leading industrial platform. Design, monitor, and optimize your plant operations.</p>
+            </div>
+        </div>
+        
+        <!-- Right Side: Form -->
+        <div class="split-right">
+            <div class="auth-card gs-reveal-up" data-delay="0.2">
+                
+                <!-- Mobile Logo -->
+                <a href="index.html" class="logo auth-mobile-logo d-none text-center mb-4">
+                    <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+                </a>
+
+                <div class="auth-header">
+                    <a href="index.html" class="text-link d-inline-block mb-3" style="text-decoration:none;"><i class="fa-solid fa-arrow-left"></i> Go Back to Home</a>
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to access your STACKLY dashboard.</p>
+                </div>
+                
+                <div id="authError" class="form-error-message" style="display: none;">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>Invalid credentials. Please try again.</span>
+                </div>
+                
+                <form id="loginForm" class="stackly-form">
+                    
+                    <div class="form-group gs-auth-stagger">
+                        <label>Login As</label>
+                        <div class="role-selector">
+                            <label class="role-option">
+                                <input type="radio" name="userRole" value="user" checked>
+                                <div class="role-card">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span>User</span>
+                                </div>
+                            </label>
+                            <label class="role-option">
+                                <input type="radio" name="userRole" value="admin">
+                                <div class="role-card">
+                                    <i class="fa-solid fa-user-shield"></i>
+                                    <span>Admin</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group gs-auth-stagger">
+                        <label for="email">Email Address</label>
+                        <div class="input-icon-wrap">
+                            <i class="fa-regular fa-envelope input-icon"></i>
+                            <input type="email" id="email" name="email" placeholder="john@example.com">
+                        </div>
+                        <span class="error-msg" id="err-email"></span>
+                    </div>
+                    
+                    <div class="form-group gs-auth-stagger">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label for="password" class="mb-0">Password</label>
+                            <a href="404.html" class="text-link text-small">Forgot password?</a>
+                        </div>
+                        <div class="input-icon-wrap">
+                            <i class="fa-solid fa-lock input-icon"></i>
+                            <input type="password" id="password" name="password" placeholder="••••••••">
+                            <button type="button" class="password-toggle" id="togglePassword" aria-label="Toggle password visibility">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="error-msg" id="err-password"></span>
+                    </div>
+                    
+                    <div class="form-group gs-auth-stagger">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me for 30 days
+                        </label>
+                    </div>
+                    
+                    <div class="gs-auth-stagger">
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mt-2" id="loginBtn">
+                            Sign In <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="auth-footer gs-auth-stagger text-center mt-4">
+                        <p>Don't have an account? <a href="signup.html" class="text-link font-bold">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Password Toggle Logic
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
+            
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                const icon = this.querySelector('i');
+                if(type === 'text') {
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+            
+            // GSAP Animations specifically for login page
+            setTimeout(() => {
+                gsap.fromTo('.gs-auth-stagger', 
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" }
+                );
+            }, 500); // After loader
+            
+            // Authentication Simulation Logic
+            const loginForm = document.getElementById('loginForm');
+            
+            if(loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    let isValid = true;
+                    const email = document.getElementById('email');
+                    const password = document.getElementById('password');
+                    const authError = document.getElementById('authError');
+                    const role = document.querySelector('input[name="userRole"]:checked').value;
+                    
+                    // Reset errors
+                    document.querySelectorAll('.error-msg').forEach(el => el.innerText = '');
+                    document.querySelectorAll('.stackly-form input').forEach(el => el.classList.remove('error'));
+                    authError.style.display = 'none';
+                    
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    
+                    if(email.value.trim() === '') {
+                        showError('email', 'Email is required');
+                        isValid = false;
+                    } else if(!emailRegex.test(email.value.trim())) {
+                        showError('email', 'Please enter a valid email address');
+                        isValid = false;
+                    }
+                    
+                    if(password.value.trim() === '') {
+                        showError('password', 'Password is required');
+                        isValid = false;
+                    } else if(password.value.length < 6) {
+                        showError('password', 'Password must be at least 6 characters');
+                        isValid = false;
+                    }
+                    
+                    if(isValid) {
+                        const loginBtn = document.getElementById('loginBtn');
+                        const originalText = loginBtn.innerHTML;
+                        
+                        loginBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Authenticating...';
+                        loginBtn.disabled = true;
+                        
+                        // Simulate network request
+                        setTimeout(() => {
+                            // Normally we would check credentials against a DB here.
+                            // For this simulation, we'll assume success if inputs are valid.
+                            
+                            // Store auth data in localStorage
+                            localStorage.setItem('isLoggedIn', 'true');
+                            localStorage.setItem('userEmail', email.value.trim());
+                            localStorage.setItem('userRole', role);
+                            
+                            let namePart = email.value.trim().split('@')[0];
+                            namePart = namePart.replace(/[._]/g, ' ');
+                            const formattedName = namePart.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+                            localStorage.setItem('userName', formattedName);
+                            
+                            // Redirect based on role
+                            if(role === 'admin') {
+                                window.location.href = 'admin-dashboard.html';
+                            } else {
+                                window.location.href = 'user-dashboard.html';
+                            }
+                            
+                        }, 1200);
+                    }
+                });
+                
+                // Remove error styling on input
+                document.querySelectorAll('.stackly-form input').forEach(el => {
+                    el.addEventListener('input', function() {
+                        this.classList.remove('error');
+                        const errSpan = document.getElementById('err-' + this.id);
+                        if(errSpan) errSpan.innerText = '';
+                        document.getElementById('authError').style.display = 'none';
+                    });
+                });
+            }
+            
+            function showError(fieldId, message) {
+                const field = document.getElementById(fieldId);
+                const errSpan = document.getElementById('err-' + fieldId);
+                
+                if(field) field.classList.add('error');
+                if(errSpan) errSpan.innerText = message;
+            }
+        });
+    </script>
+</body>
+</html>

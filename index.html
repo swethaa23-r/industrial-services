@@ -1,0 +1,759 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Engineering & Maintenance Services | Stackly</title>
+    <meta name="description" content="STACKLY provides reliable engineering, maintenance, automation, and industrial services designed to keep critical operations moving globally.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="STACKLY - Engineering Progress">
+    <meta property="og:description" content="Premium industrial engineering and maintenance services.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- 34. Loading Screen -->
+        <div id="loader" style="z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: var(--c-navy); position: fixed; inset: 0;">
+        <div class="loader-content text-center">
+            <div class="industrial-spinner mb-4" style="animation: spin 3s linear infinite;">
+                <i class="fa-solid fa-gear fa-spin" style="font-size: 3.5rem; color: var(--c-orange);"></i>
+            </div>
+            <div class="loader-text mb-3">
+                <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo" style="max-height: 50px;">
+            </div>
+            <div class="loader-status" id="loaderStatus" style="font-family: var(--font-heading); color: rgba(255,255,255,0.7); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Initializing Systems...</div>
+        </div>
+        <div class="loader-progress-wrap mt-4" style="width: 250px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; height: 4px;">
+            <div class="loader-progress" id="loaderProgress" style="height: 100%; background: var(--c-orange); width: 0%; transition: width 0.1s ease;"></div>
+        </div>
+    </div>
+
+    
+    <!-- Header / Navbar -->
+    <header class="site-header" id="header">
+        <div class="container header-inner" style="height: 80px;">
+            <a href="index.html" class="logo">
+                <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+            </a>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-primary d-none-mobile" style="padding: 10px 24px; border-radius: 4px;">Client Login <i class="fa-solid fa-arrow-right"></i></a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo text-white"><img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo"></a>
+            <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="login.html" class="nav-link">Login</a></li>
+        </ul>
+    </div>
+
+
+    <main>
+        <!-- Section 1: Hero -->
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <video autoplay muted loop playsinline preload="metadata">
+                    <source src="assets/videoplayback.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title" id="heroTitle">Engineering Solutions <br>Built for Industry</h1>
+                    <p class="hero-desc" id="heroDesc">Reliable engineering, maintenance, automation, and industrial services designed to keep critical operations moving.</p>
+                    <div class="hero-actions" id="heroActions">
+                        <a href="404.html" class="btn btn-primary">Explore Services <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="404.html" class="btn btn-outline">Request a Quote</a>
+                    </div>
+                </div>
+                
+                <div class="hero-floats d-none-mobile" id="heroFloats">
+                    <div class="float-card float-1">
+                        <div class="float-icon"><i class="fa-solid fa-certificate"></i></div>
+                        <div>
+                            <strong>15+ Years</strong>
+                            <span>Experience</span>
+                        </div>
+                    </div>
+                    <div class="float-card float-2">
+                        <div class="float-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+                        <div>
+                            <strong>450+</strong>
+                            <span>Projects</span>
+                        </div>
+                    </div>
+                    <div class="float-card float-3">
+                        <div class="float-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div>
+                            <strong>99.9%</strong>
+                            <span>Reliability</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Decorative Grid -->
+            <div class="hero-grid-pattern"></div>
+        </section>
+
+        <!-- Section 2: Trust / Company Intro -->
+        <section class="section-padding trust-section bg-white">
+            <div class="container">
+                <div class="trust-grid">
+                    <div class="trust-content">
+                        <span class="subtitle about-eyebrow">About Stackly</span>
+                        <h2 class="about-heading">
+                            <span class="heading-line">Built Around Precision.</span>
+                            <span class="heading-line">Driven by Performance.</span>
+                        </h2>
+                        <p class="about-desc">STACKLY is a leading provider of comprehensive industrial engineering and maintenance solutions. We leverage decades of technical expertise, advanced automation, and strict safety protocols to ensure your facilities operate at maximum efficiency.</p>
+                        <ul class="trust-list">
+                            <li><i class="fa-solid fa-check"></i> Turnkey engineering solutions</li>
+                            <li><i class="fa-solid fa-check"></i> Certified professional engineers</li>
+                            <li><i class="fa-solid fa-check"></i> Uncompromising safety standards</li>
+                        </ul>
+                        <a href="404.html" class="btn btn-navy mt-4 about-btn">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="trust-visual">
+                        <div class="trust-img-wrap overflow-hidden">
+                            <div class="about-scan-line"></div>
+                            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&fit=crop&w=800&q=50&fm=webp" alt="Engineers working" loading="lazy" class="about-img" decoding="async">
+                            
+                            <!-- Floating Stat Card -->
+                            <div class="trust-stat-card about-badge">
+                                <div class="stat-icon"><i class="fa-solid fa-headset"></i></div>
+                                <div class="stat-info">
+                                    <h4 class="counter" data-target="24">0</h4><span>/7</span>
+                                    <p>Technical Support</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Core Services -->
+        <section class="section-padding bg-offwhite">
+            <div class="container">
+                <div class="section-header center gs-reveal-up">
+                    <span class="subtitle">OUR CAPABILITIES</span>
+                    <h2>Core Engineering Services</h2>
+                </div>
+                
+                <div class="interactive-services-wrap" id="interactiveServices">
+                    <!-- Left Sidebar Tabs -->
+                    <div class="is-sidebar">
+                        <button class="is-tab active gs-reveal-up" data-index="0">
+                            <i class="fa-solid fa-gears"></i> Industrial Engineering
+                        </button>
+                        <button class="is-tab gs-reveal-up" data-index="1" data-delay="0.1">
+                            <i class="fa-solid fa-screwdriver-wrench"></i> Plant Maintenance
+                        </button>
+                        <button class="is-tab gs-reveal-up" data-index="2" data-delay="0.2">
+                            <i class="fa-solid fa-microchip"></i> Industrial Automation
+                        </button>
+                        <button class="is-tab gs-reveal-up" data-index="3" data-delay="0.3">
+                            <i class="fa-solid fa-bolt"></i> Electrical Services
+                        </button>
+                        <button class="is-tab gs-reveal-up" data-index="4" data-delay="0.4">
+                            <i class="fa-solid fa-fire-burner"></i> Fabrication & Welding
+                        </button>
+                        <button class="is-tab gs-reveal-up" data-index="5" data-delay="0.5">
+                            <i class="fa-solid fa-clipboard-check"></i> Safety & Inspection
+                        </button>
+                    </div>
+                    
+                    <!-- Right Content Panel -->
+                    <div class="is-display-panel gs-reveal-right">
+                        <div class="is-bg-image" id="isBgImage" style="background-image: url('https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?ixlib=rb-4.0.3&fit=crop&w=1200&q=80&fm=webp');"></div>
+                        <div class="is-overlay"></div>
+                        <div class="is-content" id="isContent">
+                            <h3 id="isTitle">Industrial Engineering</h3>
+                            <p id="isDesc">Comprehensive structural and mechanical engineering for heavy industries.</p>
+                            <a href="404.html" class="btn btn-primary mt-3">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Infinite Marquee -->
+                <div class="service-marquee-wrap gs-reveal-up" data-delay="0.3">
+                    <div class="service-marquee">
+                        <span>INDUSTRIAL ENGINEERING</span>
+                        <span class="marquee-sep">&bull;</span>
+                        <span>PLANT MAINTENANCE</span>
+                        <span class="marquee-sep">&bull;</span>
+                        <span>INDUSTRIAL AUTOMATION</span>
+                        <span class="marquee-sep">&bull;</span>
+                        <span>ELECTRICAL SERVICES</span>
+                        <span class="marquee-sep">&bull;</span>
+                        <span>FABRICATION & WELDING</span>
+                        <span class="marquee-sep">&bull;</span>
+                        <span>SAFETY & INSPECTION</span>
+                        <span class="marquee-sep">&bull;</span>
+                        <!-- Duplicate for seamless loop -->
+                        <span aria-hidden="true">INDUSTRIAL ENGINEERING</span>
+                        <span class="marquee-sep" aria-hidden="true">&bull;</span>
+                        <span aria-hidden="true">PLANT MAINTENANCE</span>
+                        <span class="marquee-sep" aria-hidden="true">&bull;</span>
+                        <span aria-hidden="true">INDUSTRIAL AUTOMATION</span>
+                        <span class="marquee-sep" aria-hidden="true">&bull;</span>
+                        <span aria-hidden="true">ELECTRICAL SERVICES</span>
+                        <span class="marquee-sep" aria-hidden="true">&bull;</span>
+                        <span aria-hidden="true">FABRICATION & WELDING</span>
+                        <span class="marquee-sep" aria-hidden="true">&bull;</span>
+                        <span aria-hidden="true">SAFETY & INSPECTION</span>
+                        <span class="marquee-sep" aria-hidden="true">&bull;</span>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5 gs-reveal-up">
+                    <a href="404.html" class="btn btn-outline" style="color: var(--c-navy); border-color: var(--c-border); background: var(--c-white);">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Section 4: Industries We Serve -->
+    <section class="section-padding bg-navy" id="industries">
+        <div class="container">
+            <div class="section-header center gs-reveal-up">
+                <span class="subtitle" style="color: var(--c-white);">Sector Expertise</span>
+                <h2 style="color: var(--c-white);">Industries We Serve</h2>
+            </div>
+            
+            <div class="industry-grid">
+                <!-- Industry 1 -->
+                <div class="industry-card gs-reveal-up" data-delay="0.1">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Manufacturing" loading="lazy" decoding="async">
+                    <div class="industry-overlay">
+                        <div class="io-content">
+                            <h3>Manufacturing</h3>
+                            <p class="io-desc">Advanced engineering and maintenance solutions for modern manufacturing facilities.</p>
+                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Industry 2 -->
+                <div class="industry-card gs-reveal-up" data-delay="0.2">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Automotive" loading="lazy" decoding="async">
+                    <div class="industry-overlay">
+                        <div class="io-content">
+                            <h3>Automotive</h3>
+                            <p class="io-desc">Precision engineering, automation, maintenance, and production support for the automotive industry.</p>
+                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Industry 3 -->
+                <div class="industry-card gs-reveal-up" data-delay="0.3">
+                    <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Energy Sector" loading="lazy" decoding="async">
+                    <div class="industry-overlay">
+                        <div class="io-content">
+                            <h3>Energy Sector</h3>
+                            <p class="io-desc">Reliable engineering and maintenance solutions for conventional and renewable energy infrastructure.</p>
+                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Industry 4 -->
+                <div class="industry-card gs-reveal-up" data-delay="0.4">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Oil & Gas" loading="lazy" decoding="async">
+                    <div class="industry-overlay">
+                        <div class="io-content">
+                            <h3>Oil & Gas</h3>
+                            <p class="io-desc">Engineering, maintenance, inspection, and safety solutions for oil and gas facilities.</p>
+                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Industry 5 -->
+                <div class="industry-card gs-reveal-up" data-delay="0.5">
+                    <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Infrastructure & Construction" loading="lazy" decoding="async">
+                    <div class="industry-overlay">
+                        <div class="io-content">
+                            <h3>Infrastructure & Construction</h3>
+                            <p class="io-desc">Engineering and maintenance solutions for large-scale infrastructure and construction projects.</p>
+                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Industry 6 -->
+                <div class="industry-card gs-reveal-up" data-delay="0.6">
+                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Pharmaceuticals & Chemicals" loading="lazy" decoding="async">
+                    <div class="industry-overlay">
+                        <div class="io-content">
+                            <h3>Pharmaceuticals & Chemicals</h3>
+                            <p class="io-desc">Specialized engineering, automation, maintenance, and safety solutions for pharmaceutical and chemical facilities.</p>
+                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Why Choose Us -->
+    <section class="section-padding bg-white why-stackly-sec" id="why-choose-us">
+        <div class="why-blueprint-bg"></div>
+        <div class="container relative-z">
+            <div class="section-header center">
+                <span class="subtitle why-eyebrow">Why Stackly</span>
+                <h2 class="why-heading">
+                    <span class="heading-line">Engineering That Delivers</span>
+                    <span class="heading-line">Beyond Expectations</span>
+                </h2>
+            </div>
+            
+            <div class="why-grid">
+                <div class="why-card-custom">
+                    <div class="icon-wrap">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <div class="scan-line"></div>
+                    </div>
+                    <h4>Certified Engineers</h4>
+                    <p>Highly qualified professionals with strict industrial certifications.</p>
+                    <div class="hover-line"></div>
+                </div>
+                <div class="why-card-custom">
+                    <div class="icon-wrap">
+                        <i class="fa-solid fa-microchip"></i>
+                        <div class="scan-line"></div>
+                    </div>
+                    <h4>Advanced Technology</h4>
+                    <p>Utilizing the latest in robotics, automation, and industrial IoT.</p>
+                    <div class="hover-line"></div>
+                </div>
+                <div class="why-card-custom">
+                    <div class="icon-wrap">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div class="scan-line"></div>
+                    </div>
+                    <h4>Safety First</h4>
+                    <p>Award-winning safety protocols protecting our team and your assets.</p>
+                    <div class="hover-line"></div>
+                </div>
+                <div class="why-card-custom">
+                    <div class="icon-wrap">
+                        <i class="fa-solid fa-stopwatch"></i>
+                        <div class="scan-line"></div>
+                    </div>
+                    <h4>Rapid Response</h4>
+                    <p>24/7 emergency support and expedited project mobilization.</p>
+                    <div class="hover-line"></div>
+                </div>
+                <div class="why-card-custom">
+                    <div class="icon-wrap">
+                        <i class="fa-solid fa-award"></i>
+                        <div class="scan-line"></div>
+                    </div>
+                    <h4>Quality Assurance</h4>
+                    <p>Rigorous multi-stage inspections guaranteeing perfect delivery.</p>
+                    <div class="hover-line"></div>
+                </div>
+                <div class="why-card-custom">
+                    <div class="icon-wrap">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                        <div class="scan-line"></div>
+                    </div>
+                    <h4>Cost-Efficient Solutions</h4>
+                    <p>Optimized engineering designs that maximize ROI and minimize waste.</p>
+                    <div class="hover-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Projects Showcase -->
+    <section class="section-padding bg-offwhite" id="projects">
+        <div class="container">
+            <div class="projects-header gs-reveal-up">
+                <div class="section-header mb-0">
+                    <span class="subtitle">Featured Work</span>
+                    <h2>Project Portfolio</h2>
+                </div>
+                
+                <div class="project-filters" id="projectFilters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="engineering">Engineering</button>
+                    <button class="filter-btn" data-filter="maintenance">Maintenance</button>
+                    <button class="filter-btn" data-filter="automation">Automation</button>
+                </div>
+            </div>
+            
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Project 1 -->
+                <div class="project-card gs-reveal-up filter-item engineering automation" data-delay="0.1">
+                    <div class="pc-img">
+                        <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?ixlib=rb-4.0.3&fit=crop&w=800&q=50&fm=webp" alt="Automotive Plant" loading="lazy" decoding="async">
+                    </div>
+                    <div class="pc-info">
+                        <div class="pc-meta">
+                            <span><i class="fa-solid fa-location-dot"></i> Texas, USA</span>
+                            <span><i class="fa-solid fa-industry"></i> Automotive</span>
+                        </div>
+                        <h3>Assembly Line Automation</h3>
+                        <a href="404.html" class="pc-link">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card gs-reveal-up filter-item maintenance" data-delay="0.2">
+                    <div class="pc-img">
+                        <img src="https://images.unsplash.com/photo-1545459720-aac8509eb02c?ixlib=rb-4.0.3&fit=crop&w=800&q=50&fm=webp" alt="Bridge Maintenance" loading="lazy" decoding="async">
+                    </div>
+                    <div class="pc-info">
+                        <div class="pc-meta">
+                            <span><i class="fa-solid fa-location-dot"></i> London, UK</span>
+                            <span><i class="fa-solid fa-industry"></i> Infrastructure</span>
+                        </div>
+                        <h3>Structural Bridge Refit</h3>
+                        <a href="404.html" class="pc-link">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card gs-reveal-up filter-item engineering" data-delay="0.3">
+                    <div class="pc-img">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&fit=crop&w=800&q=50&fm=webp" alt="Circuit Board" loading="lazy" decoding="async">
+                    </div>
+                    <div class="pc-info">
+                        <div class="pc-meta">
+                            <span><i class="fa-solid fa-location-dot"></i> Berlin, DE</span>
+                            <span><i class="fa-solid fa-industry"></i> Electronics</span>
+                        </div>
+                        <h3>Semiconductor Facility</h3>
+                        <a href="404.html" class="pc-link">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5 gs-reveal-up">
+                <a href="404.html" class="btn btn-primary">View All Projects <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Industrial Process -->
+    <section class="section-padding bg-white" id="process">
+        <div class="container">
+            <div class="section-header center gs-reveal-up">
+                <span class="subtitle">How We Work</span>
+                <h2>Our Industrial Process</h2>
+            </div>
+            
+            <div class="process-timeline process-animated" id="processTimeline">
+                <div class="process-line-wrap">
+                    <div class="process-line-progress"></div>
+                </div>
+                <div class="process-step-custom">
+                    <div class="step-num-wrap">
+                        <div class="step-num">01</div>
+                    </div>
+                    <div class="step-content">
+                        <h4>Consultation</h4>
+                        <p>Initial analysis of requirements and operational goals.</p>
+                    </div>
+                </div>
+                <div class="process-step-custom">
+                    <div class="step-num-wrap">
+                        <div class="step-num">02</div>
+                    </div>
+                    <div class="step-content">
+                        <h4>Site Assessment</h4>
+                        <p>Rigorous environmental and structural evaluation.</p>
+                    </div>
+                </div>
+                <div class="process-step-custom">
+                    <div class="step-num-wrap">
+                        <div class="step-num">03</div>
+                    </div>
+                    <div class="step-content">
+                        <h4>Engineering</h4>
+                        <p>Blueprint drafting and CAD simulation.</p>
+                    </div>
+                </div>
+                <div class="process-step-custom">
+                    <div class="step-num-wrap">
+                        <div class="step-num">04</div>
+                    </div>
+                    <div class="step-content">
+                        <h4>Execution</h4>
+                        <p>Deployment of certified engineers and heavy machinery.</p>
+                    </div>
+                </div>
+                <div class="process-step-custom">
+                    <div class="step-num-wrap">
+                        <div class="step-num">05</div>
+                    </div>
+                    <div class="step-content">
+                        <h4>Inspection</h4>
+                        <p>Multi-stage quality and safety assurance protocols.</p>
+                    </div>
+                </div>
+                <div class="process-step-custom">
+                    <div class="step-num-wrap">
+                        <div class="step-num">06</div>
+                    </div>
+                    <div class="step-content">
+                        <h4>Handover</h4>
+                        <p>Final project delivery and maintenance training.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Performance Statistics -->
+    <section class="stats-section">
+        <div class="stats-bg">
+            <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&fit=crop&w=1920&q=50&fm=webp" alt="Industrial Background" loading="lazy" decoding="async">
+            <div class="stats-overlay"></div>
+        </div>
+        <div class="container stats-container">
+            <div class="stats-grid">
+                <div class="stat-box gs-reveal-up" data-delay="0.1">
+                    <h3 class="counter" data-target="450">0</h3><span>+</span>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-box gs-reveal-up" data-delay="0.2">
+                    <h3 class="counter" data-target="15">0</h3><span>+</span>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-box gs-reveal-up" data-delay="0.3">
+                    <h3 class="counter" data-target="98">0</h3><span>%</span>
+                    <p>Client Retention</p>
+                </div>
+                <div class="stat-box gs-reveal-up" data-delay="0.4">
+                    <h3 class="counter" data-target="24">0</h3><span>/7</span>
+                    <p>Technical Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Testimonials -->
+    <section class="section-padding bg-offwhite position-relative overflow-hidden" id="testimonials">
+        <div class="testi-bg-grid"></div>
+        <div class="container position-relative z-2">
+            <div class="section-header center gs-reveal-up">
+                <span class="subtitle">Client Feedback</span>
+                <h2>Trusted By Global Brands</h2>
+            </div>
+            
+            <div class="testimonial-slider gs-reveal-up">
+                <div class="testi-track" id="testiTrack">
+                    <!-- Slide 1 -->
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <ul class="testi-rating">
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                            </ul>
+                            <p class="testi-text">"STACKLY executed our plant automation upgrade flawlessly. Their safety standards and precision engineering drastically improved our production line efficiency."</p>
+                            <div class="testi-author">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&fit=crop&w=150&q=50&fm=webp" alt="James Wilson" loading="lazy" decoding="async">
+                                <div>
+                                    <h4>James Wilson</h4>
+                                    <span>Operations Director, AutoCorp</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <ul class="testi-rating">
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                            </ul>
+                            <p class="testi-text">"The mechanical refit of our offshore rig was a monumental task. STACKLY'S rapid response and technical execution were simply outstanding."</p>
+                            <div class="testi-author">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&fit=crop&w=150&q=50&fm=webp" alt="Sarah Jenkins" loading="lazy" decoding="async">
+                                <div>
+                                    <h4>Sarah Jenkins</h4>
+                                    <span>VP Engineering, Nexus Energy</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <ul class="testi-rating">
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star-half-stroke"></i></li>
+                            </ul>
+                            <p class="testi-text">"Finding a partner capable of executing complex HVAC and utility grids for our pharmaceutical facility was critical. STACKLY delivered on every metric."</p>
+                            <div class="testi-author">
+                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&fit=crop&w=150&q=50&fm=webp" alt="Michael Chang" loading="lazy" decoding="async">
+                                <div>
+                                    <h4>Michael Chang</h4>
+                                    <span>Facility Head, BioPharm Solutions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testi-controls">
+                    <button id="testiPrev" aria-label="Previous testimonial"><i class="fa-solid fa-arrow-left"></i></button>
+                    <div class="testi-pagination" id="testiPagination"></div>
+                    <button id="testiNext" aria-label="Next testimonial"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Footer CTA -->
+    <section class="footer-cta gs-reveal-up">
+        <div class="footer-cta-bg" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&fit=crop&w=1920&q=50&fm=webp');"></div>
+        <div class="container position-relative z-2 text-center">
+            <h2 class="text-white mb-3">Engineering Solutions. Built for Performance.</h2>
+            <p class="text-light mx-auto mb-4" style="max-width: 600px;">From industrial engineering and maintenance to automation and safety, STACKLY helps businesses operate smarter, safer, and more efficiently.</p>
+            <a href="404.html" class="btn btn-primary">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+        <!-- Main Footer -->
+    <footer class="stackly-footer-new" id="mainFooter">
+        <div class="footer-top-accent"></div>
+        <div class="footer-blueprint-bg"></div>
+        
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1: STACKLY -->
+                <div class="footer-col">
+                    <a href="index.html" class="logo">
+                        <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+                    </a>
+                    <p class="footer-desc">Advanced industrial engineering and maintenance solutions built for precision, safety, and performance.</p>
+                    <div class="footer-socials">
+                        <a href="404.html" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2: Quick Links -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3: Location Map -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Location Map</h4>
+                    <div class="footer-map" style="border-radius: 8px; overflow: hidden; width: 100%; height: 200px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <iframe class="lazy-map" src="" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15630.932912444102!2d78.16335195!3d11.66723225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf0c5a242c733%3A0x6fbca83dbfb4a36f!2sChinna%20Thirupathi%2C%20Salem%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1683000000000!5m2!1sen!2sin&q=MMR+Complex,+chinna+thirupathi,+near+chinna+muniyappan+kovil,+salem+-636008" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Column 4: Contact Us -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>MMR Complex, chinna thirupathi, near chinna muniyappan kovil, salem -636008</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:6364321780">6364321780</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:info@stackly.example">info@stackly.example</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Monâ€“Fri, 10amâ€“10pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 STACKLY. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="sep">|</span>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+</html>

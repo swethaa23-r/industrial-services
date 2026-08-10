@@ -1,0 +1,985 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Engineering & Maintenance Services | Stackly</title>
+    <meta name="description" content="STACKLY provides reliable engineering, maintenance, automation, and industrial services designed to keep critical operations moving globally.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="STACKLY - Engineering Progress">
+    <meta property="og:description" content="Premium industrial engineering and maintenance services.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    
+    <!-- Axiron Theme CSS -->
+    <link href="https://html.awaikenthemes.com/axiron/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    
+    
+    <link href="css/axiron.css" rel="stylesheet" media="screen">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="service-page">
+        <div id="loader" style="z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: var(--c-navy); position: fixed; inset: 0;">
+        <div class="loader-content text-center">
+            <div class="industrial-spinner mb-4" style="animation: spin 3s linear infinite;">
+                <i class="fa-solid fa-gear fa-spin" style="font-size: 3.5rem; color: var(--c-orange);"></i>
+            </div>
+            <div class="loader-text mb-3">
+                <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo" style="max-height: 50px;">
+            </div>
+            <div class="loader-status" id="loaderStatus" style="font-family: var(--font-heading); color: rgba(255,255,255,0.7); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Initializing Systems...</div>
+        </div>
+        <div class="loader-progress-wrap mt-4" style="width: 250px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; height: 4px;">
+            <div class="loader-progress" id="loaderProgress" style="height: 100%; background: var(--c-orange); width: 0%; transition: width 0.1s ease;"></div>
+        </div>
+    </div>
+    <header class="site-header" id="header">
+        <div class="container header-inner" style="height: 80px;">
+            <a href="index.html" class="logo">
+                <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+            </a>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link active">Services</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-primary d-none-mobile" style="padding: 10px 24px; border-radius: 4px;">Client Login <i class="fa-solid fa-arrow-right"></i></a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo text-white"><img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo"></a>
+            <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="login.html" class="nav-link">Login</a></li>
+        </ul>
+    </div>
+    
+    <main>
+        
+<!-- Page Header Section Start -->
+<section class="inner-hero" style="height: 450px; display: flex; align-items: center; justify-content: center; position: relative;">
+  <div class="hero-bg-img" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&fit=crop&w=1920&q=80&fm=webp');"></div>
+  <div class="blueprint-overlay"></div>
+  <div class="inner-hero-overlay"></div>
+  <div class="container relative z-10 text-center">
+    <h1 class="text-white mb-3 gs-clip-text">Our services</h1>
+    <p class="text-light lead-text mb-4" style="color: rgba(255,255,255,0.9) !important; max-width: 800px; margin: 0 auto; font-size: 1.15rem; line-height: 1.6;">Delivering end-to-end industrial engineering, automation, and heavy equipment maintenance solutions designed to maximize operational efficiency, ensure safety, and eliminate costly downtime across your facilities.</p>
+    <div class="breadcrumbs justify-content-center d-flex mt-4" style="color: white;">
+      <a href="index.html" style="color: white; text-decoration: none;">Home</a> <span style="margin: 0 10px; color: var(--c-orange);">/</span> <span class="current" style="color: var(--c-orange);">Services</span>
+    </div>
+  </div>
+</section>
+<!-- Page Header Section End -->
+
+<!-- Page Services Start -->
+<div class="page-services">
+<div class="container">
+<div class="row">
+<div class="col-xl-4 col-md-6">
+<!-- Service Item Start -->
+<div class="service-item">
+<div class="service-item-image">
+<a href="service-single.html" data-cursor-text="View">
+<figure class="image-anime">
+<img src="assets/process_analyze.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</a>
+</div>
+<div class="service-item-body">
+<div class="service-item-content">
+<h2><a href="service-single.html">Predictive Maintenance</a></h2>
+<p>Our Predictive Maintenance services deliver high-quality modern industries.</p>
+</div>
+<div class="service-item-btn">
+<a href="service-single.html" class="readmore-btn">Read More <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+<!-- Service Item End -->
+</div>
+<div class="col-xl-4 col-md-6">
+<!-- Service Item Start -->
+<div class="service-item" data-wow-delay="0.2s">
+<div class="service-item-image">
+<a href="service-single.html" data-cursor-text="View">
+<figure class="image-anime">
+<img src="assets/process_plan.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</a>
+</div>
+<div class="service-item-body">
+<div class="service-item-content">
+<h2><a href="service-single.html">Industrial Automation</a></h2>
+<p>Our Predictive Maintenance services deliver high-quality modern industries.</p>
+</div>
+<div class="service-item-btn">
+<a href="404.html" class="readmore-btn">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+<!-- Service Item End -->
+</div>
+<div class="col-xl-4 col-md-6">
+<!-- Service Item Start -->
+<div class="service-item" data-wow-delay="0.4s">
+<div class="service-item-image">
+<a href="service-single.html" data-cursor-text="View">
+<figure class="image-anime">
+<img src="assets/process_execute.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</a>
+</div>
+<div class="service-item-body">
+<div class="service-item-content">
+<h2><a href="service-single.html">Precision Engineering</a></h2>
+<p>Our Predictive Maintenance services deliver high-quality modern industries.</p>
+</div>
+<div class="service-item-btn">
+<a href="404.html" class="readmore-btn">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+<!-- Service Item End -->
+</div>
+<div class="col-xl-4 col-md-6">
+<!-- Service Item Start -->
+<div class="service-item" data-wow-delay="0.6s">
+<div class="service-item-image">
+<a href="service-single.html" data-cursor-text="View">
+<figure class="image-anime">
+<img src="assets/process_test.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</a>
+</div>
+<div class="service-item-body">
+<div class="service-item-content">
+<h2><a href="service-single.html">Process Optimization</a></h2>
+<p>Our Predictive Maintenance services deliver high-quality modern industries.</p>
+</div>
+<div class="service-item-btn">
+<a href="404.html" class="readmore-btn">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+<!-- Service Item End -->
+</div>
+<div class="col-xl-4 col-md-6">
+<!-- Service Item Start -->
+<div class="service-item" data-wow-delay="0.8s">
+<div class="service-item-image">
+<a href="service-single.html" data-cursor-text="View">
+<figure class="image-anime">
+<img src="assets/process_deliver.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</a>
+</div>
+<div class="service-item-body">
+<div class="service-item-content">
+<h2><a href="service-single.html">Heavy Equipment Overhaul</a></h2>
+<p>Our Predictive Maintenance services deliver high-quality modern industries.</p>
+</div>
+<div class="service-item-btn">
+<a href="404.html" class="readmore-btn">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+<!-- Service Item End -->
+</div>
+<div class="col-xl-4 col-md-6">
+<!-- Service Item Start -->
+<div class="service-item" data-wow-delay="1s">
+<div class="service-item-image">
+<a href="service-single.html" data-cursor-text="View">
+<figure class="image-anime">
+<img src="assets/service_featured.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</a>
+</div>
+<div class="service-item-body">
+<div class="service-item-content">
+<h2><a href="service-single.html">Smart Factory Solutions</a></h2>
+<p>Our Predictive Maintenance services deliver high-quality modern industries.</p>
+</div>
+<div class="service-item-btn">
+<a href="404.html" class="readmore-btn">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+<!-- Service Item End -->
+</div>
+</div>
+</div>
+</div>
+<!-- Page Services End -->
+
+<!-- Global Impact Section Start -->
+<div class="global-impact dark-section" style="background-image: none !important;">
+<div class="container">
+<div class="row section-row">
+<div class="col-lg-12">
+<!-- Section Title Start -->
+<div class="section-title section-title-center">
+<span class="section-sub-title">Our Global Impact</span>
+<h2 class="text-anime-style-3" data-cursor="-opaque">Global manufacturing impact</h2>
+<p class="" data-wow-delay="0.2s">Our global manufacturing impact reflects our commitment to delivering high-quality industrial solutions to clients across multiple industries and regions.</p>
+</div>
+<!-- Section Title End -->
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<!-- global Impact List Start -->
+<div class="global-impact-list">
+<!-- Global Impact Item Start -->
+<div class="global-impact-item box-1">
+<!-- Global Impact Image Start -->
+<div class="global-impact-image">
+<figure class="image-anime">
+<img src="assets/service_hero.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</div>
+<!-- Global Impact Image End -->
+<!-- Global Impact Body Start -->
+<div class="global-impact-body">
+<!-- Global Impact Body List Start -->
+<div class="global-impact-body-list">
+<ul>
+<li>Our Global Impact</li>
+</ul>
+</div>
+<!-- Global Impact Body List End -->
+<!-- Global Impact Counter Box Start -->
+<div class="global-impact-counter-box">
+<h2><span class="counter">25</span>+</h2>
+<p>Years of Industry Experience</p>
+</div>
+<!-- Global Impact Counter Box End -->
+</div>
+<!-- Global Impact Body End -->
+</div>
+<!-- Global Impact Item End -->
+<!-- Global Impact Item Start -->
+<div class="global-impact-item box-2" data-wow-delay="0.2s">
+<!-- Global-impact-content Start -->
+<div class="global-impact-content">
+<h3>Our Global Strength</h3>
+<p>We work with companies across multiple sectors, helping them achieve efficiency and reliability through manufacturing.</p>
+</div>
+<!-- Global-impact-content End -->
+<!-- Global Imapact Map Image Start -->
+<div class="global-impact-map-image">
+<figure>
+<img src="assets/process_plan.webp" alt="Map" loading="lazy" decoding="async">
+</figure>
+</div>
+<!-- Global Imapact Map Image End -->
+</div>
+<!-- Global Impact Item End -->
+<!-- Global Impact Item Start -->
+<div class="global-impact-item box-3" data-wow-delay="0.4s">
+<!-- Global Impact Item Header Start -->
+<div class="global-impact-item-header">
+<!-- Global Impact Body List Start -->
+<div class="global-impact-body-list">
+<ul>
+<li>Units Produced Monthly</li>
+</ul>
+</div>
+<!-- Global Impact Body List End -->
+<!-- Global Impact Icon Start -->
+<div class="global-impact-icon">
+<div class="icon-box" style="opacity: 1 !important; visibility: visible !important; transform: none !important;">
+<i class="fa-solid fa-chart-line" style="font-size: 2rem; color: var(--c-navy);"></i>
+</div>
+</div>
+<!-- Global Impact Icon End -->
+</div>
+<!-- Global Impact Item Header End -->
+<!-- Global Impact Counter Box Start -->
+<div class="global-impact-counter-box">
+<h2><span class="counter">150000</span>+</h2>
+<p>High capacity production lines ensuring consistent quality and output.</p>
+</div>
+<!-- Global Impact Counter Box End -->
+</div>
+<!-- Global Impact Item End -->
+</div>
+<!-- global Impact List End -->
+</div>
+<div class="col-lg-12">
+<!-- Comapany Slider Box Start -->
+<div class="company-slider-box">
+<!-- Comapany Slider Title Start -->
+<div class="company-slider-title">
+<h3>Preferred by Leading Industry Brands Across 40+ Countries</h3>
+</div>
+<!-- Comapany Slider Title End -->
+<!-- Comapany Support Slider Start -->
+<div class="company-supports-slider">
+<div class="swiper">
+<div class="swiper-wrapper">
+<!-- Company Support Logo Start -->
+<div class="swiper-slide">
+<div class="company-supports-logo">
+<h4 style="color: var(--c-navy); text-align: center;">Partner</h4>
+</div>
+</div>
+<!-- Comapany Support Logo End -->
+<div class="swiper-slide">
+<div class="company-supports-logo">
+<h4 style="color: var(--c-navy); text-align: center;">Partner</h4>
+</div>
+</div>
+<div class="swiper-slide">
+<div class="company-supports-logo">
+<h4 style="color: var(--c-navy); text-align: center;">Partner</h4>
+</div>
+</div>
+<div class="swiper-slide">
+<div class="company-supports-logo">
+<h4 style="color: var(--c-navy); text-align: center;">Partner</h4>
+</div>
+</div>
+<div class="swiper-slide">
+<div class="company-supports-logo">
+<h4 style="color: var(--c-navy); text-align: center;">Partner</h4>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Comapany Support Slider End -->
+</div>
+<!-- Comapany Slider Box End -->
+</div>
+</div>
+</div>
+</div>
+<!-- Global Impact Section End -->
+
+<!-- Why Choose Us Section Start -->
+<div class="why-choose-us">
+<div class="container">
+<div class="row section-row align-items-center">
+<div class="col-xl-6">
+<!-- Section Title Start -->
+<div class="section-title">
+<span class="section-sub-title">Why Choose Us</span>
+<h2 class="text-anime-style-3" data-cursor="-opaque">Why businesses trust our manufacturing solutions</h2>
+</div>
+<!-- Section Title End -->
+</div>
+<div class="col-xl-6">
+<!-- Section Content Button Start -->
+<div class="section-content-btn">
+<!-- Section Title Content Start -->
+<div class="section-title-content" data-wow-delay="0.2s">
+<p>We prioritize transparency, timely delivery, and cost-effective processes to ensure smooth operations for our clients. With a strong commitment to innovation.</p>
+</div>
+<!-- Section Title Content End -->
+<!-- Section Button Start -->
+<div class="section-btn" data-wow-delay="0.4s">
+<a href="404.html" class="btn-default">Request Consultation</a>
+</div>
+<!-- Section Button End -->
+</div>
+<!-- Section Content Button End -->
+</div>
+</div>
+<div class="row">
+<div class="col-xl-4">
+<!-- Why Choose Item List Start -->
+<div class="why-choose-item-list">
+<!-- Why Choose Item Start -->
+<div class="why-choose-item">
+<!-- Why Choose Item Content Start -->
+<div class="why-choose-item-content">
+<h2>Strong Industry Experience</h2>
+<p>we understand industry standards, market demands.</p>
+</div>
+<!-- Why Choose Item Content End -->
+<!-- Why Choose Item Image Start -->
+<div class="why-choose-item-image">
+<figure>
+<img src="assets/process_execute.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</div>
+<!-- Why Choose Item Image End -->
+</div>
+<!-- Why Choose Item End -->
+<!-- Why Choose Item Start -->
+<div class="why-choose-item" data-wow-delay="0.2s">
+<!-- Why Choose Item Content Start -->
+<div class="why-choose-item-content">
+<h2>Skilled And Experienced Team</h2>
+<p>we understand industry standards, market demands.</p>
+</div>
+<!-- Why Choose Item Content End -->
+<!-- Why Choose Item Image Start -->
+<div class="why-choose-item-image">
+<figure>
+<img src="assets/process_test.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</div>
+<!-- Why Choose Item Image End -->
+</div>
+<!-- Why Choose Item End -->
+</div>
+<!-- Why Choose Item List End -->
+</div>
+<div class="col-xl-8">
+<!-- Why Choose Video Counter Box Start -->
+<div class="why-choose-video-counter-box" data-wow-delay="0.4s">
+<!-- Why Choose Video Box Start -->
+<div class="why-choose-video-box">
+<!-- Why Choose Video Button Box Start -->
+<div class="why-choose-video-btn-box">
+<!-- Why Choose Video Button Start -->
+<div class="why-choose-video-btn">
+<a href="404.html" class="popup-video bg-effect" data-cursor-text="Play">
+<i class="fa-solid fa-play"></i>
+</a>
+</div>
+<!-- Why Choose Video Button End -->
+</div>
+<!-- Why Choose Video Button Box End -->
+<!-- Why Choose Video Image Start -->
+<div class="why-choose-video-image">
+<figure class="image-anime">
+<img src="assets/service_parallax.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</div>
+<!-- Why Choose Video Image End -->
+</div>
+<!-- Why Choose Video Box End -->
+<!-- Why Choose Counter Item List Start -->
+<div class="why-choose-counter-item-list">
+<!-- Why Choose Counter Item Start -->
+<div class="why-choose-counter-item">
+<h2><span class="counter">25</span>+</h2>
+<p>Years of industry experience</p>
+</div>
+<!-- Why Choose Counter Item End -->
+<!-- Why Choose Counter Item Start -->
+<div class="why-choose-counter-item">
+<h2><span class="counter">24</span>/7</h2>
+<p>Production & support capability</p>
+</div>
+<!-- Why Choose Counter Item End -->
+</div>
+<!-- Why Choose Counter Item List End -->
+</div>
+<!-- Why Choose Video Counter Box End -->
+</div>
+</div>
+</div>
+</div>
+<!-- Why Choose Us Section End -->
+
+<!-- Intro Video Section Start -->
+<div class="intro-video dark-section parallaxie">
+<div class="container">
+<div class="row">
+<div class="col-xl-12">
+<!-- Intro Video Content Start -->
+<div class="intro-video-content">
+<!-- Section Title Start -->
+<div class="section-title">
+<span class="section-sub-title">Watch Our Story</span>
+<h2 class="text-anime-style-3" data-cursor="-opaque">Watch how we deliver quality manufacturing</h2>
+</div>
+<!-- Section Title End -->
+<!-- Intro Video Circle Start -->
+<div class="intro-video-circle">
+<a href="404.html" class="popup-video" data-cursor-text="Play">
+<i class="fa-solid fa-play" style="font-size: 3rem; color: white;"></i>
+</a>
+</div>
+<!-- Intro Video Circle End -->
+</div>
+<!-- Intro Video Content End -->
+</div>
+</div>
+</div>
+</div>
+<!-- Intro Video Section End -->
+
+<!-- Our Expertise Section Start -->
+<div class="our-expertise">
+<div class="container">
+<div class="row">
+<div class="col-xl-6">
+<!-- Expertise Content Start -->
+<div class="expertise-content">
+<!-- Section Title Start -->
+<div class="section-title">
+<span class="section-sub-title">Our Expertise</span>
+<h2 class="text-anime-style-3" data-cursor="-opaque">Excellence through advance manufacturing expertise</h2>
+<p class="" data-wow-delay="0.2s">We achieve excellence by combining advanced manufacturing technologies with deep industry expertise. </p>
+</div>
+<!-- Section Title End -->
+<!-- Experise Skillbar List Start -->
+<div class="expertise-skillbar-list">
+<!-- Skills Progress Bar Start -->
+<div class="skills-progress-bar">
+<!-- Skill Item Start -->
+<div class="skillbar" data-percent="90%">
+<div class="skill-data">
+<div class="skill-title">Production Efficiency</div>
+<div class="skill-no">90%</div>
+</div>
+<div class="skill-progress">
+<div class="count-bar" style="width: 90%;"></div>
+</div>
+</div>
+<!-- Skill Item End -->
+</div>
+<!-- Skills Progress Bar End -->
+<!-- Skills Progress Bar Start -->
+<div class="skills-progress-bar">
+<!-- Skill Item Start -->
+<div class="skillbar" data-percent="95%">
+<div class="skill-data">
+<div class="skill-title">Quality Assurance Standards</div>
+<div class="skill-no">95%</div>
+</div>
+<div class="skill-progress">
+<div class="count-bar" style="width: 95%;"></div>
+</div>
+</div>
+<!-- Skill Item End -->
+</div>
+<!-- Skills Progress Bar End -->
+</div>
+<!-- Experise Skillbar List End -->
+<!-- Expertise Footer Start -->
+<div class="expertise-footer" data-wow-delay="0.4s">
+<!-- Expertise Button Start -->
+<div class="expertise-btn">
+<a href="404.html" class="btn-default">Contact Us </a>
+</div>
+<!-- Expertise Button End -->
+<!-- About Us Contact Box Start -->
+<div class="about-us-contact-box">
+<div class="icon-box">
+<i class="fa-solid fa-headset" style="font-size: 2rem; color: white;"></i>
+</div>
+<div class="about-us-conatct-content">
+<p>Support 24/7</p>
+<h3><a href="tel:6364321780">6364321780</a></h3>
+</div>
+</div>
+<!-- About Us Contact Box End -->
+</div>
+<!-- Expertise Footer End -->
+</div>
+<!-- Expertise Content End -->
+</div>
+<div class="col-xl-6">
+<!-- Expertise Image Box Start -->
+<div class="expertise-image-box" data-wow-delay="0.2s">
+<!-- Expertise Image Start -->
+<div class="expertise-image">
+<figure>
+<img src="assets/process_deliver.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</div>
+<!-- Expertise Image End -->
+<!-- Expertise Image Content Start -->
+<div class="expertise-image-content">
+<ul>
+<li>Skilled Engineering Team</li>
+<li>Advanced Manufacturing</li>
+</ul>
+</div>
+<!-- Expertise Image Content End -->
+</div>
+<!-- Expertise Image Box End -->
+</div>
+</div>
+</div>
+</div>
+<!-- Our Expertise Section End -->
+
+<!-- Testimonial Section Start -->
+<div class="our-testimonials dark-section" style="background-image: none !important;">
+<div class="container">
+<div class="row section-row">
+<div class="col-lg-12">
+<!-- Section Title Start -->
+<div class="section-title section-title-center">
+<span class="section-sub-title">Our Testimonials</span>
+<h2 class="text-anime-style-3" data-cursor="-opaque">Success stories from our industry partners</h2>
+</div>
+<!-- Section Title End -->
+</div>
+</div>
+<div class="row">
+<div class="col-lg-12">
+<!-- Testimonial Slider Start -->
+<div class="testimonial-slider">
+<div class="swiper">
+<div class="swiper-wrapper" data-cursor-text="Drag">
+<!-- Testimonial Slide Start -->
+<div class="swiper-slide">
+<!-- Testimonial Item Start -->
+<div class="testimonial-item">
+<!-- Testimonial Item Header Start -->
+<div class="testimonial-item-header">
+<!-- Testimonial Item Rating Start -->
+<div class="testimonial-item-rating">
+<p>4.9 Rating</p>
+<span class="testimonial-item-rating-star">
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</span>
+</div>
+<!-- Testimonial Item Rating End -->
+<!-- Testimonial Item Content Start -->
+<div class="testimonial-item-content">
+<p>â€œTheir manufacturing standards are outstanding. Every component delivered meets our exact specifications with consistent precision and durability. A truly dependable partner.â€</p>
+</div>
+<!-- Testimonial Item Content End -->
+</div>
+<!-- Testimonial Item Header End -->
+<!-- Testimonial Author Box Start -->
+<div class="testimonial-author-box">
+<div class="testimonial-author-image">
+<figure class="image-anime">
+<img src="assets/service_featured.webp" alt="" loading="lazy" decoding="async">
+</figure>
+</div>
+<div class="testimonial-author-content">
+<h2>Rohan Verma</h2>
+<p>Supply Chain Manager</p>
+</div>
+</div>
+<!-- Testimonial Author Box End -->
+</div>
+<!-- Testimonial Item End -->
+</div>
+<!-- Testimonial Slide End -->
+<div class="swiper-slide">
+<div class="testimonial-item">
+<div class="testimonial-item-header">
+<div class="testimonial-item-rating">
+<p>4.9 Rating</p>
+<span class="testimonial-item-rating-star">
+<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+</span>
+</div>
+<div class="testimonial-item-content">
+<p>â€œTheir manufacturing standards are outstanding. Every component delivered meets our exact specifications with consistent precision and durability. A truly dependable partner.â€</p>
+</div>
+</div>
+<div class="testimonial-author-box">
+<div class="testimonial-author-image">
+<figure class="image-anime"><img src="assets/process_analyze.webp" alt="" loading="lazy" decoding="async"></figure>
+</div>
+<div class="testimonial-author-content">
+<h2>Priya Shah</h2>
+<p>Quality Control Manager</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial Slider End -->
+</div>
+<div class="col-lg-12">
+<!-- Section Footer Text Start -->
+<div class="section-footer-text section-satisfy-img" data-wow-delay="0.2s">
+<p>Where Precision Meets Performance - <a href="404.html">Trusted Manufacturing Starts Here.</a></p>
+<ul>
+<li><span class="counter">4.9</span></li>
+<li>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+</li>
+<li>Over 2000 Reviews</li>
+</ul>
+</div>
+<!-- Section Footer Text End -->
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial Section End -->
+
+<!-- Our Faqs Section Start -->
+<div class="our-faqs">
+<div class="container">
+<div class="row section-row">
+<div class="col-lg-12">
+<!-- Section Title Start -->
+<div class="section-title section-title-center">
+<span class="section-sub-title">Frequently Asked Questions</span>
+<h2 class="text-anime-style-3" data-cursor="-opaque">Your questions answered here</h2>
+<p class="" data-wow-delay="0.2s">Find answers to common questions about our manufacturing services, processes, and product quality. Our FAQ section helps you quickly understand how we work, </p>
+</div>
+<!-- Section Title End -->
+</div>
+</div>
+<div class="row">
+<div class="col-xl-6">
+<!-- Faq Content Start -->
+<div class="faq-content">
+<!-- Faq Info Item Start -->
+<div class="faq-info-item">
+<div class="icon-box">
+<i class="fa-solid fa-clipboard-question" style="font-size: 2rem; color: var(--c-navy);"></i>
+</div>
+<div class="faq-info-content">
+<h3>Get Answers</h3>
+<p>Our FAQ section provides clear answers to the most common questions about our manufacturing services, production methods, and quality standards.</p>
+</div>
+</div>
+<!-- Faq Info Item End -->
+<!-- Faq Info Body Box Start -->
+<div class="faq-info-body-box">
+<!-- Faq Info Content Start -->
+<div class="faq-info-content">
+<h3>Contact Information</h3>
+<p>Have questions about our manufacturing services or need a custom solution? Our team is ready to assist you.</p>
+</div>
+<!-- Faq Info Content End -->
+<!-- Faq Contact List Start -->
+<div class="faq-contact-list">
+<div class="faq-contact-item">
+<div class="icon-box">
+<i class="fa-solid fa-phone" style="font-size: 1.5rem; color: white;"></i>
+</div>
+<div class="faq-contact-item-content">
+<h3>Phone Number</h3>
+<p><a href="tel:6364321780">6364321780</a></p>
+</div>
+</div>
+<div class="faq-contact-item">
+<div class="icon-box">
+<i class="fa-solid fa-location-dot" style="font-size: 1.5rem; color: white;"></i>
+</div>
+<div class="faq-contact-item-content">
+<h3>Our Location</h3>
+<p>MMR Complex, chinna thirupathi, near chinna muniyappan kovil, salem -636008</p>
+</div>
+</div>
+</div>
+<!-- Faq Contact List End -->
+</div>
+<!-- Faq Info Body Box End -->
+</div>
+<!-- Faq Content End -->
+</div>
+<div class="col-xl-6">
+<!-- FAQ Content Start -->
+<div class="faq-contant-box">
+<!-- FAQ Accordion Start -->
+<div class="faq-accordion" id="accordion">
+<!-- FAQ Item Start -->
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading1">
+<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+01. What manufacturing services do you provide?
+</button>
+</h2>
+<div id="collapse1" class="accordion-collapse collapse show" role="region" aria-labelledby="heading1" data-bs-parent="#accordion">
+<div class="accordion-body">
+<p>Yes, we specialize in customized manufacturing solutions based on client designs, specifications, and industry requirements.</p>
+</div>
+</div>
+</div>
+<!-- FAQ Item End -->
+<!-- FAQ Item Start -->
+<div class="accordion-item" data-wow-delay="0.2s">
+<h2 class="accordion-header" id="heading2">
+<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+02. Do you offer customized manufacturing solutions?
+</button>
+</h2>
+<div id="collapse2" class="accordion-collapse collapse" role="region" aria-labelledby="heading2" data-bs-parent="#accordion">
+<div class="accordion-body">
+<p>Yes, we specialize in customized manufacturing solutions based on client designs, specifications, and industry requirements.</p>
+</div>
+</div>
+</div>
+<!-- FAQ Item End -->
+<!-- FAQ Item Start -->
+<div class="accordion-item" data-wow-delay="0.4s">
+<h2 class="accordion-header" id="heading3">
+<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+03. What industries do you serve?
+</button>
+</h2>
+<div id="collapse3" class="accordion-collapse collapse" role="region" aria-labelledby="heading3" data-bs-parent="#accordion">
+<div class="accordion-body">
+<p>Yes, we specialize in customized manufacturing solutions based on client designs, specifications, and industry requirements.</p>
+</div>
+</div>
+</div>
+<!-- FAQ Item End -->
+<!-- FAQ Item Start -->
+<div class="accordion-item" data-wow-delay="0.6s">
+<h2 class="accordion-header" id="heading4">
+<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+04. How do you ensure product quality?
+</button>
+</h2>
+<div id="collapse4" class="accordion-collapse collapse" role="region" aria-labelledby="heading4" data-bs-parent="#accordion">
+<div class="accordion-body">
+<p>Yes, we specialize in customized manufacturing solutions based on client designs, specifications, and industry requirements.</p>
+</div>
+</div>
+</div>
+<!-- FAQ Item End -->
+</div>
+<!-- FAQ Accordion End -->
+</div>
+<!-- FAQ Content End -->
+</div>
+</div>
+</div>
+</div>
+<!-- Our Faqs Section End -->
+
+    </main>
+
+    <footer class="stackly-footer-new" id="mainFooter">
+        <div class="footer-top-accent"></div>
+        <div class="footer-blueprint-bg"></div>
+        
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1: STACKLY -->
+                <div class="footer-col">
+                    <a href="index.html" class="logo">
+                        <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+                    </a>
+                    <p class="footer-desc">Advanced industrial engineering and maintenance solutions built for precision, safety, and performance.</p>
+                    <div class="footer-socials">
+                        <a href="404.html" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2: Quick Links -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3: Location Map -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Location Map</h4>
+                    <div class="footer-map" style="border-radius: 8px; overflow: hidden; width: 100%; height: 200px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <iframe class="lazy-map" src="" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15630.932912444102!2d78.16335195!3d11.66723225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf0c5a242c733%3A0x6fbca83dbfb4a36f!2sChinna%20Thirupathi%2C%20Salem%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1683000000000!5m2!1sen!2sin&q=MMR+Complex,+chinna+thirupathi,+near+chinna+muniyappan+kovil,+salem+-636008" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Column 4: Contact Us -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>MMR Complex, chinna thirupathi, near chinna muniyappan kovil, salem -636008</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:6364321780">6364321780</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:info@stackly.example">info@stackly.example</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Monâ€“Fri, 10amâ€“10pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 STACKLY. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="sep">|</span>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- GSAP Core & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/service-animations.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+</html>

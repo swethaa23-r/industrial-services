@@ -1,0 +1,1709 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Stackly - Engineering Progress</title>
+    <meta name="description" content="STACKLY Industrial Operations Management Dashboard">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="dashboard-body">
+
+    
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="dashboard-layout">
+        
+        <!-- Sidebar -->
+        <aside class="db-sidebar" id="dbSidebar">
+            <div class="db-brand">
+                <a href="index.html" class="logo">
+                    <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+                </a>
+                <span class="db-role-badge admin-badge"><i class="fa-solid fa-shield-halved"></i> Admin Dashboard</span>
+            </div>
+            
+            <div class="db-menu-wrap">
+                <ul class="db-menu">
+                    <li><a href="admin-dashboard.html" class="active"><i class="fa-solid fa-border-all"></i> Dashboard</a></li>
+                    <li><a href="404.html"><i class="fa-solid fa-hard-hat"></i> Projects</a></li>
+                    <li><a href="404.html"><i class="fa-solid fa-gears"></i> Services</a></li>
+                    <li><a href="404.html"><i class="fa-solid fa-building-user"></i> Clients</a></li>
+                    <li><a href="404.html"><i class="fa-solid fa-wrench"></i> Maintenance</a></li>
+                    <li><a href="404.html"><i class="fa-solid fa-users-gear"></i> Team</a></li>
+                    <li><a href="404.html"><i class="fa-solid fa-chart-line"></i> Reports</a></li>
+                    <li><a href="404.html"><i class="fa-regular fa-comments"></i> Messages</a></li>
+                    <li><a href="404.html"><i class="fa-solid fa-sliders"></i> Settings</a></li>
+                </ul>
+            </div>
+            
+            <div class="db-sidebar-footer">
+                <a href="login.html" class="db-logout" id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="db-main">
+            
+            <!-- Topbar -->
+            <header class="db-topbar">
+                <div class="db-top-left">
+                    <button class="mobile-toggle-btn" id="mobileToggleBtn" aria-label="Open dashboard menu" aria-expanded="false">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <a href="index.html" class="db-mobile-logo d-lg-none" style="margin-left: 15px; display: flex; align-items: center;">
+                        <img src="assets/stackly logo orange.webp" alt="STACKLY" style="height: 22px;">
+                    </a>
+                    <form class="db-search" action="404.html" method="GET">
+                        <button type="submit" style="background:none; border:none; padding:0; cursor:pointer; color:var(--t-light);"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input type="text" placeholder="Search projects, clients, assets..." required>
+                    </form>
+                </div>
+                
+                <div class="db-top-right">
+                    <div class="db-date" id="currentDate">Monday, Jan 1, 2026</div>
+                    
+                    
+                    
+                    <div class="db-profile dropdown">
+                        <i class="fa-solid fa-circle-user profile-icon" style="font-size: 24px; color: var(--c-navy); margin-right: 8px;"></i>
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="db-content">
+    <div id="tab-dashboard" class="db-tab-pane" style="display: block;">
+                
+                <div class="db-header">
+                    <h1>Good Morning, Admin</h1>
+                    <p>Industrial Operations Overview</p>
+                </div>
+                
+                <!-- KPI Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <h4>Active Projects</h4>
+                            <h2 class="counter">24</h2>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <h4>Maintenance Tasks</h4>
+                            <h2 class="counter">68</h2>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <h4>Active Clients</h4>
+                            <h2 class="counter">142</h2>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-building-user"></i></div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <h4>Pending Requests</h4>
+                            <h2 class="counter">17</h2>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+                    </div>
+                </div>
+                
+                <!-- Charts Grid -->
+                <div class="charts-grid">
+                    <!-- Chart 1 -->
+                    <div class="db-card">
+                        <div class="db-card-header">
+                            <h3>Project Performance</h3>
+                            <i class="fa-solid fa-ellipsis" style="color: var(--t-light); cursor: pointer;"></i>
+                        </div>
+                        <div class="db-card-body">
+                            <div class="chart-container">
+                                <canvas id="projectChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chart 2 -->
+                    <div class="db-card">
+                        <div class="db-card-header">
+                            <h3>Monthly Revenue</h3>
+                            <i class="fa-solid fa-ellipsis" style="color: var(--t-light); cursor: pointer;"></i>
+                        </div>
+                        <div class="db-card-body">
+                            <div class="chart-container">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chart 3 -->
+                    <div class="db-card">
+                        <div class="db-card-header">
+                            <h3>Service Distribution</h3>
+                            <i class="fa-solid fa-ellipsis" style="color: var(--t-light); cursor: pointer;"></i>
+                        </div>
+                        <div class="db-card-body">
+                            <div class="chart-container">
+                                <canvas id="serviceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chart 4 -->
+                    <div class="db-card">
+                        <div class="db-card-header">
+                            <h3>Maintenance Overview</h3>
+                            <i class="fa-solid fa-ellipsis" style="color: var(--t-light); cursor: pointer;"></i>
+                        </div>
+                        <div class="db-card-body">
+                            <div class="chart-container">
+                                <canvas id="maintenanceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tables Grid -->
+                <div class="charts-grid" style="grid-template-columns: 2fr 1fr;">
+                    
+                    <!-- Project Table -->
+                    <div class="db-card">
+                        <div class="db-card-header">
+                            <h3>Recent Projects</h3>
+                            <a href="404.html" class="text-link font-bold text-small">View All</a>
+                        </div>
+                        <div class="db-card-body p-0">
+                            <div class="table-responsive">
+                                <table class="db-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Project</th>
+                                            <th>Industry</th>
+                                            <th>Manager</th>
+                                            <th>Progress</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Automation Line B Upgrade</strong><br><span class="text-small text-light">Deadline: Oct 12, 2026</span></td>
+                                            <td>Manufacturing</td>
+                                            <td>J. Smith</td>
+                                            <td>
+                                                <div class="progress-wrap">
+                                                    <div class="progress-track"><div class="progress-fill" style="width: 78%;"></div></div>
+                                                    <span class="progress-text">78%</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="status-badge status-active">Active</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Electrical Grid Overhaul</strong><br><span class="text-small text-light">Deadline: Nov 05, 2026</span></td>
+                                            <td>Energy</td>
+                                            <td>M. Johnson</td>
+                                            <td>
+                                                <div class="progress-wrap">
+                                                    <div class="progress-track"><div class="progress-fill" style="width: 42%;"></div></div>
+                                                    <span class="progress-text">42%</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="status-badge status-delayed">Delayed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>HVAC System Installation</strong><br><span class="text-small text-light">Deadline: Sep 28, 2026</span></td>
+                                            <td>Pharmaceutical</td>
+                                            <td>A. Davis</td>
+                                            <td>
+                                                <div class="progress-wrap">
+                                                    <div class="progress-track"><div class="progress-fill" style="width: 100%; background-color: #388e3c;"></div></div>
+                                                    <span class="progress-text">100%</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="status-badge status-completed">Completed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Safety Inspection Phase 1</strong><br><span class="text-small text-light">Deadline: Dec 10, 2026</span></td>
+                                            <td>Logistics</td>
+                                            <td>T. Wilson</td>
+                                            <td>
+                                                <div class="progress-wrap">
+                                                    <div class="progress-track"><div class="progress-fill" style="width: 0%;"></div></div>
+                                                    <span class="progress-text">0%</span>
+                                                </div>
+                                            </td>
+                                            <td><span class="status-badge status-pending">Pending</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Feed & Requests -->
+                    <div class="db-card">
+                        <div class="db-card-header">
+                            <h3>Activity Feed</h3>
+                        </div>
+                        <div class="db-card-body">
+                            <ul class="activity-feed">
+                                <li class="activity-item">
+                                    <div class="activity-icon bg-orange"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                                    <div class="activity-details">
+                                        <h5>New Quote Request</h5>
+                                        <p>SteelFab Inc. requested a quote for welding services.</p>
+                                        <span class="activity-time">10 mins ago</span>
+                                    </div>
+                                </li>
+                                <li class="activity-item">
+                                    <div class="activity-icon bg-green"><i class="fa-solid fa-check-double"></i></div>
+                                    <div class="activity-details">
+                                        <h5>Maintenance Completed</h5>
+                                        <p>Pump System A3 maintenance finished.</p>
+                                        <span class="activity-time">2 hours ago</span>
+                                    </div>
+                                </li>
+                                <li class="activity-item">
+                                    <div class="activity-icon"><i class="fa-solid fa-user-plus"></i></div>
+                                    <div class="activity-details">
+                                        <h5>New Client Added</h5>
+                                        <p>Nexus Dynamics has been registered.</p>
+                                        <span class="activity-time">5 hours ago</span>
+                                    </div>
+                                </li>
+                                <li class="activity-item">
+                                    <div class="activity-icon bg-green"><i class="fa-solid fa-thumbs-up"></i></div>
+                                    <div class="activity-details">
+                                        <h5>Quote Approved</h5>
+                                        <p>Alpha Manufacturing approved Quote #1042.</p>
+                                        <span class="activity-time">1 day ago</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- Maintenance Schedule Full Width -->
+                <div class="db-card">
+                    <div class="db-card-header">
+                        <h3>Upcoming Maintenance Schedule</h3>
+                    </div>
+                    <div class="db-card-body p-0">
+                        <div class="table-responsive">
+                            <table class="db-table">
+                                <thead>
+                                    <tr>
+                                        <th>Equipment ID</th>
+                                        <th>Maintenance Type</th>
+                                        <th>Location</th>
+                                        <th>Due Date</th>
+                                        <th>Priority</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>CNV-Belt-04</strong></td>
+                                        <td>Preventative Lubrication</td>
+                                        <td>Sector 4, Main Floor</td>
+                                        <td>Tomorrow, 08:00 AM</td>
+                                        <td><span style="color: #fbc02d; font-weight: bold;">Medium</span></td>
+                                        <td><span class="status-badge status-pending">Scheduled</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>PWR-Gen-02</strong></td>
+                                        <td>Filter Replacement</td>
+                                        <td>Utility Room B</td>
+                                        <td>Oct 15, 2026</td>
+                                        <td><span style="color: #388e3c; font-weight: bold;">Low</span></td>
+                                        <td><span class="status-badge status-pending">Scheduled</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ROB-Arm-X1</strong></td>
+                                        <td>Calibration Error Check</td>
+                                        <td>Assembly Line 1</td>
+                                        <td>Today, 14:30 PM</td>
+                                        <td><span style="color: #d32f2f; font-weight: bold;">High</span></td>
+                                        <td><span class="status-badge status-progress">In Progress</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+    </div><!-- End tab-dashboard -->
+
+    <!-- 1. PROJECTS SUBPAGE -->
+    <div id="tab-projects" class="db-tab-pane" style="display: none;">
+        <div class="db-header">
+            <h1>Industrial Projects Management</h1>
+            <p>Comprehensive tracking, lifecycle milestones, and resource allocation across all plants.</p>
+        </div>
+        
+        <!-- Section 1: KPI & Health Metrics -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Total Active</h4>
+                    <h2 class="counter">24</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-diagram-project"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>On Schedule</h4>
+                    <h2 class="counter">19</h2>
+                </div>
+                <div class="kpi-icon" style="background: rgba(56, 142, 60, 0.12); color: #388e3c;"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Under Review</h4>
+                    <h2 class="counter">3</h2>
+                </div>
+                <div class="kpi-icon" style="background: rgba(251, 192, 45, 0.12); color: #fbc02d;"><i class="fa-solid fa-clock"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Milestone Completion</h4>
+                    <h2 class="counter">88</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-chart-pie"></i></div>
+            </div>
+        </div>
+
+        <!-- Section 2: Projects Master Table & Filter Toolbar -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Projects Directory & Live Status</h3>
+                <button class="db-btn db-btn-primary"><i class="fa-solid fa-plus"></i> New Project</button>
+            </div>
+            <div class="db-card-body">
+                <div class="db-filter-bar">
+                    <div class="db-filter-group">
+                        <input type="text" class="db-filter-input" placeholder="Search by project or client..." style="width: 260px;">
+                        <select class="db-filter-select">
+                            <option>All Sectors</option>
+                            <option>Manufacturing</option>
+                            <option>Energy & Power</option>
+                            <option>Pharmaceutical</option>
+                            <option>Heavy Logistics</option>
+                        </select>
+                        <select class="db-filter-select">
+                            <option>All Statuses</option>
+                            <option>Active</option>
+                            <option>Delayed</option>
+                            <option>Completed</option>
+                            <option>Scheduled</option>
+                        </select>
+                    </div>
+                    <button class="db-btn db-btn-outline"><i class="fa-solid fa-file-export"></i> Export CSV</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="db-table">
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th>Client / Facility</th>
+                                <th>Lead Engineer</th>
+                                <th>Target Deadline</th>
+                                <th>Progress</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Smart Assembly Line Robotic Cell</strong><br><span class="text-small text-light">#PRJ-8012</span></td>
+                                <td>Apex Automotives (Plant 2)</td>
+                                <td>David Ross (PE)</td>
+                                <td>Nov 15, 2026</td>
+                                <td>
+                                    <div class="progress-wrap">
+                                        <div class="progress-track"><div class="progress-fill" style="width: 78%;"></div></div>
+                                        <span class="progress-text">78%</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge status-active">In Progress</span></td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-eye"></i> View</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Turbine Generator SCADA Overhaul</strong><br><span class="text-small text-light">#PRJ-7940</span></td>
+                                <td>Pacific Clean Energy</td>
+                                <td>Marcus Vance</td>
+                                <td>Dec 05, 2026</td>
+                                <td>
+                                    <div class="progress-wrap">
+                                        <div class="progress-track"><div class="progress-fill" style="width: 42%; background: #fbc02d;"></div></div>
+                                        <span class="progress-text">42%</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge status-delayed">Under Review</span></td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-eye"></i> View</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cleanroom HVAC Air Purification Phase 3</strong><br><span class="text-small text-light">#PRJ-7651</span></td>
+                                <td>BioPharma Tech Ltd</td>
+                                <td>Sarah Mitchell</td>
+                                <td>Oct 30, 2026</td>
+                                <td>
+                                    <div class="progress-wrap">
+                                        <div class="progress-track"><div class="progress-fill" style="width: 95%; background: #388e3c;"></div></div>
+                                        <span class="progress-text">95%</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge status-completed">Near Ready</span></td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-eye"></i> View</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>High-Speed Conveyor Sensor Array</strong><br><span class="text-small text-light">#PRJ-8105</span></td>
+                                <td>Nordic Heavy Logistics</td>
+                                <td>T. Gallagher</td>
+                                <td>Jan 20, 2027</td>
+                                <td>
+                                    <div class="progress-wrap">
+                                        <div class="progress-track"><div class="progress-fill" style="width: 15%;"></div></div>
+                                        <span class="progress-text">15%</span>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge status-pending">Initial Setup</span></td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-eye"></i> View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Project Milestones & Resource Roadmap -->
+        <div class="grid-2-col">
+            <div class="db-card">
+                <div class="db-card-header">
+                    <h3>Active Milestones Track</h3>
+                    <span class="text-small text-light">Live Gantt Snapshot</span>
+                </div>
+                <div class="db-card-body">
+                    <div class="milestone-track">
+                        <div class="milestone-item">
+                            <div class="milestone-dot completed"><i class="fa-solid fa-check"></i></div>
+                            <h5 style="margin: 0 0 4px 0;">Phase 1: Blueprint Simulation & Load Calculations</h5>
+                            <p class="text-small text-light m-0">Completed on Sep 22 â€¢ Approved by Chief Engineer</p>
+                        </div>
+                        <div class="milestone-item">
+                            <div class="milestone-dot completed"><i class="fa-solid fa-check"></i></div>
+                            <h5 style="margin: 0 0 4px 0;">Phase 2: Hardware Delivery & On-Site Rigging</h5>
+                            <p class="text-small text-light m-0">Completed on Oct 04 â€¢ All 6 sensor crates verified</p>
+                        </div>
+                        <div class="milestone-item">
+                            <div class="milestone-dot"></div>
+                            <h5 style="margin: 0 0 4px 0; color: var(--c-orange);">Phase 3: PLC Programming & Calibration</h5>
+                            <p class="text-small text-light m-0">In Progress â€¢ Scheduled completion Oct 24, 2026</p>
+                        </div>
+                        <div class="milestone-item">
+                            <div class="milestone-dot" style="border-color: var(--c-border);"></div>
+                            <h5 style="margin: 0 0 4px 0; color: var(--t-light);">Phase 4: Safety Certification & Handover</h5>
+                            <p class="text-small text-light m-0">Pending Phase 3 sign-off</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="db-card">
+                <div class="db-card-header">
+                    <h3>Engineering Resource Allocation</h3>
+                    <a href="404.html" class="text-link font-bold text-small">Reallocate</a>
+                </div>
+                <div class="db-card-body">
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="font-bold text-small">Automation & Robotics Crew</span>
+                            <span class="text-small">92% Utilized</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 92%;"></div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="font-bold text-small">High-Voltage Electrical Engineers</span>
+                            <span class="text-small">74% Utilized</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 74%; background: #2b579a;"></div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="font-bold text-small">Structural & Mechanical Fitters</span>
+                            <span class="text-small">85% Utilized</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="font-bold text-small">Health & Safety Compliance Officers</span>
+                            <span class="text-small">60% Utilized</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 60%; background: #388e3c;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End tab-projects -->
+
+    <!-- 2. SERVICES SUBPAGE -->
+    <div id="tab-services" class="db-tab-pane" style="display: none;">
+        <div class="db-header">
+            <h1>Industrial Services & Capabilities</h1>
+            <p>Operational service catalog, live maintenance dispatching, and field SLA tracking.</p>
+        </div>
+
+        <!-- Section 1: Service Operations KPIs -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Active Service Lines</h4>
+                    <h2 class="counter">8</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-gears"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Technician Dispatch</h4>
+                    <h2>94%</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Avg SLA Response</h4>
+                    <h2>1.8 hrs</h2>
+                </div>
+                <div class="kpi-icon" style="background: rgba(56, 142, 60, 0.12); color: #388e3c;"><i class="fa-solid fa-bolt"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>First-Time Fix Rate</h4>
+                    <h2>96.2%</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            </div>
+        </div>
+
+        <!-- Section 2: Industrial Service Catalog -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Core Industrial Service Offerings</h3>
+                <button class="db-btn db-btn-primary"><i class="fa-solid fa-plus"></i> Add Service Line</button>
+            </div>
+            <div class="db-card-body">
+                <div class="grid-3-col">
+                    <div class="catalog-card">
+                        <div>
+                            <div class="catalog-card-icon"><i class="fa-solid fa-robot"></i></div>
+                            <h4 style="margin: 0 0 8px 0;">Automation & Robotics</h4>
+                            <p class="text-small text-light mb-3">Custom robotic cells, PLC reprogramming, SCADA integration, and high-speed assembly line optimization.</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                            <span class="status-badge status-completed">Tier 1 Active</span>
+                            <span class="font-bold text-small">14 Clients Enrolled</span>
+                        </div>
+                    </div>
+
+                    <div class="catalog-card">
+                        <div>
+                            <div class="catalog-card-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                            <h4 style="margin: 0 0 8px 0;">High-Voltage Electrical</h4>
+                            <p class="text-small text-light mb-3">Substation maintenance, power distribution switchgear testing, transformer oil analysis, and thermal scans.</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                            <span class="status-badge status-completed">Tier 1 Active</span>
+                            <span class="font-bold text-small">22 Clients Enrolled</span>
+                        </div>
+                    </div>
+
+                    <div class="catalog-card">
+                        <div>
+                            <div class="catalog-card-icon"><i class="fa-solid fa-fan"></i></div>
+                            <h4 style="margin: 0 0 8px 0;">HVAC & Cleanroom Systems</h4>
+                            <p class="text-small text-light mb-3">Precision environmental climate control, HEPA filtration compliance, chillers, and industrial ventilation.</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                            <span class="status-badge status-active">24/7 Coverage</span>
+                            <span class="font-bold text-small">18 Clients Enrolled</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Live Service Dispatch Queue -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Live Service Dispatch Queue</h3>
+                <span class="text-small text-light">Real-Time Field Dispatch Board</span>
+            </div>
+            <div class="db-card-body p-0">
+                <div class="table-responsive">
+                    <table class="db-table">
+                        <thead>
+                            <tr>
+                                <th>Ticket ID</th>
+                                <th>Client & Facility</th>
+                                <th>Requested Service</th>
+                                <th>Priority</th>
+                                <th>Assigned Tech</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>#SRV-419</strong></td>
+                                <td>Titanium Castings Ltd</td>
+                                <td>Hydraulic Press Pressure Valve Calibration</td>
+                                <td><span style="color: #d32f2f; font-weight: bold;">Emergency (High)</span></td>
+                                <td>Alex Rivera (Dispatched)</td>
+                                <td><span class="status-badge status-progress">En Route</span></td>
+                                <td><button class="db-btn db-btn-primary db-btn-sm">Track Tech</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#SRV-418</strong></td>
+                                <td>Vanguard Packaging</td>
+                                <td>Conveyor Belt Motor Sensor Sync</td>
+                                <td><span style="color: #fbc02d; font-weight: bold;">Medium</span></td>
+                                <td>David Ross</td>
+                                <td><span class="status-badge status-active">On Site</span></td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm">View Log</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#SRV-415</strong></td>
+                                <td>Apex Automotives</td>
+                                <td>Robotic Welder Annual Preventative Audit</td>
+                                <td><span style="color: #388e3c; font-weight: bold;">Standard</span></td>
+                                <td>Marcus Vance</td>
+                                <td><span class="status-badge status-completed">Resolved</span></td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm">Certificate</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- End tab-services -->
+
+    <!-- 3. CLIENTS SUBPAGE -->
+    <div id="tab-clients" class="db-tab-pane" style="display: none;">
+        <div class="db-header">
+            <h1>Client Accounts & Enterprise Portfolios</h1>
+            <p>Manage contracts, multi-facility operations, and customer service satisfaction scores.</p>
+        </div>
+
+        <!-- Section 1: Client Portfolio Overview -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Enterprise Accounts</h4>
+                    <h2 class="counter">142</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-building-user"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Contract Value</h4>
+                    <h2>$4.2M</h2>
+                </div>
+                <div class="kpi-icon" style="background: rgba(56, 142, 60, 0.12); color: #388e3c;"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Retention Rate</h4>
+                    <h2>98.4%</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-handshake"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Active Plant Sites</h4>
+                    <h2 class="counter">38</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-industry"></i></div>
+            </div>
+        </div>
+
+        <!-- Section 2: Client Accounts Table -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Client Accounts Directory</h3>
+                <button class="db-btn db-btn-primary"><i class="fa-solid fa-user-plus"></i> Register Client</button>
+            </div>
+            <div class="db-card-body">
+                <div class="table-responsive">
+                    <table class="db-table">
+                        <thead>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Industry</th>
+                                <th>Primary Contact</th>
+                                <th>Plant Location</th>
+                                <th>Contract Tier</th>
+                                <th>Account Health</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Apex Automotives Inc.</strong><br><span class="text-small text-light">ID: #CLI-1092</span></td>
+                                <td>Automotive Manufacturing</td>
+                                <td>Robert Chen (Plant Mgr)</td>
+                                <td>Detroit, MI (Site A & B)</td>
+                                <td><span class="status-badge status-completed">Enterprise Gold</span></td>
+                                <td><strong style="color: #388e3c;">99% Optimum</strong></td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-sliders"></i> Manage</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pacific Clean Energy Corp</strong><br><span class="text-small text-light">ID: #CLI-1088</span></td>
+                                <td>Power & Utilities</td>
+                                <td>Elena Gomez</td>
+                                <td>Seattle, WA (Grid 4)</td>
+                                <td><span class="status-badge status-completed">Enterprise Gold</span></td>
+                                <td><strong style="color: #388e3c;">96% Optimum</strong></td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-sliders"></i> Manage</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BioPharma Solutions Ltd</strong><br><span class="text-small text-light">ID: #CLI-1045</span></td>
+                                <td>Pharmaceutical Cleanroom</td>
+                                <td>Dr. Aris Thorne</td>
+                                <td>Boston, MA (Facility 1)</td>
+                                <td><span class="status-badge status-active">Standard Pro</span></td>
+                                <td><strong style="color: #388e3c;">98% Optimum</strong></td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-sliders"></i> Manage</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nordic Heavy Logistics</strong><br><span class="text-small text-light">ID: #CLI-1021</span></td>
+                                <td>Supply Chain Automation</td>
+                                <td>Sven Lindqvist</td>
+                                <td>Chicago Hub</td>
+                                <td><span class="status-badge status-active">Standard Pro</span></td>
+                                <td><strong style="color: #fbc02d;">91% Action Needed</strong></td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-sliders"></i> Manage</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Contract Renewal & SLA Compliance Pipeline -->
+        <div class="grid-2-col">
+            <div class="db-card">
+                <div class="db-card-header">
+                    <h3>Upcoming Contract Renewals</h3>
+                    <span class="text-small text-light">Q4 2026 Pipeline</span>
+                </div>
+                <div class="db-card-body">
+                    <ul class="activity-feed">
+                        <li class="activity-item">
+                            <div class="activity-icon bg-orange"><i class="fa-solid fa-file-contract"></i></div>
+                            <div class="activity-details w-100">
+                                <div class="d-flex justify-content-between">
+                                    <h5>Apex Automotives â€¢ 3-Year Master Service Agreement</h5>
+                                    <span class="font-bold" style="color: #388e3c;">$1,200,000</span>
+                                </div>
+                                <p>Expires: Nov 30, 2026 â€¢ Renewal Proposal sent and under review.</p>
+                            </div>
+                        </li>
+                        <li class="activity-item">
+                            <div class="activity-icon bg-green"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="activity-details w-100">
+                                <div class="d-flex justify-content-between">
+                                    <h5>BioPharma Solutions â€¢ Cleanroom Preventative Maintenance</h5>
+                                    <span class="font-bold" style="color: #388e3c;">$480,000</span>
+                                </div>
+                                <p>Expires: Dec 15, 2026 â€¢ Contract successfully auto-renewed.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="db-card">
+                <div class="db-card-header">
+                    <h3>SLA Adherence Performance</h3>
+                    <span class="text-small text-light">Global Average 99.1%</span>
+                </div>
+                <div class="db-card-body">
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="font-bold text-small">Emergency Response (< 2 hrs)</span>
+                            <span class="text-small">99.4% Adherence</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 99.4%; background: #388e3c;"></div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="font-bold text-small">Scheduled PM Completion</span>
+                            <span class="text-small">98.1% Adherence</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 98.1%; background: #388e3c;"></div></div>
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="font-bold text-small">Root Cause Failure Analysis</span>
+                            <span class="text-small">100% On-Time Delivery</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 100%; background: #388e3c;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End tab-clients -->
+
+    <!-- 4. MAINTENANCE SUBPAGE -->
+    <div id="tab-maintenance" class="db-tab-pane" style="display: none;">
+        <div class="db-header">
+            <h1>Industrial Maintenance & Asset Reliability</h1>
+            <p>Real-time equipment telemetry, predictive maintenance workorders, and machinery health.</p>
+        </div>
+
+        <!-- Section 1: Maintenance Operations Overview -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Plant Uptime Index</h4>
+                    <h2>99.4%</h2>
+                </div>
+                <div class="kpi-icon" style="background: rgba(56, 142, 60, 0.12); color: #388e3c;"><i class="fa-solid fa-gauge-high"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Scheduled PMs</h4>
+                    <h2 class="counter">68</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Active Workorders</h4>
+                    <h2 class="counter">14</h2>
+                </div>
+                <div class="kpi-icon" style="background: rgba(251, 192, 45, 0.12); color: #fbc02d;"><i class="fa-solid fa-wrench"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>MTBF (Mean Time)</h4>
+                    <h2>720 hrs</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+            </div>
+        </div>
+
+        <!-- Section 2: Comprehensive Workorder Table -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Active Industrial Workorders</h3>
+                <button class="db-btn db-btn-primary"><i class="fa-solid fa-plus"></i> Create Workorder</button>
+            </div>
+            <div class="db-card-body p-0">
+                <div class="table-responsive">
+                    <table class="db-table">
+                        <thead>
+                            <tr>
+                                <th>Workorder #</th>
+                                <th>Asset / Machine Tag</th>
+                                <th>Location / Plant</th>
+                                <th>Priority</th>
+                                <th>Scheduled Date</th>
+                                <th>Assigned Tech</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>#WO-2026-901</strong></td>
+                                <td>High-Pressure Steam Boiler (BLR-04)</td>
+                                <td>Sector 2 â€¢ Boiler House</td>
+                                <td><span style="color: #d32f2f; font-weight: bold;">High Priority</span></td>
+                                <td>Tomorrow, 08:00 AM</td>
+                                <td>Marcus Vance</td>
+                                <td><span class="status-badge status-progress">In Progress</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#WO-2026-898</strong></td>
+                                <td>CNC 5-Axis Milling Spindle</td>
+                                <td>Line 3 â€¢ Tooling Shop</td>
+                                <td><span style="color: #fbc02d; font-weight: bold;">Medium</span></td>
+                                <td>Oct 16, 2026</td>
+                                <td>David Ross</td>
+                                <td><span class="status-badge status-pending">Scheduled</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#WO-2026-895</strong></td>
+                                <td>Air Compressor Dryer Unit</td>
+                                <td>Utility Building C</td>
+                                <td><span style="color: #388e3c; font-weight: bold;">Low</span></td>
+                                <td>Oct 18, 2026</td>
+                                <td>Sarah Mitchell</td>
+                                <td><span class="status-badge status-pending">Scheduled</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>#WO-2026-890</strong></td>
+                                <td>Robotic Palletizer Gearbox Lubrication</td>
+                                <td>Warehouse Bay 7</td>
+                                <td><span style="color: #388e3c; font-weight: bold;">Standard</span></td>
+                                <td>Oct 10, 2026</td>
+                                <td>T. Gallagher</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Preventative Maintenance Telemetry & Sensor Health -->
+        <div class="grid-3-col">
+            <div class="db-card">
+                <div class="db-card-header">
+                    <h3>Vibration Telemetry</h3>
+                    <span class="status-badge status-completed">Normal</span>
+                </div>
+                <div class="db-card-body">
+                    <p class="text-small text-light mb-2">Main Turbine Shaft RMS Velocity</p>
+                    <h3 style="color: var(--c-navy); margin-bottom: 8px;">1.42 mm/s</h3>
+                    <div class="progress-track"><div class="progress-fill" style="width: 32%; background: #388e3c;"></div></div>
+                    <span class="text-small text-light mt-1 d-block">Threshold Limit: 4.5 mm/s</span>
+                </div>
+            </div>
+
+            <div class="db-card">
+                <div class="db-card-header">
+                    <h3>Thermal Infrared Scans</h3>
+                    <span class="status-badge status-completed">Optimum</span>
+                </div>
+                <div class="db-card-body">
+                    <p class="text-small text-light mb-2">Switchgear Busbar Temp</p>
+                    <h3 style="color: var(--c-navy); margin-bottom: 8px;">44.6Â°C</h3>
+                    <div class="progress-track"><div class="progress-fill" style="width: 45%; background: #388e3c;"></div></div>
+                    <span class="text-small text-light mt-1 d-block">Max Operating Temp: 85.0Â°C</span>
+                </div>
+            </div>
+
+            <div class="db-card">
+                <div class="db-card-header">
+                    <h3>Oil & Fluid Analysis</h3>
+                    <span class="status-badge status-pending">Sample Due</span>
+                </div>
+                <div class="db-card-body">
+                    <p class="text-small text-light mb-2">Hydraulic Press ISO Cleanliness</p>
+                    <h3 style="color: var(--c-navy); margin-bottom: 8px;">16/14/11</h3>
+                    <div class="progress-track"><div class="progress-fill" style="width: 70%; background: #fbc02d;"></div></div>
+                    <span class="text-small text-light mt-1 d-block">Next Lab Sampling: in 4 days</span>
+                </div>
+            </div>
+        </div>
+    </div><!-- End tab-maintenance -->
+
+    <!-- 5. TEAM SUBPAGE -->
+    <div id="tab-team" class="db-tab-pane" style="display: none;">
+        <div class="db-header">
+            <h1>Engineering & Operations Staff</h1>
+            <p>Manage on-site engineers, safety certifications, field technicians, and project leadership.</p>
+        </div>
+
+        <!-- Section 1: Staffing & Safety Metrics -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Certified Engineers</h4>
+                    <h2 class="counter">46</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-users-gear"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>On-Site Crew</h4>
+                    <h2 class="counter">28</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-hard-hat"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Incident-Free Days</h4>
+                    <h2 class="counter">420</h2>
+                </div>
+                <div class="kpi-icon" style="background: rgba(56, 142, 60, 0.12); color: #388e3c;"><i class="fa-solid fa-shield-heart"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Safety Training Score</h4>
+                    <h2>96.8%</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-award"></i></div>
+            </div>
+        </div>
+
+        <!-- Section 2: Staff Directory & Roster Grid -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Engineering Specialists Directory</h3>
+                <button class="db-btn db-btn-primary"><i class="fa-solid fa-user-plus"></i> Add Team Member</button>
+            </div>
+            <div class="db-card-body">
+                <div class="grid-3-col">
+                    <div class="team-member-card">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&fit=crop&w=150&q=80&fm=webp" alt="Lead Engineer" class="team-avatar-lg" loading="lazy" decoding="async">
+                        <div>
+                            <h4 style="margin: 0 0 3px 0;">Sarah Mitchell</h4>
+                            <p class="text-small font-bold" style="color: var(--c-orange); margin: 0 0 5px 0;">Chief Automation Engineer</p>
+                            <span class="text-small text-light d-block mb-2">Assigned: BioPharma Cleanroom</span>
+                            <span class="status-badge status-completed">Active On-Site</span>
+                        </div>
+                    </div>
+
+                    <div class="team-member-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&fit=crop&w=150&q=80&fm=webp" alt="Electrical Tech" class="team-avatar-lg" loading="lazy" decoding="async">
+                        <div>
+                            <h4 style="margin: 0 0 3px 0;">David Ross (PE)</h4>
+                            <p class="text-small font-bold" style="color: var(--c-orange); margin: 0 0 5px 0;">Senior Electrical Specialist</p>
+                            <span class="text-small text-light d-block mb-2">Assigned: Apex Assembly Line</span>
+                            <span class="status-badge status-completed">Active On-Site</span>
+                        </div>
+                    </div>
+
+                    <div class="team-member-card">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&fit=crop&w=150&q=80&fm=webp" alt="Safety Inspector" class="team-avatar-lg" loading="lazy" decoding="async">
+                        <div>
+                            <h4 style="margin: 0 0 3px 0;">Marcus Vance</h4>
+                            <p class="text-small font-bold" style="color: var(--c-orange); margin: 0 0 5px 0;">Lead Reliability Tech</p>
+                            <span class="text-small text-light d-block mb-2">Assigned: Pacific Energy Grid</span>
+                            <span class="status-badge status-active">Field Dispatch</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Safety Compliance & Certification Audit Tracker -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Mandatory Industrial Certifications & Audits</h3>
+                <span class="text-small text-light">100% Regulatory Compliant</span>
+            </div>
+            <div class="db-card-body p-0">
+                <div class="table-responsive">
+                    <table class="db-table">
+                        <thead>
+                            <tr>
+                                <th>Certification Program</th>
+                                <th>Standard Body</th>
+                                <th>Certified Personnel</th>
+                                <th>Next Audit Date</th>
+                                <th>Compliance Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>OSHA 30-Hour General Industry</strong></td>
+                                <td>US Dept of Labor</td>
+                                <td>46 / 46 Staff (100%)</td>
+                                <td>Jan 15, 2027</td>
+                                <td><span class="status-badge status-completed">Fully Compliant</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>NFPA 70E Arc Flash Electrical Safety</strong></td>
+                                <td>NFPA</td>
+                                <td>18 / 18 Electrical Techs</td>
+                                <td>Nov 20, 2026</td>
+                                <td><span class="status-badge status-completed">Fully Compliant</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>ISO 9001:2015 Quality Lead Auditor</strong></td>
+                                <td>ISO Global</td>
+                                <td>8 Senior Supervisors</td>
+                                <td>Dec 10, 2026</td>
+                                <td><span class="status-badge status-active">Renewal Scheduled</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- End tab-team -->
+
+    <!-- 6. REPORTS SUBPAGE -->
+    <div id="tab-reports" class="db-tab-pane" style="display: none;">
+        <div class="db-header">
+            <h1>Executive Reports & Operational Analytics</h1>
+            <p>Generate, review, and export monthly plant performance, downtime analysis, and compliance files.</p>
+        </div>
+
+        <!-- Section 1: Executive KPI Metrics -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Monthly Throughput</h4>
+                    <h2>1.24M units</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>OEE Efficiency</h4>
+                    <h2>89.2%</h2>
+                </div>
+                <div class="kpi-icon" style="background: rgba(56, 142, 60, 0.12); color: #388e3c;"><i class="fa-solid fa-chart-line"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Energy Optimization</h4>
+                    <h2>-14.8%</h2>
+                </div>
+                <div class="kpi-icon" style="background: rgba(56, 142, 60, 0.12); color: #388e3c;"><i class="fa-solid fa-leaf"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Downtime Reduction</h4>
+                    <h2>-32.4 hrs</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            </div>
+        </div>
+
+        <!-- Section 2: Downloadable Financial & Engineering Reports -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Executive Report Repository</h3>
+                <button class="db-btn db-btn-primary"><i class="fa-solid fa-file-circle-plus"></i> Generate Custom Report</button>
+            </div>
+            <div class="db-card-body">
+                <div class="grid-2-col">
+                    <div class="doc-card">
+                        <i class="fa-solid fa-file-pdf doc-icon"></i>
+                        <div class="doc-info flex-grow-1">
+                            <h5 style="margin: 0 0 3px 0;">Q3_2026_Plant_Automation_Audit_Summary.pdf</h5>
+                            <span>Generated: Oct 01, 2026 â€¢ 4.8 MB â€¢ Executive Level</span>
+                        </div>
+                        <a href="404.html" class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-download"></i> Download</a>
+                    </div>
+
+                    <div class="doc-card">
+                        <i class="fa-solid fa-file-excel doc-icon" style="color: #388e3c;"></i>
+                        <div class="doc-info flex-grow-1">
+                            <h5 style="margin: 0 0 3px 0;">Monthly_Asset_Reliability_Telemetry_Log.xlsx</h5>
+                            <span>Generated: Oct 05, 2026 â€¢ 2.1 MB â€¢ Raw Sensor Metrics</span>
+                        </div>
+                        <a href="404.html" class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-download"></i> Download</a>
+                    </div>
+
+                    <div class="doc-card">
+                        <i class="fa-solid fa-file-pdf doc-icon"></i>
+                        <div class="doc-info flex-grow-1">
+                            <h5 style="margin: 0 0 3px 0;">ISO-14001_Environmental_Energy_Audit_Report.pdf</h5>
+                            <span>Generated: Sep 28, 2026 â€¢ 3.4 MB â€¢ Certified Auditor Report</span>
+                        </div>
+                        <a href="404.html" class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-download"></i> Download</a>
+                    </div>
+
+                    <div class="doc-card">
+                        <i class="fa-solid fa-file-pdf doc-icon"></i>
+                        <div class="doc-info flex-grow-1">
+                            <h5 style="margin: 0 0 3px 0;">High_Voltage_Substation_Safety_Compliance.pdf</h5>
+                            <span>Generated: Sep 15, 2026 â€¢ 1.9 MB â€¢ Safety Records</span>
+                        </div>
+                        <a href="404.html" class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-download"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Monthly Operational Analysis Table -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Monthly Operational Cost & Output Breakdown</h3>
+                <span class="text-small text-light">Fiscal Year 2026</span>
+            </div>
+            <div class="db-card-body p-0">
+                <div class="table-responsive">
+                    <table class="db-table">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Total Machine Hours</th>
+                                <th>Scheduled Maintenance Cost</th>
+                                <th>Unplanned Downtime</th>
+                                <th>Yield Efficiency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>September 2026</strong></td>
+                                <td>4,820 hrs</td>
+                                <td>$28,400</td>
+                                <td><span style="color: #388e3c; font-weight: bold;">0.8 hrs</span></td>
+                                <td><strong style="color: #388e3c;">99.2%</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>August 2026</strong></td>
+                                <td>4,790 hrs</td>
+                                <td>$31,200</td>
+                                <td><span style="color: #388e3c; font-weight: bold;">1.2 hrs</span></td>
+                                <td><strong style="color: #388e3c;">98.9%</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>July 2026</strong></td>
+                                <td>4,850 hrs</td>
+                                <td>$26,900</td>
+                                <td><span style="color: #388e3c; font-weight: bold;">0.4 hrs</span></td>
+                                <td><strong style="color: #388e3c;">99.6%</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- End tab-reports -->
+
+    <!-- 7. MESSAGES SUBPAGE -->
+    <div id="tab-messages" class="db-tab-pane" style="display: none;">
+        <div class="db-header">
+            <h1>Communications & Dispatch Desk</h1>
+            <p>Direct communication channels between plant managers, lead engineers, and field technicians.</p>
+        </div>
+
+        <!-- Section 1: Quick Stats -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Active Channels</h4>
+                    <h2 class="counter">12</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-comments"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Unread Tickets</h4>
+                    <h2 class="counter">3</h2>
+                </div>
+                <div class="kpi-icon" style="background: rgba(242, 140, 40, 0.12); color: var(--c-orange);"><i class="fa-solid fa-envelope-open-text"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Avg Response SLA</h4>
+                    <h2>14 mins</h2>
+                </div>
+                <div class="kpi-icon" style="background: rgba(56, 142, 60, 0.12); color: #388e3c;"><i class="fa-solid fa-stopwatch"></i></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-info">
+                    <h4>Field Broadcasts</h4>
+                    <h2 class="counter">5</h2>
+                </div>
+                <div class="kpi-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+            </div>
+        </div>
+
+        <!-- Section 2: Two-Column Chat Interface -->
+        <div class="db-chat-wrapper mb-4">
+            <div class="chat-sidebar">
+                <div class="chat-search-header">
+                    <input type="text" class="db-filter-input w-100" placeholder="Search conversations...">
+                </div>
+                <ul class="chat-threads-list">
+                    <li class="chat-thread-item active">
+                        <div class="msg-avatar">RC</div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="m-0" style="font-size: 0.9rem;">Robert Chen (Apex)</h5>
+                                <span class="text-small text-light">10:24 AM</span>
+                            </div>
+                            <p class="text-small text-light m-0 text-truncate">Line B robotic sensor calibration confirmed...</p>
+                        </div>
+                    </li>
+                    <li class="chat-thread-item">
+                        <div class="msg-avatar" style="background: #2b579a;">EG</div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="m-0" style="font-size: 0.9rem;">Elena Gomez (Pacific Energy)</h5>
+                                <span class="text-small text-light">Yesterday</span>
+                            </div>
+                            <p class="text-small text-light m-0 text-truncate">Turbine 4 thermal log attached for your review.</p>
+                        </div>
+                    </li>
+                    <li class="chat-thread-item">
+                        <div class="msg-avatar" style="background: #388e3c;">AT</div>
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="m-0" style="font-size: 0.9rem;">Dr. Aris Thorne (BioPharma)</h5>
+                                <span class="text-small text-light">Oct 06</span>
+                            </div>
+                            <p class="text-small text-light m-0 text-truncate">Cleanroom HVAC particulate test passed 100%.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="chat-main-area">
+                <div class="chat-main-header">
+                    <div>
+                        <h4 style="margin: 0 0 2px 0;">Robert Chen â€¢ Apex Automotives</h4>
+                        <span class="text-small text-light"><i class="fa-solid fa-circle" style="color: #388e3c; font-size: 8px;"></i> Online â€¢ Facility Plant 2</span>
+                    </div>
+                    <button class="db-btn db-btn-outline db-btn-sm"><i class="fa-solid fa-phone"></i> Direct Call</button>
+                </div>
+
+                <div class="chat-messages-body">
+                    <div class="chat-bubble-wrap incoming">
+                        <div class="chat-bubble">
+                            Good morning Team Stackly. Line B robot arm X1 is reporting a minor angular position deviation (+0.04mm). Are the field techs on schedule?
+                        </div>
+                        <span class="text-small text-light mt-1">10:18 AM â€¢ Robert Chen</span>
+                    </div>
+
+                    <div class="chat-bubble-wrap outgoing">
+                        <div class="chat-bubble">
+                            Hi Robert, David Ross and the automation crew are currently on site with the digital optical calibration rig. They will initiate the zero-point baseline now.
+                        </div>
+                        <span class="text-small text-light mt-1">10:21 AM â€¢ Admin Dispatch</span>
+                    </div>
+
+                    <div class="chat-bubble-wrap incoming">
+                        <div class="chat-bubble">
+                            Excellent, appreciate the rapid response! We've cleared cell 2 for full maintenance access.
+                        </div>
+                        <span class="text-small text-light mt-1">10:24 AM â€¢ Robert Chen</span>
+                    </div>
+                </div>
+
+                <div class="chat-input-bar">
+                    <button class="db-btn db-btn-outline db-btn-sm" style="padding: 10px 14px;"><i class="fa-solid fa-paperclip"></i></button>
+                    <input type="text" class="db-form-control" placeholder="Type a message or engineering update..." style="flex-grow: 1;">
+                    <button class="db-btn db-btn-primary"><i class="fa-solid fa-paper-plane"></i> Send</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Plant Broadcast Announcements Panel -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Plant-Wide Emergency & Operational Broadcasts</h3>
+                <button class="db-btn db-btn-outline"><i class="fa-solid fa-bullhorn"></i> New Broadcast</button>
+            </div>
+            <div class="db-card-body">
+                <div class="activity-item">
+                    <div class="activity-icon bg-orange"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="activity-details w-100">
+                        <h5>Scheduled Substation Power Switchover (11:00 PM - 02:00 AM)</h5>
+                        <p>All facilities will transfer to auxiliary diesel backup generators during high-voltage transformer inspection. No production downtime expected.</p>
+                        <span class="activity-time">Posted 2 hours ago â€¢ Broadcasted to all client engineers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End tab-messages -->
+
+    <!-- 8. SETTINGS SUBPAGE -->
+    <div id="tab-settings" class="db-tab-pane" style="display: none;">
+        <div class="db-header">
+            <h1>Industrial Platform Settings</h1>
+            <p>Configure facility parameters, enterprise security, sensor alert thresholds, and API integrations.</p>
+        </div>
+
+        <!-- Section 1: Facility Profile Settings -->
+        <div class="db-card">
+            <form id="adminSettingsForm" class="stackly-form">
+                <div class="db-card-header">
+                    <h3>Plant Profile & Global Configurations</h3>
+                    <button type="submit" class="db-btn db-btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Profile</button>
+                </div>
+                <div class="db-card-body">
+                    <div class="grid-2-col">
+                        <div class="db-form-group">
+                            <label class="db-form-label">Enterprise Entity Name</label>
+                            <input type="text" class="db-form-control" value="STACKLY Industrial Operations & Engineering Ltd" required>
+                        </div>
+                        <div class="db-form-group">
+                            <label class="db-form-label">Primary Operational Timezone</label>
+                            <select class="db-form-control" required>
+                                <option selected>UTC-05:00 Eastern Time (US & Canada)</option>
+                                <option>UTC+00:00 London (GMT)</option>
+                                <option>UTC+05:30 Chennai, Kolkata, Mumbai, New Delhi</option>
+                            </select>
+                        </div>
+                        <div class="db-form-group">
+                            <label class="db-form-label">Central Facility Address</label>
+                            <input type="text" class="db-form-control" value="MMR Complex, chinna thirupathi, near chinna muniyappan kovil, salem -636008" required>
+                        </div>
+                        <div class="db-form-group">
+                            <label class="db-form-label">24/7 Operations Emergency Hotline</label>
+                            <input type="text" class="db-form-control" value="6364321780" required>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Section 2: Industrial Security & Role Permissions -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Industrial Security & Role-Based Access Control (RBAC)</h3>
+            </div>
+            <div class="db-card-body">
+                <div class="grid-3-col">
+                    <div class="catalog-card">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="m-0">Two-Factor Authentication</h4>
+                            <span class="status-badge status-completed">Enforced</span>
+                        </div>
+                        <p class="text-small text-light">Hardware FIDO2 keys and authenticator app enforcement for all engineers and admins.</p>
+                        <button class="db-btn db-btn-outline db-btn-sm mt-3">Configure 2FA</button>
+                    </div>
+
+                    <div class="catalog-card">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="m-0">Session Inactivity Timeout</h4>
+                            <span class="status-badge status-active">15 Minutes</span>
+                        </div>
+                        <p class="text-small text-light">Auto-locks dashboard workstation when idle on control room monitors.</p>
+                        <button class="db-btn db-btn-outline db-btn-sm mt-3">Adjust Timeout</button>
+                    </div>
+
+                    <div class="catalog-card">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="m-0">API & SCADA Webhooks</h4>
+                            <span class="status-badge status-completed">Active (TLS 1.3)</span>
+                        </div>
+                        <p class="text-small text-light">Secure telemetry ingress tokens for Siemens PLC, Allen-Bradley & Modbus gateways.</p>
+                        <button class="db-btn db-btn-outline db-btn-sm mt-3">Manage Keys</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Sensor Alert Thresholds & Notification Preferences -->
+        <div class="db-card">
+            <div class="db-card-header">
+                <h3>Telemetry Sensor Alert Triggers</h3>
+                <button class="db-btn db-btn-outline"><i class="fa-solid fa-sliders"></i> Calibrate All</button>
+            </div>
+            <div class="db-card-body">
+                <div class="table-responsive">
+                    <table class="db-table">
+                        <thead>
+                            <tr>
+                                <th>Sensor Category</th>
+                                <th>Warning Trigger</th>
+                                <th>Critical Alarm Trigger</th>
+                                <th>Notification Protocol</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Bearing Vibration RMS</strong></td>
+                                <td>> 3.8 mm/s</td>
+                                <td><span style="color: #d32f2f; font-weight: bold;">> 4.5 mm/s</span></td>
+                                <td>Instant SMS & Siren Dispatch</td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thermal Busbar Temperature</strong></td>
+                                <td>> 70.0Â°C</td>
+                                <td><span style="color: #d32f2f; font-weight: bold;">> 85.0Â°C</span></td>
+                                <td>Emergency Email & SCADA Trip Flag</td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hydraulic Line Pressure</strong></td>
+                                <td>< 180 Bar</td>
+                                <td><span style="color: #d32f2f; font-weight: bold;">< 150 Bar</span></td>
+                                <td>Field Engineer Push Alert</td>
+                                <td><button class="db-btn db-btn-outline db-btn-sm">Edit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- End tab-settings -->
+        
+                
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/forms.js"></script>
+    
+    <!-- Admin Dashboard Specific Chart Initialization -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Check auth status (simulation)
+            const logoutBtn = document.getElementById('logoutBtn');
+            if(logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('userRole');
+                    window.location.href = 'login.html';
+                });
+            }
+
+            // Chart.js Default styling matching Stackly brand
+            Chart.defaults.color = '#738290';
+            Chart.defaults.font.family = "'Inter', sans-serif";
+            
+            const brandColors = {
+                navy: '#0B1F33',
+                orange: '#F28C28',
+                lightNavy: '#1E3650',
+                offWhite: '#F5F7F9'
+            };
+
+            // 1. Project Performance (Line Chart)
+            const ctxProject = document.getElementById('projectChart');
+            if (ctxProject) {
+                new Chart(ctxProject, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [
+                            {
+                                label: 'Completed Projects',
+                                data: [12, 19, 15, 25, 22, 30],
+                                borderColor: brandColors.navy,
+                                backgroundColor: 'rgba(11, 31, 51, 0.1)',
+                                borderWidth: 3,
+                                tension: 0.4,
+                                fill: true
+                            },
+                            {
+                                label: 'New Requests',
+                                data: [15, 10, 20, 18, 28, 25],
+                                borderColor: brandColors.orange,
+                                backgroundColor: 'transparent',
+                                borderWidth: 3,
+                                tension: 0.4
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'top' }
+                        },
+                        scales: {
+                            y: { beginAtZero: true, grid: { borderDash: [5, 5] } },
+                            x: { grid: { display: false } }
+                        }
+                    }
+                });
+            }
+
+            // 2. Monthly Revenue (Bar Chart)
+            const ctxRev = document.getElementById('revenueChart');
+            if (ctxRev) {
+                new Chart(ctxRev, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Revenue ($)',
+                            data: [65000, 59000, 80000, 81000, 96000, 115000],
+                            backgroundColor: brandColors.navy,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { beginAtZero: true, grid: { borderDash: [5, 5] } },
+                            x: { grid: { display: false } }
+                        }
+                    }
+                });
+            }
+
+            // 3. Service Distribution (Doughnut Chart)
+            const ctxService = document.getElementById('serviceChart');
+            if (ctxService) {
+                new Chart(ctxService, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Engineering', 'Maintenance', 'Automation', 'Safety'],
+                        datasets: [{
+                            data: [35, 25, 30, 10],
+                            backgroundColor: [
+                                brandColors.navy,
+                                brandColors.orange,
+                                brandColors.lightNavy,
+                                '#9EADC0'
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '75%',
+                        plugins: {
+                            legend: { position: 'bottom' }
+                        }
+                    }
+                });
+            }
+
+            // 4. Maintenance Overview (Polar Area or Bar)
+            const ctxMaint = document.getElementById('maintenanceChart');
+            if (ctxMaint) {
+                new Chart(ctxMaint, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Mechanical', 'Electrical', 'HVAC', 'Robotics', 'Hydraulics'],
+                        datasets: [{
+                            label: 'Pending Tasks',
+                            data: [25, 18, 12, 8, 5],
+                            backgroundColor: brandColors.orange,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y', // Horizontal bar
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: { beginAtZero: true, grid: { borderDash: [5, 5] } },
+                            y: { grid: { display: false } }
+                        }
+                    }
+                });
+            }
+            
+        });
+    </script>
+    
+</body>
+</html>

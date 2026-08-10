@@ -1,0 +1,648 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Engineering & Maintenance Services | Stackly</title>
+    <meta name="description" content="STACKLY provides reliable engineering, maintenance, automation, and industrial services designed to keep critical operations moving globally.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="STACKLY - Engineering Progress">
+    <meta property="og:description" content="Premium industrial engineering and maintenance services.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    
+    <!-- Axiron Theme CSS -->
+    <link href="https://html.awaikenthemes.com/axiron/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    
+    
+    <link href="css/axiron.css" rel="stylesheet" media="screen">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="blog-page">
+        <div id="loader" style="z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: var(--c-navy); position: fixed; inset: 0;">
+        <div class="loader-content text-center">
+            <div class="industrial-spinner mb-4" style="animation: spin 3s linear infinite;">
+                <i class="fa-solid fa-gear fa-spin" style="font-size: 3.5rem; color: var(--c-orange);"></i>
+            </div>
+            <div class="loader-text mb-3">
+                <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo" style="max-height: 50px;">
+            </div>
+            <div class="loader-status" id="loaderStatus" style="font-family: var(--font-heading); color: rgba(255,255,255,0.7); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Initializing Systems...</div>
+        </div>
+        <div class="loader-progress-wrap mt-4" style="width: 250px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; height: 4px;">
+            <div class="loader-progress" id="loaderProgress" style="height: 100%; background: var(--c-orange); width: 0%; transition: width 0.1s ease;"></div>
+        </div>
+    </div>
+    <header class="site-header" id="header">
+        <div class="container header-inner" style="height: 80px;">
+            <a href="index.html" class="logo">
+                <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+            </a>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-primary d-none-mobile" style="padding: 10px 24px; border-radius: 4px;">Client Login <i class="fa-solid fa-arrow-right"></i></a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo text-white"><img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo"></a>
+            <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="login.html" class="nav-link">Login</a></li>
+        </ul>
+    </div>
+    
+    <main>
+        
+<!-- Page Header Section Start -->
+<section class="inner-hero" style="height: 450px; display: flex; align-items: center; justify-content: center; position: relative;">
+  <div class="hero-bg-img" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&fit=crop&w=1920&q=80&fm=webp');"></div>
+  <div class="blueprint-overlay"></div>
+  <div class="inner-hero-overlay"></div>
+  <div class="container relative z-10 text-center">
+    <h1 class="text-white mb-3 gs-clip-text">Our blog</h1>
+    <p class="text-light lead-text mb-4" style="color: rgba(255,255,255,0.9) !important; max-width: 800px; margin: 0 auto; font-size: 1.15rem; line-height: 1.6;">Stay ahead in the industrial sector with our latest insights on predictive maintenance, advanced manufacturing automation, structural engineering practices, and innovative supply chain solutions.</p>
+    <div class="breadcrumbs justify-content-center d-flex mt-4" style="color: white;">
+      <a href="index.html" style="color: white; text-decoration: none;">Home</a> <span style="margin: 0 10px; color: var(--c-orange);">/</span> <span class="current" style="color: var(--c-orange);">Blog</span>
+    </div>
+  </div>
+</section>
+<!-- Page Header Section End -->
+
+<!-- Page Blog Start -->
+<div class="page-blog">
+<div class="container">
+<div class="row">
+<div class="col-xl-4 col-md-6">
+<!-- Post Item Start -->
+<div class="post-item">
+<!-- Post Featured Image Start-->
+<div class="post-featured-image">
+<figure class="image-anime">
+<img src="assets/service_hero.webp" alt="" loading="lazy" decoding="async">
+</figure>
+<!-- Post Readmore Button Start-->
+<div class="post-item-btn">
+<a href="blog-single.html"><i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<!-- Post Readmore Button End-->
+</div>
+<!-- Post Featured Image End -->
+<!-- Post Item Body Start -->
+<div class="post-item-body">
+<!-- Post Item Meta Start -->
+<div class="post-item-meta">
+<ul>
+<li><i class="fa-regular fa-calendar-days" style="color: var(--c-orange); margin-right: 8px;"></i>Feb 20, 2026</li>
+</ul>
+</div>
+<!-- Post Item Meta End -->
+<!-- Post Item Content Start -->
+<div class="post-item-content">
+<h2><a href="blog-single.html">Sustainable Manufacturing Practices for Long Term Growth</a></h2>
+</div>
+<!-- Post Item Content End -->
+</div>
+<!-- Post Item Body End -->
+</div>
+<!-- Post Item End -->
+</div>
+<div class="col-xl-4 col-md-6">
+<!-- Post Item Start -->
+<div class="post-item" data-wow-delay="0.2s">
+<!-- Post Featured Image Start-->
+<div class="post-featured-image">
+<figure class="image-anime">
+<img src="assets/service_parallax.webp" alt="" loading="lazy" decoding="async">
+</figure>
+<!-- Post Readmore Button Start-->
+<div class="post-item-btn">
+<a href="blog-single.html"><i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<!-- Post Readmore Button End-->
+</div>
+<!-- Post Featured Image End -->
+<!-- Post Item Body Start -->
+<div class="post-item-body">
+<!-- Post Item Meta Start -->
+<div class="post-item-meta">
+<ul>
+<li><i class="fa-regular fa-calendar-days" style="color: var(--c-orange); margin-right: 8px;"></i>Feb 17, 2026</li>
+</ul>
+</div>
+<!-- Post Item Meta End -->
+<!-- Post Item Content Start -->
+<div class="post-item-content">
+<h2><a href="blog-single.html">The Importance of Precision Engineering in Industrial Manufacturing</a></h2>
+</div>
+<!-- Post Item Content End -->
+</div>
+<!-- Post Item Body End -->
+</div>
+<!-- Post Item End -->
+</div>
+<div class="col-xl-4 col-md-6">
+<!-- Post Item Start -->
+<div class="post-item" data-wow-delay="0.4s">
+<!-- Post Featured Image Start-->
+<div class="post-featured-image">
+<figure class="image-anime">
+<img src="assets/process_execute.webp" alt="" loading="lazy" decoding="async">
+</figure>
+<!-- Post Readmore Button Start-->
+<div class="post-item-btn">
+<a href="blog-single.html"><i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<!-- Post Readmore Button End-->
+</div>
+<!-- Post Featured Image End -->
+<!-- Post Item Body Start -->
+<div class="post-item-body">
+<!-- Post Item Meta Start -->
+<div class="post-item-meta">
+<ul>
+<li><i class="fa-regular fa-calendar-days" style="color: var(--c-orange); margin-right: 8px;"></i>Feb 14, 2026</li>
+</ul>
+</div>
+<!-- Post Item Meta End -->
+<!-- Post Item Content Start -->
+<div class="post-item-content">
+<h2><a href="blog-single.html">Strengthening Industrial Supply Chains for Reliable Delivery</a></h2>
+</div>
+<!-- Post Item Content End -->
+</div>
+<!-- Post Item Body End -->
+</div>
+<!-- Post Item End -->
+</div>
+<div class="col-xl-4 col-md-6">
+<!-- Post Item Start -->
+<div class="post-item" data-wow-delay="0.6s">
+<!-- Post Featured Image Start-->
+<div class="post-featured-image">
+<figure class="image-anime">
+<img src="assets/process_test.webp" alt="" loading="lazy" decoding="async">
+</figure>
+<!-- Post Readmore Button Start-->
+<div class="post-item-btn">
+<a href="blog-single.html"><i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<!-- Post Readmore Button End-->
+</div>
+<!-- Post Featured Image End -->
+<!-- Post Item Body Start -->
+<div class="post-item-body">
+<!-- Post Item Meta Start -->
+<div class="post-item-meta">
+<ul>
+<li><i class="fa-regular fa-calendar-days" style="color: var(--c-orange); margin-right: 8px;"></i>Feb 11, 2026</li>
+</ul>
+</div>
+<!-- Post Item Meta End -->
+<!-- Post Item Content Start -->
+<div class="post-item-content">
+<h2><a href="blog-single.html">The Future of Smart Manufacturing Technology</a></h2>
+</div>
+<!-- Post Item Content End -->
+</div>
+<!-- Post Item Body End -->
+</div>
+<!-- Post Item End -->
+</div>
+<div class="col-xl-4 col-md-6">
+<!-- Post Item Start -->
+<div class="post-item" data-wow-delay="0.8s">
+<!-- Post Featured Image Start-->
+<div class="post-featured-image">
+<figure class="image-anime">
+<img src="assets/process_deliver.webp" alt="" loading="lazy" decoding="async">
+</figure>
+<!-- Post Readmore Button Start-->
+<div class="post-item-btn">
+<a href="blog-single.html"><i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<!-- Post Readmore Button End-->
+</div>
+<!-- Post Featured Image End -->
+<!-- Post Item Body Start -->
+<div class="post-item-body">
+<!-- Post Item Meta Start -->
+<div class="post-item-meta">
+<ul>
+<li><i class="fa-regular fa-calendar-days" style="color: var(--c-orange); margin-right: 8px;"></i>Feb 08, 2026</li>
+</ul>
+</div>
+<!-- Post Item Meta End -->
+<!-- Post Item Content Start -->
+<div class="post-item-content">
+<h2><a href="blog-single.html">How Automation Is Transforming Modern Manufacturing</a></h2>
+</div>
+<!-- Post Item Content End -->
+</div>
+<!-- Post Item Body End -->
+</div>
+<!-- Post Item End -->
+</div>
+<div class="col-xl-4 col-md-6">
+<!-- Post Item Start -->
+<div class="post-item" data-wow-delay="1s">
+<!-- Post Featured Image Start-->
+<div class="post-featured-image">
+<figure class="image-anime">
+<img src="assets/process_analyze.webp" alt="" loading="lazy" decoding="async">
+</figure>
+<!-- Post Readmore Button Start-->
+<div class="post-item-btn">
+<a href="blog-single.html"><i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<!-- Post Readmore Button End-->
+</div>
+<!-- Post Featured Image End -->
+<!-- Post Item Body Start -->
+<div class="post-item-body">
+<!-- Post Item Meta Start -->
+<div class="post-item-meta">
+<ul>
+<li><i class="fa-regular fa-calendar-days" style="color: var(--c-orange); margin-right: 8px;"></i>Feb 05, 2026</li>
+</ul>
+</div>
+<!-- Post Item Meta End -->
+<!-- Post Item Content Start -->
+<div class="post-item-content">
+<h2><a href="blog-single.html">Improving Production Efficiency in Manufacturing Plants</a></h2>
+</div>
+<!-- Post Item Content End -->
+</div>
+<!-- Post Item Body End -->
+</div>
+<!-- Post Item End -->
+</div>
+<div class="col-lg-12">
+<!-- Page Pagination Start -->
+<div class="page-pagination" data-wow-delay="0.4s">
+<ul class="pagination">
+<li><a href="#"><i class="fa-solid fa-angle-left"></i></a></li>
+<li class="active"><a href="#">1</a></li>
+<li><a href="#">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#"><i class="fa-solid fa-angle-right"></i></a></li>
+</ul>
+</div>
+<!-- Page Pagination End -->
+</div>
+</div>
+</div>
+</div>
+<!-- Page Blog End -->
+
+    </main>
+
+<!-- Section 9: Testimonials -->
+    <section class="section-padding bg-offwhite position-relative overflow-hidden" id="testimonials">
+        <div class="testi-bg-grid"></div>
+        <div class="container position-relative z-2">
+            <div class="section-header center gs-reveal-up">
+                <span class="subtitle">Client Feedback</span>
+                <h2>Trusted By Global Brands</h2>
+            </div>
+            
+            <div class="testimonial-slider gs-reveal-up">
+                <div class="testi-track" id="testiTrack">
+                    <!-- Slide 1 -->
+                    <div class="testi-slide active">
+                        <div class="testi-card">
+                            <ul class="testi-rating">
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                            </ul>
+                            <p class="testi-text">"STACKLY executed our plant automation upgrade flawlessly. Their safety standards and precision engineering drastically improved our production line efficiency."</p>
+                            <div class="testi-author">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&fit=crop&w=150&q=50&fm=webp" alt="James Wilson" loading="lazy" decoding="async">
+                                <div>
+                                    <h4>James Wilson</h4>
+                                    <span>Operations Director, AutoCorp</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <ul class="testi-rating">
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                            </ul>
+                            <p class="testi-text">"The mechanical refit of our offshore rig was a monumental task. STACKLY'S rapid response and technical execution were simply outstanding."</p>
+                            <div class="testi-author">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&fit=crop&w=150&q=50&fm=webp" alt="Sarah Jenkins" loading="lazy" decoding="async">
+                                <div>
+                                    <h4>Sarah Jenkins</h4>
+                                    <span>VP Engineering, Nexus Energy</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="testi-slide">
+                        <div class="testi-card">
+                            <ul class="testi-rating">
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star-half-stroke"></i></li>
+                            </ul>
+                            <p class="testi-text">"Finding a partner capable of executing complex HVAC and utility grids for our pharmaceutical facility was critical. STACKLY delivered on every metric."</p>
+                            <div class="testi-author">
+                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&fit=crop&w=150&q=50&fm=webp" alt="Michael Chang" loading="lazy" decoding="async">
+                                <div>
+                                    <h4>Michael Chang</h4>
+                                    <span>Facility Head, BioPharm Solutions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testi-controls">
+                    <button id="testiPrev" aria-label="Previous testimonial"><i class="fa-solid fa-arrow-left"></i></button>
+                    <div class="testi-pagination" id="testiPagination"></div>
+                    <button id="testiNext" aria-label="Next testimonial"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- FAQ Preview -->
+        <section class="section-padding bg-offwhite">
+            <div class="container">
+                <div class="section-header center gs-reveal-up">
+                    <span class="subtitle">Quick Answers</span>
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                
+                <div class="faq-accordion gs-reveal-up" style="max-width: 800px; margin: 0 auto;">
+                    <div class="faq-item active">
+                        <div class="faq-question">
+                            <h4>How quickly can your emergency support team respond?</h4>
+                            <i class="fa-solid fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For contracted partners, our emergency technical support teams guarantee a remote response within 15 minutes and on-site deployment within 4 hours depending on the facility's location.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Do you handle international industrial projects?</h4>
+                            <i class="fa-solid fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes. We have successfully executed engineering and automation projects across 15+ countries. Our global logistics team ensures compliance with local industrial regulations and standards.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Are your engineers certified for high-voltage environments?</h4>
+                            <i class="fa-solid fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely. All our electrical engineers hold advanced certifications for high-voltage systems and adhere strictly to global safety protocols including OSHA and IEC standards.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Can you integrate new automation with legacy machinery?</h4>
+                            <i class="fa-solid fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, retrofitting legacy systems is one of our core specialties. We design custom PLCs, sensors, and IoT gateways to bring modern data collection and automation to older heavy machinery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- Final CTA -->
+        <section class="final-cta bg-navy text-center" style="padding: 80px 0;">
+            <div class="container gs-reveal-up">
+                <h2 class="text-white mb-4">Your Industrial Challenge Starts With a Conversation.</h2>
+                <div class="d-flex justify-content-center" style="gap: 20px; flex-wrap: wrap;">
+                    <a href="404.html" class="btn btn-primary">Request a Custom Quote</a>
+                </div>
+            </div>
+        </section>
+
+<footer class="stackly-footer-new" id="mainFooter">
+        <div class="footer-top-accent"></div>
+        <div class="footer-blueprint-bg"></div>
+        
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1: STACKLY -->
+                <div class="footer-col">
+                    <a href="index.html" class="logo">
+                        <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+                    </a>
+                    <p class="footer-desc">Advanced industrial engineering and maintenance solutions built for precision, safety, and performance.</p>
+                    <div class="footer-socials">
+                        <a href="404.html" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2: Quick Links -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3: Location Map -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Location Map</h4>
+                    <div class="footer-map" style="border-radius: 8px; overflow: hidden; width: 100%; height: 200px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <iframe class="lazy-map" src="" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15630.932912444102!2d78.16335195!3d11.66723225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf0c5a242c733%3A0x6fbca83dbfb4a36f!2sChinna%20Thirupathi%2C%20Salem%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1683000000000!5m2!1sen!2sin&q=MMR+Complex,+chinna+thirupathi,+near+chinna+muniyappan+kovil,+salem+-636008" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Column 4: Contact Us -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>MMR Complex, chinna thirupathi, near chinna muniyappan kovil, salem -636008</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:6364321780">6364321780</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:info@stackly.example">info@stackly.example</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Monâ€“Fri, 10amâ€“10pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 STACKLY. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="sep">|</span>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- GSAP Core & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/forms.js"></script>
+
+    <!-- Blog Pagination Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const posts = document.querySelectorAll('.page-blog .row > .col-xl-4');
+            const paginationLinks = document.querySelectorAll('.page-pagination .pagination li a');
+            
+            if(posts.length === 0 || paginationLinks.length === 0) return;
+            
+            const postsPerPage = 2; // 6 posts total, 3 pages = 2 per page
+            let currentPage = 1;
+            const totalPages = Math.ceil(posts.length / postsPerPage);
+            
+            function showPage(page) {
+                if(page < 1 || page > totalPages) return;
+                currentPage = page;
+                
+                // Hide all posts
+                posts.forEach((post, index) => {
+                    post.style.display = 'none';
+                    // Show posts for current page
+                    if (index >= (page - 1) * postsPerPage && index < page * postsPerPage) {
+                        post.style.display = 'block';
+                        // Re-trigger simple fade in
+                        post.style.opacity = 0;
+                        setTimeout(() => {
+                            post.style.transition = 'opacity 0.5s ease';
+                            post.style.opacity = 1;
+                        }, 50);
+                    }
+                });
+                
+                // Update active class on pagination
+                const listItems = document.querySelectorAll('.page-pagination .pagination li');
+                listItems.forEach(li => li.classList.remove('active'));
+                
+                // The first li is "Prev" and last is "Next". So index `page` corresponds to the number button.
+                if(listItems[page]) {
+                    listItems[page].classList.add('active');
+                }
+                
+                // Refresh ScrollTrigger because page height changed
+                setTimeout(() => {
+                    if (typeof ScrollTrigger !== 'undefined') {
+                        ScrollTrigger.refresh();
+                    }
+                }, 100);
+            }
+            
+            // Add click events to pagination
+            paginationLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const text = this.innerText.trim();
+                    
+                    if (text === '1') showPage(1);
+                    else if (text === '2') showPage(2);
+                    else if (text === '3') showPage(3);
+                    else if (this.innerHTML.includes('fa-angle-left')) showPage(currentPage - 1);
+                    else if (this.innerHTML.includes('fa-angle-right')) showPage(currentPage + 1);
+                    
+                    // Scroll to top of blog section smoothly
+                    const blogTop = document.querySelector('.page-blog').offsetTop - 100;
+                    window.scrollTo({ top: blogTop, behavior: 'smooth' });
+                });
+            });
+            
+            // Initialize first page
+            showPage(1);
+        });
+    </script>
+</body>
+
+</html>

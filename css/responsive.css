@@ -1,0 +1,803 @@
+/* ==========================================================================
+   STACKLY - Responsive Styles
+   Target breakpoints: 1920, 1440, 1366, 1280, 1024, 768, 480, 414, 390, 375, 320
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Desktop & Large Screens (max-width: 1366px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1366px) {
+
+}
+
+/* --------------------------------------------------------------------------
+   Laptops & Tablets Landscape (max-width: 1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  /* Typography & Layout */
+  :root {
+    --section-padding: 80px;
+  }
+  
+
+  
+  .hero-desc {
+    font-size: 1.1rem;
+  }
+  
+  .hero-floats {
+    display: none;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+  
+  .mobile-toggle {
+    display: block;
+  }
+  
+  .d-none-mobile {
+    display: none !important;
+  }
+  
+  /* Sections */
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .industry-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .process-timeline {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 20px;
+  }
+  
+  .process-timeline::before {
+    display: none;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
+  
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* About Page */
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .mission-vision-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .capabilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Services Page */
+  .tech-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Blog Page */
+  .featured-article {
+    grid-template-columns: 1fr;
+  }
+  
+  .featured-img {
+    min-height: 300px;
+  }
+  
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Contact Page */
+  .contact-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .c-info-card:nth-child(2) {
+    border-right: none;
+  }
+  
+  .c-info-card:nth-child(1),
+  .c-info-card:nth-child(2) {
+    border-bottom: 1px solid var(--c-border-light);
+  }
+  
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Auth Pages */
+  .split-left {
+    padding: 40px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tablets Portrait (max-width: 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 60px;
+  }
+  
+  /* Optimize video loading on mobile by hiding and using a static poster */
+  .hero-bg video {
+    display: none !important;
+  }
+  
+  .hero-bg {
+    background-image: url('../assets/service_hero.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  h2 {
+    font-size: 2.2rem;
+  }
+  
+
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .industry-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .process-timeline {
+    grid-template-columns: 1fr;
+    padding-left: 50px;
+  }
+  
+  .process-line-wrap {
+    top: 30px;
+    bottom: 30px;
+    left: 20px;
+    width: 2px;
+    height: auto;
+  }
+  
+  .process-line-progress {
+    width: 100%;
+    height: 0; /* animated by GSAP */
+  }
+  
+  .process-step-custom {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .step-num-wrap {
+    margin-bottom: 0;
+  }
+  
+  .step-num {
+    margin-bottom: 0;
+    width: 50px;
+    height: 50px;
+    font-size: 1.1rem;
+    position: relative;
+    left: -65px; /* Pull into the line */
+  }
+  
+  .step-content {
+    padding-top: 10px;
+  }
+  
+  .testi-card {
+    padding: 30px;
+  }
+  
+  .testi-text {
+    font-size: 1.25rem;
+  }
+
+  /* About Page */
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Services Page */
+  .detailed-service-card,
+  .detailed-service-card.alt-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .dsc-img {
+    min-height: 250px;
+  }
+  
+  .vertical-timeline::before {
+    left: 30px;
+  }
+  
+  .v-step, .v-step:nth-child(even) {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  
+  .v-icon {
+    left: 30px;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .v-content, .v-step:nth-child(even) .v-content {
+    width: calc(100% - 80px);
+    text-align: left;
+  }
+  
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* FAQ Accordion Mobile */
+  .faq-question {
+    padding: 18px 20px;
+  }
+  .faq-question h4 {
+    font-size: 1.02rem;
+  }
+  .faq-answer {
+    padding: 0 20px;
+  }
+  .faq-item.active .faq-answer {
+    padding: 0 20px 20px 20px;
+  }
+
+  /* Blog Page Mobile */
+  .page-blog {
+    padding: 70px 0 50px 0;
+  }
+  .page-blog .post-featured-image {
+    height: 210px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Phones (max-width: 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+
+  .hero-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-actions .btn {
+    width: 100%;
+    min-height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .industry-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  /* About Page */
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .story-stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Services Page */
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dsc-content {
+    padding: 30px 20px;
+  }
+
+  /* Blog Page */
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .featured-content {
+    padding: 30px 20px;
+  }
+  
+  .newsletter-box {
+    padding: 40px 20px;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+  }
+  
+  .newsletter-form .btn {
+    width: 100%;
+  }
+
+  /* Contact Page */
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  
+  .c-info-card {
+    border-right: none !important;
+    border-bottom: 1px solid var(--c-border-light);
+  }
+  
+  .c-info-card:last-child {
+    border-bottom: none;
+  }
+  
+  .stackly-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Auth Pages */
+  .split-layout {
+    flex-direction: column;
+  }
+  
+  .split-left {
+    display: none; /* Hide visual on mobile to focus on form */
+  }
+  
+  .split-right {
+    padding: 20px;
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+  
+  .auth-card {
+    padding: 30px 20px;
+  }
+  
+  .auth-mobile-logo {
+    display: block !important;
+  }
+  
+  .password-req-box {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  /* 404 Page */
+  .error-title {
+    font-size: 2.8rem;
+  }
+  
+  .tech-visual-container {
+    height: 350px;
+    margin-top: 40px;
+  }
+  
+  .massive-404 {
+    font-size: 7rem;
+  }
+  
+  /* Interactive Services */
+  .interactive-services-wrap {
+    flex-direction: column;
+  }
+  
+  .is-sidebar {
+    flex: none;
+    border-right: none;
+    border-bottom: 1px solid var(--c-border);
+  }
+  
+  .is-tab {
+    padding: 15px 20px;
+  }
+  
+  .is-tab::before {
+    width: 100%;
+    height: 4px;
+    left: 0;
+    top: auto;
+    bottom: 0;
+    transform: scaleX(0);
+  }
+  
+  .is-tab.active::before {
+    transform: scaleX(1);
+  }
+  
+  .is-display-panel {
+    min-height: 350px;
+  }
+  
+  .is-content {
+    padding: 30px 20px;
+  }
+  
+  .is-content h3 {
+    font-size: 1.8rem;
+  }
+  
+  .is-content p {
+    font-size: 1rem;
+  }
+  
+  /* Marquee */
+  .service-marquee {
+    font-size: 0.95rem;
+  }
+
+  /* Universal Mobile Container Shrink (320px/360px fixes) */
+  .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  /* ==========================================================================
+     MOBILE CARDS & FAILSAFE (max-width: 480px)
+     ========================================================================== */
+
+  /* Force multi-column grids to 1 column on mobile */
+  [class*="-grid"], .row, .d-flex.flex-wrap {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Universal Card Responsive Fixes */
+  [class*="-card"], .card, .pricing-box, .auth-card, .split-right, .interactive-services-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important; /* Prevent fixed heights */
+    min-height: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Reduce Excessive Padding */
+  .pc-info, .blog-card-content, .service-card, .industry-card, .why-card-custom, .pricing-box, .c-info-card, .auth-card, .team-info {
+    padding: 15px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 480px) { .row, [class*='grid'], [class*='layout'] { max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; } }
+
+
+/* --------------------------------------------------------------------------
+   FORM MOBILE OPTIMIZATION
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  input,
+  textarea,
+  select,
+  button {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+  }
+  
+  /* Form Inputs Touch Targets */
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select,
+  button,
+  .btn,
+  .submit-btn {
+      min-height: 48px !important;
+  }
+  
+  /* Buttons Full Width */
+  .auth-form button,
+  .auth-form .btn,
+  .contact-form button,
+  .contact-form .btn,
+  form button[type="submit"],
+  form input[type="submit"] {
+      width: 100% !important;
+  }
+  
+  /* Prevent horizontal overflow on forms */
+  form, .form-group, .input-group, .auth-form, .contact-wrapper {
+      max-width: 100% !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+  }
+  
+  /* Ensure text wrapping for labels and errors */
+  label, .error-message, .form-text, .help-block, .invalid-feedback {
+      white-space: normal !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      max-width: 100% !important;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   FOOTER MOBILE OPTIMIZATION
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Stack columns vertically */
+  .footer-grid, .footer-top {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 30px !important; /* Reduce unnecessary spacing */
+  }
+  
+  /* Center or left-align consistently - opting for left-align for easier reading on mobile */
+  .footer-col {
+      text-align: left !important;
+      align-items: flex-start !important;
+      width: 100% !important;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  .footer-col:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+  }
+  
+  /* Reduce excessive margins */
+  .footer-container {
+      padding: 40px 15px 20px 15px !important;
+  }
+  
+  .footer-col-title {
+      margin-bottom: 15px !important;
+  }
+  
+  /* Social icons remain touch-friendly */
+  .footer-socials {
+      display: flex !important;
+      justify-content: flex-start !important;
+      gap: 15px !important;
+      flex-wrap: wrap;
+  }
+  
+  .footer-socials a {
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  /* No overflow, full width constraints */
+  .stackly-footer-new, .stackly-footer-light, .footer-bottom, .footer-cta {
+      max-width: 100% !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+  }
+  
+  /* Copyright text wraps naturally */
+  .footer-bottom {
+      flex-direction: column !important;
+      text-align: center !important;
+      padding: 20px 15px !important;
+      white-space: normal !important;
+      word-wrap: break-word !important;
+  }
+  
+  .footer-bottom p, .footer-bottom-links {
+      white-space: normal !important;
+      word-wrap: break-word !important;
+  }
+  
+  .footer-bottom-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   TOUCH EXPERIENCE UX OVERRIDES (MOBILE)
+   -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  
+  /* 1. Reveal Hover-Hidden Content */
+  .mc-extra {
+      max-height: 500px !important;
+      opacity: 1 !important;
+      margin-top: 15px !important;
+      padding-top: 15px !important;
+      border-top: 1px solid rgba(255,255,255,0.1) !important;
+  }
+  
+  .evs-node-body {
+      max-height: 500px !important;
+      opacity: 1 !important;
+      margin-top: 10px !important;
+  }
+  
+  .evs-node-inner::before {
+      opacity: 1 !important;
+  }
+  
+  .page-blog .post-item-btn {
+      opacity: 1 !important;
+      transform: none !important;
+      position: relative !important;
+      bottom: auto !important;
+      margin-top: 15px !important;
+  }
+  
+  .about-page .team-member::after {
+      width: 100% !important;
+      opacity: 1 !important;
+      background: linear-gradient(to top, rgba(11,31,51,0.95) 0%, rgba(11,31,51,0) 100%) !important;
+  }
+
+  /* 2. Prevent Accidental Hover Jumping */
+  .value-card,
+  .team-member,
+  .pro-card,
+  .post-item,
+  .matrix-card,
+  .evs-node-inner,
+  .evs-node-body,
+  .evs-icon,
+  .exp-card-inner {
+      transform: none !important;
+  }
+  
+  .value-card:hover,
+  .team-member:hover,
+  .pro-card:hover,
+  .post-item:hover,
+  .matrix-card:hover,
+  .matrix-card.active .mc-glow,
+  .page-blog .post-item:hover {
+      transform: none !important;
+  }
+
+  /* 3. Minimum Touch Targets (44px - 48px) */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-login-pill,
+  .db-btn,
+  .post-item-btn a,
+  .page-pagination a,
+  .mobile-toggle-btn {
+      min-height: 48px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+  }
+  
+  .footer-socials a,
+  .team-socials a,
+  .topbar-socials a {
+      min-width: 44px !important;
+      min-height: 44px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+  }
+  
+  .nav-link,
+  .dropdown-item,
+  .footer-links a,
+  .db-menu a {
+      padding-top: 12px !important;
+      padding-bottom: 12px !important;
+      min-height: 44px !important;
+      display: flex !important;
+      align-items: center !important;
+  }
+}
+
+
+/* Force d-none-mobile to always win */
+@media (max-width: 1024px) {
+  .d-none-mobile {
+    display: none !important;
+  }
+}
+
+
+/* Fix Header Overlap on Mobile */
+@media (max-width: 1024px) {
+  .site-header {
+      position: sticky !important;
+      top: 0;
+      background-color: var(--c-navy) !important;
+      padding: 15px 0 !important;
+      z-index: 1000 !important;
+  }
+}

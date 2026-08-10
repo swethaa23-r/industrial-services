@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Stackly - Engineering Progress</title>
+    <meta name="description" content="Contact Stackly for your industrial engineering, maintenance, and automation challenges.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+        <div id="loader" style="z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: var(--c-navy); position: fixed; inset: 0;">
+        <div class="loader-content text-center">
+            <div class="industrial-spinner mb-4" style="animation: spin 3s linear infinite;">
+                <i class="fa-solid fa-gear fa-spin" style="font-size: 3.5rem; color: var(--c-orange);"></i>
+            </div>
+            <div class="loader-text mb-3">
+                <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo" style="max-height: 50px;">
+            </div>
+            <div class="loader-status" id="loaderStatus" style="font-family: var(--font-heading); color: rgba(255,255,255,0.7); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Initializing Systems...</div>
+        </div>
+        <div class="loader-progress-wrap mt-4" style="width: 250px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; height: 4px;">
+            <div class="loader-progress" id="loaderProgress" style="height: 100%; background: var(--c-orange); width: 0%; transition: width 0.1s ease;"></div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <!-- Header / Navbar -->
+    <header class="site-header" id="header">
+        <div class="container header-inner" style="height: 80px;">
+            <a href="index.html" class="logo">
+                <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+            </a>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-primary d-none-mobile" style="padding: 10px 24px; border-radius: 4px;">Client Login <i class="fa-solid fa-arrow-right"></i></a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo text-white"><img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo"></a>
+            <button class="mobile-close" id="mobileClose" aria-label="Close navigation menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="login.html" class="nav-link">Login</a></li>
+        </ul>
+    </div>
+
+
+    <main>
+        <!-- Hero Section -->
+        <section class="inner-hero" style="height: 450px; display: flex; align-items: center; justify-content: center; position: relative;">
+            <div class="hero-bg-img" style="background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&fit=crop&w=1920&q=80&fm=webp');"></div>
+            <div class="blueprint-overlay"></div>
+            <div class="inner-hero-overlay"></div>
+            <div class="container relative z-10 gs-reveal-up text-center">
+                <h1 class="text-white mb-3">Let's Talk About Your Industrial Challenge</h1>
+                <p class="text-light lead-text mb-4" style="color: rgba(255,255,255,0.9) !important; max-width: 800px; margin: 0 auto; font-size: 1.15rem; line-height: 1.6;">Get in touch with our engineering experts to discuss your next industrial project or maintenance requirements.</p>
+                <div class="breadcrumbs justify-content-center d-flex mt-4" style="color: white;">
+                    <a href="index.html" style="color: white; text-decoration: none;">Home</a> <span style="margin: 0 10px; color: var(--c-orange);">/</span> <span class="current" style="color: var(--c-orange);">Contact</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Info Cards -->
+        <section class="section-padding bg-offwhite" style="margin-top: -80px; position: relative; z-index: 20; padding-top: 0;">
+            <div class="container">
+                <div class="contact-info-grid">
+                    <div class="c-info-card gs-reveal-up" data-delay="0.1">
+                        <div class="c-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                        <h4>Phone</h4>
+                        <p class="c-detail"><a href="tel:6364321780">6364321780</a></p>
+                        <span class="c-sub">24/7 Industrial Support</span>
+                    </div>
+                    <div class="c-info-card gs-reveal-up" data-delay="0.2">
+                        <div class="c-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                        <h4>Email</h4>
+                        <p class="c-detail"><a href="mailto:info@stackly.example">info@stackly.example</a></p>
+                        <span class="c-sub">info@stackly.example</span>
+                    </div>
+                    <div class="c-info-card gs-reveal-up" data-delay="0.3">
+                        <div class="c-icon"><i class="fa-solid fa-building"></i></div>
+                        <h4>Office</h4>
+                        <p class="c-detail">MMR Complex, Chinna Thirupathi</p>
+                        <span class="c-sub">Salem - 636008</span>
+                    </div>
+                    <div class="c-info-card gs-reveal-up" data-delay="0.4">
+                        <div class="c-icon"><i class="fa-regular fa-clock"></i></div>
+                        <h4>Working Hours</h4>
+                        <p class="c-detail">Monday â€“ Saturday</p>
+                        <span class="c-sub">8:00 AM - 6:00 PM</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form & Support Section -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="contact-layout">
+                    <!-- Form Side -->
+                    <div class="contact-form-wrapper gs-reveal-left">
+                        <div class="section-header">
+                            <span class="subtitle">Get In Touch</span>
+                            <h2>Send Us A Message</h2>
+                        </div>
+                        
+                        <div id="formSuccess" class="form-success-message" style="display: none;">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <h4>Message Sent Successfully!</h4>
+                            <p>Our engineering team will review your requirements and get back to you within 24 hours.</p>
+                        </div>
+                        
+                        <form id="contactForm" class="stackly-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName">Full Name *</label>
+                                    <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+                                    <span class="error-msg" id="err-fullName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="company">Company *</label>
+                                    <input type="text" id="company" name="company" placeholder="Company Ltd." required>
+                                    <span class="error-msg" id="err-company"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                                    <span class="error-msg" id="err-email"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required>
+                                    <span class="error-msg" id="err-phone"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="serviceReq">Service Required</label>
+                                    <select id="serviceReq" name="serviceReq">
+                                        <option value="">Select a Service</option>
+                                        <option value="engineering">Industrial Engineering</option>
+                                        <option value="maintenance">Plant Maintenance</option>
+                                        <option value="automation">Industrial Automation</option>
+                                        <option value="electrical">Electrical Services</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="projectType">Project Type</label>
+                                    <select id="projectType" name="projectType">
+                                        <option value="">Select Project Type</option>
+                                        <option value="new">New Installation</option>
+                                        <option value="upgrade">System Upgrade</option>
+                                        <option value="repair">Emergency Repair</option>
+                                        <option value="audit">Safety Audit</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message * (Min 20 characters)</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Briefly describe your industrial challenge..." required></textarea>
+                                <span class="error-msg" id="err-message"></span>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-lg w-100 mt-3" id="submitBtn">
+                                Send Message <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Support & Map Side -->
+                    <div class="contact-sidebar gs-reveal-right">
+                        
+                        <div class="support-box bg-navy text-white mb-5">
+                            <i class="fa-solid fa-headset support-icon"></i>
+                            <h3>24/7 Technical Support</h3>
+                            <p>Industrial emergencies don't wait for business hours. Our rapid response engineering teams are on standby 24/7 to resolve critical plant failures, power outages, and automation breakdowns to minimize your downtime.</p>
+                            <a href="404.html" class="btn btn-outline mt-3 w-100">Call Emergency Line</a>
+                        </div>
+                        
+                        <div class="location-box">
+                            <h3 class="mb-4">Office Location</h3>
+                            <div class="css-map-container">
+                                <!-- CSS Map Visual -->
+                                <div class="css-map">
+                                    <div class="map-grid"></div>
+                                    <div class="map-marker-wrap">
+                                        <div class="map-pulse"></div>
+                                        <i class="fa-solid fa-location-dot map-marker"></i>
+                                        <div class="map-tooltip">
+                                            <strong>STACKLY HQ</strong><br>Salem
+                                        </div>
+                                    </div>
+                                    <div class="map-route route-1"></div>
+                                    <div class="map-route route-2"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="location-details mt-4">
+                                <h5>Headquarters</h5>
+                                <p class="text-light">MMR Complex, chinna thirupathi,<br>near chinna muniyappan kovil,<br>salem -636008</p>
+                                <a href="404.html" class="text-link mt-2">Get Directions <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Preview -->
+        <section class="section-padding bg-offwhite">
+            <div class="container">
+                <div class="section-header center gs-reveal-up">
+                    <span class="subtitle">Quick Answers</span>
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                
+                <div class="faq-accordion gs-reveal-up" style="max-width: 800px; margin: 0 auto;">
+                    <div class="faq-item active">
+                        <div class="faq-question">
+                            <h4>How quickly can your emergency support team respond?</h4>
+                            <i class="fa-solid fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>For contracted partners, our emergency technical support teams guarantee a remote response within 15 minutes and on-site deployment within 4 hours depending on the facility's location.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Do you handle international industrial projects?</h4>
+                            <i class="fa-solid fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes. We have successfully executed engineering and automation projects across 15+ countries. Our global logistics team ensures compliance with local industrial regulations and standards.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Are your engineers certified for high-voltage environments?</h4>
+                            <i class="fa-solid fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely. All our electrical engineers hold advanced certifications for high-voltage systems and adhere strictly to global safety protocols including OSHA and IEC standards.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Can you integrate new automation with legacy machinery?</h4>
+                            <i class="fa-solid fa-plus faq-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, retrofitting legacy systems is one of our core specialties. We design custom PLCs, sensors, and IoT gateways to bring modern data collection and automation to older heavy machinery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta bg-navy text-center" style="padding: 80px 0;">
+            <div class="container gs-reveal-up">
+                <h2 class="text-white mb-4">Your Industrial Challenge Starts With a Conversation.</h2>
+                <div class="d-flex justify-content-center" style="gap: 20px; flex-wrap: wrap;">
+                    <a href="404.html" class="btn btn-primary">Request a Custom Quote</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <!-- Footer CTA -->
+    <section class="footer-cta gs-reveal-up">
+        <div class="footer-cta-bg" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&fit=crop&w=1920&q=50&fm=webp');"></div>
+        <div class="container position-relative z-2 text-center">
+            <h2 class="text-white mb-3">Engineering Solutions. Built for Performance.</h2>
+            <p class="text-light mx-auto mb-4" style="max-width: 600px;">From industrial engineering and maintenance to automation and safety, STACKLY helps businesses operate smarter, safer, and more efficiently.</p>
+            <a href="404.html" class="btn btn-primary">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+        <!-- Main Footer -->
+    <footer class="stackly-footer-new" id="mainFooter">
+        <div class="footer-top-accent"></div>
+        <div class="footer-blueprint-bg"></div>
+        
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1: STACKLY -->
+                <div class="footer-col">
+                    <a href="index.html" class="logo">
+                        <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
+                    </a>
+                    <p class="footer-desc">Advanced industrial engineering and maintenance solutions built for precision, safety, and performance.</p>
+                    <div class="footer-socials">
+                        <a href="404.html" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="404.html" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="404.html" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="404.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2: Quick Links -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3: Location Map -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Location Map</h4>
+                    <div class="footer-map" style="border-radius: 8px; overflow: hidden; width: 100%; height: 200px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <iframe class="lazy-map" src="" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15630.932912444102!2d78.16335195!3d11.66723225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf0c5a242c733%3A0x6fbca83dbfb4a36f!2sChinna%20Thirupathi%2C%20Salem%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1683000000000!5m2!1sen!2sin&q=MMR+Complex,+chinna+thirupathi,+near+chinna+muniyappan+kovil,+salem+-636008" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Column 4: Contact Us -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>MMR Complex, chinna thirupathi, near chinna muniyappan kovil, salem -636008</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:6364321780">6364321780</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:info@stackly.example">info@stackly.example</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Monâ€“Fri, 10amâ€“10pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom Bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 STACKLY. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="sep">|</span>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+</html>
