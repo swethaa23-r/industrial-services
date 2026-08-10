@@ -148,146 +148,207 @@
       </div>
     </section>
 
-    <!-- Section 3 & 4: Mission, Vision & Values -->
-    <section class="section-padding bg-navy text-white">
-      <div class="container">
-        <div class="mission-vision-grid">
-          <div class="mv-card-card " data-delay="0.1">
-            <i class="fa-solid fa-bullseye"></i>
-            <h3>Our Mission</h3>
-            <p>Deliver dependable industrial solutions that improve safety, efficiency, and operational performance.</p>
+    <!-- Section 3, 4 & 5: Mission, Vision, Expertise & Stats (Blueprint Reveal) -->
+    <section class="blueprint-section section-padding bg-navy text-white position-relative overflow-hidden" id="blueprintExpertise">
+      <!-- Animated Technical Blueprint Grid Overlay -->
+      <div class="blueprint-grid-bg"></div>
+      <div class="blueprint-lines-overlay">
+        <div class="bp-grid-line line-1"></div>
+        <div class="bp-grid-line line-2"></div>
+        <div class="bp-node node-1"></div>
+        <div class="bp-node node-2"></div>
+      </div>
+
+      <div class="container position-relative z-2">
+        <!-- 1. MISSION & VISION PANELS -->
+        <div class="mission-vision-container">
+          <div class="connecting-line-wrap">
+            <div class="connecting-line"></div>
+            <div class="connecting-node"></div>
           </div>
-          <div class="mv-card-card " data-delay="0.2">
-            <i class="fa-solid fa-eye"></i>
-            <h3>Our Vision</h3>
-            <p>Become a trusted technology-driven partner for smarter and safer industrial operations.</p>
+          <div class="mission-vision-row">
+            <!-- Mission Panel -->
+            <div class="mv-blueprint-panel mission-panel" id="missionPanel">
+              <div class="panel-border-glow"></div>
+              <div class="panel-header">
+                <span class="panel-indicator"><i class="fa-solid fa-crosshairs"></i></span>
+                <h3>Our Mission</h3>
+              </div>
+              <p class="panel-text">Deliver dependable industrial solutions that improve safety, efficiency, and operational performance.</p>
+              <div class="panel-corner corner-tl"></div>
+              <div class="panel-corner corner-tr"></div>
+              <div class="panel-corner corner-bl"></div>
+              <div class="panel-corner corner-br"></div>
+            </div>
+
+            <!-- Vision Panel -->
+            <div class="mv-blueprint-panel vision-panel" id="visionPanel">
+              <div class="panel-border-glow"></div>
+              <div class="panel-header">
+                <span class="panel-indicator"><i class="fa-solid fa-eye"></i></span>
+                <h3>Our Vision</h3>
+              </div>
+              <p class="panel-text">Become a trusted technology-driven partner for smarter and safer industrial operations.</p>
+              <div class="panel-corner corner-tl"></div>
+              <div class="panel-corner corner-tr"></div>
+              <div class="panel-corner corner-bl"></div>
+              <div class="panel-corner corner-br"></div>
+            </div>
           </div>
         </div>
 
+        <!-- 2. OUR EXPERTISE -->
+        <div class="expertise-header-wrap text-center mb-5" id="expertiseHeader">
+          <span class="blueprint-eyebrow"><i class="fa-solid fa-compass-drafting"></i> GLOBAL SCALE</span>
+          <h2 class="blueprint-heading text-white">
+            <span class="word-wrap"><span class="word">Our</span></span>
+            <span class="word-wrap"><span class="word">Expertise</span></span>
+          </h2>
+          <div class="blueprint-line-draw"></div>
+          <p class="blueprint-desc">Delivering world-class engineering, automation, electrical, maintenance and safety solutions for demanding industrial environments.</p>
         </div>
+
+        <!-- 6 Expertise Cards Grid -->
+        <div class="blueprint-expertise-grid" id="expertiseGrid">
+          <!-- Card 1: Engineering (From Left) -->
+          <div class="bp-card bp-enter-left" data-card="1">
+            <div class="card-scan-beam"></div>
+            <div class="card-tech-grid"></div>
+            <div class="bp-card-header">
+              <div class="bp-icon-wrap">
+                <i class="fa-solid fa-compass-drafting"></i>
+              </div>
+              <h4>Engineering</h4>
+            </div>
+            <div class="card-title-line"></div>
+            <p class="bp-card-desc">Complete plant design and implementation combining structural integrity with operational efficiency.</p>
+            <div class="bp-card-corner"></div>
+          </div>
+
+          <!-- Card 2: Maintenance (From Bottom) -->
+          <div class="bp-card bp-enter-bottom" data-card="2">
+            <div class="card-scan-beam"></div>
+            <div class="card-tech-grid"></div>
+            <div class="bp-card-header">
+              <div class="bp-icon-wrap">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+              </div>
+              <h4>Maintenance</h4>
+            </div>
+            <div class="card-title-line"></div>
+            <p class="bp-card-desc">Preventive and reactive maintenance solutions maximizing equipment lifespan and minimizing downtime.</p>
+            <div class="bp-card-corner"></div>
+          </div>
+
+          <!-- Card 3: Automation (From Right) -->
+          <div class="bp-card bp-enter-right" data-card="3">
+            <div class="card-scan-beam"></div>
+            <div class="card-tech-grid"></div>
+            <div class="bp-card-header">
+              <div class="bp-icon-wrap">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <h4>Automation</h4>
+            </div>
+            <div class="card-title-line"></div>
+            <p class="bp-card-desc">Intelligent monitoring and control systems for optimized industrial operations.</p>
+            <div class="bp-card-corner"></div>
+          </div>
+
+          <!-- Card 4: Electrical (From Left) -->
+          <div class="bp-card bp-enter-left" data-card="4">
+            <div class="card-scan-beam"></div>
+            <div class="card-tech-grid"></div>
+            <div class="bp-card-header">
+              <div class="bp-icon-wrap">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <h4>Electrical</h4>
+            </div>
+            <div class="card-title-line"></div>
+            <p class="bp-card-desc">High-voltage engineering, distribution and control systems built for harsh industrial environments.</p>
+            <div class="bp-card-corner"></div>
+          </div>
+
+          <!-- Card 5: Safety (From Bottom) -->
+          <div class="bp-card bp-enter-bottom" data-card="5">
+            <div class="card-scan-beam"></div>
+            <div class="card-tech-grid"></div>
+            <div class="bp-card-header">
+              <div class="bp-icon-wrap">
+                <i class="fa-solid fa-shield-cat"></i>
+              </div>
+              <h4>Safety</h4>
+            </div>
+            <div class="card-title-line"></div>
+            <p class="bp-card-desc">Comprehensive safety audits, system implementation and compliance with global industrial standards.</p>
+            <div class="bp-card-corner"></div>
+          </div>
+
+          <!-- Card 6: Quality (From Right) -->
+          <div class="bp-card bp-enter-right" data-card="6">
+            <div class="card-scan-beam"></div>
+            <div class="card-tech-grid"></div>
+            <div class="bp-card-header">
+              <div class="bp-icon-wrap">
+                <i class="fa-solid fa-medal"></i>
+              </div>
+              <h4>Quality</h4>
+            </div>
+            <div class="card-title-line"></div>
+            <p class="bp-card-desc">Rigorous quality control and assurance practices guaranteeing defect-free industrial execution.</p>
+            <div class="bp-card-corner"></div>
+          </div>
+        </div>
+
+        <!-- 3. PERFORMANCE STATS -->
+        <div class="blueprint-stats-wrap mt-5 pt-5" id="blueprintStats">
+          <div class="stats-top-line"></div>
+          <div class="blueprint-stats-grid">
+            <!-- Stat 1 -->
+            <div class="bp-stat-card">
+              <div class="stat-value-wrap">
+                <span class="stat-number counter" data-target="15">0</span>
+                <span class="stat-suffix">+</span>
+              </div>
+              <div class="stat-draw-line"></div>
+              <p class="stat-label">Years Experience</p>
+            </div>
+
+            <!-- Stat 2 -->
+            <div class="bp-stat-card">
+              <div class="stat-value-wrap">
+                <span class="stat-number counter" data-target="450">0</span>
+                <span class="stat-suffix">+</span>
+              </div>
+              <div class="stat-draw-line"></div>
+              <p class="stat-label">Projects</p>
+            </div>
+
+            <!-- Stat 3 -->
+            <div class="bp-stat-card">
+              <div class="stat-value-wrap">
+                <span class="stat-number counter" data-target="98">0</span>
+                <span class="stat-suffix">%</span>
+              </div>
+              <div class="stat-draw-line"></div>
+              <p class="stat-label">Client Satisfaction</p>
+            </div>
+
+            <!-- Stat 4 -->
+            <div class="bp-stat-card">
+              <div class="stat-value-wrap">
+                <span class="stat-number counter" data-target="24">0</span>
+                <span class="stat-suffix">/7</span>
+              </div>
+              <div class="stat-draw-line"></div>
+              <p class="stat-label">Support</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section>
-
-    <!-- Core Values Section -->
-    <!-- Section 5: Professional Expertise Grid -->
-      <section class="expertise-pro-section section-padding bg-navy text-white">
-        <div class="container">
-          <div class="section-header center mb-5">
-            <span class="subtitle" style="color: var(--c-orange);">Global Scale</span>
-            <h2>Our Expertise</h2>
-            <p class="text-light mt-3" style="max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.7) !important;">Delivering world-class engineering, automation, and maintenance solutions tailored for heavy industrial environments.</p>
-          </div>
-
-          <!-- 3x2 Grid -->
-          <div class="expertise-pro-grid">
-            
-            <div class="pro-card gs-sys-pro-card">
-              <div class="pro-card-header">
-                <div class="pro-icon-box">
-                  <i class="fa-solid fa-compass-drafting"></i>
-                </div>
-                <h4>Engineering</h4>
-              </div>
-              <div class="pro-card-body">
-                <p>Complete plant design and implementation combining structural integrity with operational efficiency.</p>
-              </div>
-            </div>
-
-            <div class="pro-card gs-sys-pro-card">
-              <div class="pro-card-header">
-                <div class="pro-icon-box">
-                  <i class="fa-solid fa-screwdriver-wrench"></i>
-                </div>
-                <h4>Maintenance</h4>
-              </div>
-              <div class="pro-card-body">
-                <p>Proactive and reactive maintenance strategies maximizing equipment lifespan and minimizing downtime.</p>
-              </div>
-            </div>
-
-            <div class="pro-card gs-sys-pro-card">
-              <div class="pro-card-header">
-                <div class="pro-icon-box">
-                  <i class="fa-solid fa-microchip"></i>
-                </div>
-                <h4>Automation</h4>
-              </div>
-              <div class="pro-card-body">
-                <p>Integrating smart monitoring and control systems to optimize heavy industrial operations.</p>
-              </div>
-            </div>
-
-            <div class="pro-card gs-sys-pro-card">
-              <div class="pro-card-header">
-                <div class="pro-icon-box">
-                  <i class="fa-solid fa-bolt"></i>
-                </div>
-                <h4>Electrical</h4>
-              </div>
-              <div class="pro-card-body">
-                <p>High-voltage engineering, distribution, and control panels built for harsh industrial environments.</p>
-              </div>
-            </div>
-
-            <div class="pro-card gs-sys-pro-card">
-              <div class="pro-card-header">
-                <div class="pro-icon-box">
-                  <i class="fa-solid fa-shield-cat"></i>
-                </div>
-                <h4>Safety</h4>
-              </div>
-              <div class="pro-card-body">
-                <p>Comprehensive safety audits, system implementations, and compliance with global industrial standards.</p>
-              </div>
-            </div>
-
-            <div class="pro-card gs-sys-pro-card">
-              <div class="pro-card-header">
-                <div class="pro-icon-box">
-                  <i class="fa-solid fa-medal"></i>
-                </div>
-                <h4>Quality</h4>
-              </div>
-              <div class="pro-card-body">
-                <p>Rigorous quality control and assurance protocols guaranteeing defect-free industrial execution.</p>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Statistics Grid -->
-          <div class="stats-grid gs-sys-stats mt-5 pt-5" style="border-top: 1px solid rgba(255,255,255,0.1);">
-            <div class="stat-card">
-              <div class="stat-num-wrap d-flex justify-content-center align-items-baseline">
-                <h3 class="counter-num exp-counter m-0" data-target="15">0</h3>
-                <span class="stat-plus" style="font-size: 2rem; color: var(--c-orange); margin-left: 5px;">+</span>
-              </div>
-              <p class="mt-2 text-uppercase letter-spacing-1 font-14">Years Experience</p>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num-wrap d-flex justify-content-center align-items-baseline">
-                <h3 class="counter-num exp-counter m-0" data-target="450">0</h3>
-                <span class="stat-plus" style="font-size: 2rem; color: var(--c-orange); margin-left: 5px;">+</span>
-              </div>
-              <p class="mt-2 text-uppercase letter-spacing-1 font-14">Projects</p>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num-wrap d-flex justify-content-center align-items-baseline">
-                <h3 class="counter-num exp-counter m-0" data-target="98">0</h3>
-                <span class="stat-plus" style="font-size: 2rem; color: var(--c-orange); margin-left: 5px;">%</span>
-              </div>
-              <p class="mt-2 text-uppercase letter-spacing-1 font-14">Client Retention</p>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num-wrap d-flex justify-content-center align-items-baseline">
-                <h3 class="counter-num exp-counter m-0" data-target="24">0</h3>
-                <span class="stat-plus" style="font-size: 2rem; color: var(--c-orange); margin-left: 5px;">/7</span>
-              </div>
-              <p class="mt-2 text-uppercase letter-spacing-1 font-14">Support</p>
-            </div>
-          </div>
-
-        </div>
-      </section>
 
       <!-- Section 6: Leadership/Team -->
     <section class="section-padding bg-white">

@@ -258,83 +258,166 @@
 
     </main>
 
-    <!-- Section 4: Industries We Serve -->
-    <section class="section-padding bg-navy" id="industries">
-        <div class="container">
-            <div class="section-header center gs-reveal-up">
-                <span class="subtitle" style="color: var(--c-white);">Sector Expertise</span>
-                <h2 style="color: var(--c-white);">Industries We Serve</h2>
-            </div>
-            
-            <div class="industry-grid">
-                <!-- Industry 1 -->
-                <div class="industry-card gs-reveal-up" data-delay="0.1">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Manufacturing" loading="lazy" decoding="async">
-                    <div class="industry-overlay">
-                        <div class="io-content">
-                            <h3>Manufacturing</h3>
-                            <p class="io-desc">Advanced engineering and maintenance solutions for modern manufacturing facilities.</p>
-                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Industry 2 -->
-                <div class="industry-card gs-reveal-up" data-delay="0.2">
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Automotive" loading="lazy" decoding="async">
-                    <div class="industry-overlay">
-                        <div class="io-content">
-                            <h3>Automotive</h3>
-                            <p class="io-desc">Precision engineering, automation, maintenance, and production support for the automotive industry.</p>
-                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Industry 3 -->
-                <div class="industry-card gs-reveal-up" data-delay="0.3">
-                    <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Energy Sector" loading="lazy" decoding="async">
-                    <div class="industry-overlay">
-                        <div class="io-content">
-                            <h3>Energy Sector</h3>
-                            <p class="io-desc">Reliable engineering and maintenance solutions for conventional and renewable energy infrastructure.</p>
-                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Industry 4 -->
-                <div class="industry-card gs-reveal-up" data-delay="0.4">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Oil & Gas" loading="lazy" decoding="async">
-                    <div class="industry-overlay">
-                        <div class="io-content">
-                            <h3>Oil & Gas</h3>
-                            <p class="io-desc">Engineering, maintenance, inspection, and safety solutions for oil and gas facilities.</p>
-                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Industry 5 -->
-                <div class="industry-card gs-reveal-up" data-delay="0.5">
-                    <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Infrastructure & Construction" loading="lazy" decoding="async">
-                    <div class="industry-overlay">
-                        <div class="io-content">
-                            <h3>Infrastructure & Construction</h3>
-                            <p class="io-desc">Engineering and maintenance solutions for large-scale infrastructure and construction projects.</p>
-                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Industry 6 -->
-                <div class="industry-card gs-reveal-up" data-delay="0.6">
-                    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Pharmaceuticals & Chemicals" loading="lazy" decoding="async">
-                    <div class="industry-overlay">
-                        <div class="io-content">
-                            <h3>Pharmaceuticals & Chemicals</h3>
-                            <p class="io-desc">Specialized engineering, automation, maintenance, and safety solutions for pharmaceutical and chemical facilities.</p>
-                            <a href="404.html" class="io-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Section 4: Industries We Serve (Industrial Sector Explorer) -->
+    <section class="sector-explorer-section section-padding bg-navy text-white position-relative overflow-hidden" id="industries">
+      <!-- Technical Blueprint Background -->
+      <div class="sector-blueprint-bg"></div>
+      <div class="sector-lines-overlay">
+        <div class="sector-bp-line line-h"></div>
+        <div class="sector-bp-node node-a"></div>
+        <div class="sector-bp-node node-b"></div>
+      </div>
+
+      <div class="container position-relative z-2">
+        <!-- Section Header -->
+        <div class="sector-header text-center mb-5" id="sectorHeader">
+          <div class="sector-eyebrow-wrap">
+            <span class="sector-eyebrow"><i class="fa-solid fa-layer-group"></i> SECTOR EXPERTISE</span>
+            <div class="sector-eyebrow-line"></div>
+          </div>
+          <h2 class="sector-heading text-white mt-2">
+            <span class="word-wrap"><span class="word">Industries</span></span>
+            <span class="word-wrap"><span class="word">We</span></span>
+            <span class="word-wrap"><span class="word">Serve</span></span>
+          </h2>
+          <p class="sector-desc mt-3">Engineering and maintenance solutions designed for demanding industries where precision, reliability and performance matter.</p>
         </div>
+
+        <!-- 3x2 Sector Cards Grid -->
+        <div class="sector-grid" id="sectorGrid">
+          <!-- Card 01: Manufacturing -->
+          <div class="sector-card" data-sector="1">
+            <div class="sector-img-wrap">
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Manufacturing" loading="lazy" decoding="async">
+              <div class="sector-overlay"></div>
+              <div class="sector-scan-beam"></div>
+              <div class="sector-tech-grid"></div>
+            </div>
+            <div class="sector-card-content">
+              <div class="sector-top-bar">
+                <span class="sector-number">01</span>
+                <span class="sector-icon"><i class="fa-solid fa-industry"></i></span>
+              </div>
+              <div class="sector-bottom-body">
+                <h3>Manufacturing</h3>
+                <p class="sector-card-desc">Advanced engineering, plant optimization and maintenance solutions for modern manufacturing environments.</p>
+                <a href="404.html" class="sector-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="sector-corner-accent"></div>
+          </div>
+
+          <!-- Card 02: Automotive -->
+          <div class="sector-card" data-sector="2">
+            <div class="sector-img-wrap">
+              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Automotive" loading="lazy" decoding="async">
+              <div class="sector-overlay"></div>
+              <div class="sector-scan-beam"></div>
+              <div class="sector-tech-grid"></div>
+            </div>
+            <div class="sector-card-content">
+              <div class="sector-top-bar">
+                <span class="sector-number">02</span>
+                <span class="sector-icon"><i class="fa-solid fa-car-side"></i></span>
+              </div>
+              <div class="sector-bottom-body">
+                <h3>Automotive</h3>
+                <p class="sector-card-desc">Precision engineering, automation, maintenance and production support for the automotive industry.</p>
+                <a href="404.html" class="sector-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="sector-corner-accent"></div>
+          </div>
+
+          <!-- Card 03: Energy Sector -->
+          <div class="sector-card" data-sector="3">
+            <div class="sector-img-wrap">
+              <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Energy Sector" loading="lazy" decoding="async">
+              <div class="sector-overlay"></div>
+              <div class="sector-scan-beam"></div>
+              <div class="sector-tech-grid"></div>
+            </div>
+            <div class="sector-card-content">
+              <div class="sector-top-bar">
+                <span class="sector-number">03</span>
+                <span class="sector-icon"><i class="fa-solid fa-solar-panel"></i></span>
+              </div>
+              <div class="sector-bottom-body">
+                <h3>Energy Sector</h3>
+                <p class="sector-card-desc">Reliable engineering, maintenance and automation solutions for conventional and renewable energy operations.</p>
+                <a href="404.html" class="sector-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="sector-corner-accent"></div>
+          </div>
+
+          <!-- Card 04: Oil & Gas -->
+          <div class="sector-card" data-sector="4">
+            <div class="sector-img-wrap">
+              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Oil & Gas" loading="lazy" decoding="async">
+              <div class="sector-overlay"></div>
+              <div class="sector-scan-beam"></div>
+              <div class="sector-tech-grid"></div>
+            </div>
+            <div class="sector-card-content">
+              <div class="sector-top-bar">
+                <span class="sector-number">04</span>
+                <span class="sector-icon"><i class="fa-solid fa-oil-well"></i></span>
+              </div>
+              <div class="sector-bottom-body">
+                <h3>Oil & Gas</h3>
+                <p class="sector-card-desc">Safe, reliable and high-performance engineering and maintenance solutions for critical oil and gas facilities.</p>
+                <a href="404.html" class="sector-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="sector-corner-accent"></div>
+          </div>
+
+          <!-- Card 05: Infrastructure & Construction -->
+          <div class="sector-card" data-sector="5">
+            <div class="sector-img-wrap">
+              <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Infrastructure & Construction" loading="lazy" decoding="async">
+              <div class="sector-overlay"></div>
+              <div class="sector-scan-beam"></div>
+              <div class="sector-tech-grid"></div>
+            </div>
+            <div class="sector-card-content">
+              <div class="sector-top-bar">
+                <span class="sector-number">05</span>
+                <span class="sector-icon"><i class="fa-solid fa-helmet-safety"></i></span>
+              </div>
+              <div class="sector-bottom-body">
+                <h3>Infrastructure & Construction</h3>
+                <p class="sector-card-desc">Engineering and maintenance support for large-scale infrastructure and construction projects.</p>
+                <a href="404.html" class="sector-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="sector-corner-accent"></div>
+          </div>
+
+          <!-- Card 06: Pharmaceuticals & Chemicals -->
+          <div class="sector-card" data-sector="6">
+            <div class="sector-img-wrap">
+              <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&fit=crop&w=600&q=50&fm=webp" alt="Pharmaceuticals & Chemicals" loading="lazy" decoding="async">
+              <div class="sector-overlay"></div>
+              <div class="sector-scan-beam"></div>
+              <div class="sector-tech-grid"></div>
+            </div>
+            <div class="sector-card-content">
+              <div class="sector-top-bar">
+                <span class="sector-number">06</span>
+                <span class="sector-icon"><i class="fa-solid fa-flask-vial"></i></span>
+              </div>
+              <div class="sector-bottom-body">
+                <h3>Pharmaceuticals & Chemicals</h3>
+                <p class="sector-card-desc">Precision-focused engineering, automation and maintenance solutions for regulated pharmaceutical and chemical facilities.</p>
+                <a href="404.html" class="sector-link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="sector-corner-accent"></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Section 5: Why Choose Us -->
@@ -548,112 +631,177 @@
         </div>
     </section>
 
-    <!-- Section 8: Performance Statistics -->
-    <section class="stats-section">
-        <div class="stats-bg">
-            <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&fit=crop&w=1920&q=50&fm=webp" alt="Industrial Background" loading="lazy" decoding="async">
-            <div class="stats-overlay"></div>
-        </div>
-        <div class="container stats-container">
-            <div class="stats-grid">
-                <div class="stat-box gs-reveal-up" data-delay="0.1">
-                    <h3 class="counter" data-target="450">0</h3><span>+</span>
-                    <p>Projects Completed</p>
-                </div>
-                <div class="stat-box gs-reveal-up" data-delay="0.2">
-                    <h3 class="counter" data-target="15">0</h3><span>+</span>
-                    <p>Years Experience</p>
-                </div>
-                <div class="stat-box gs-reveal-up" data-delay="0.3">
-                    <h3 class="counter" data-target="98">0</h3><span>%</span>
-                    <p>Client Retention</p>
-                </div>
-                <div class="stat-box gs-reveal-up" data-delay="0.4">
-                    <h3 class="counter" data-target="24">0</h3><span>/7</span>
-                    <p>Technical Support</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Section 9: Testimonials -->
-    <section class="section-padding bg-offwhite position-relative overflow-hidden" id="testimonials">
-        <div class="testi-bg-grid"></div>
+    <section class="precision-conveyor-section section-padding bg-navy position-relative overflow-hidden" id="testimonials">
+        <!-- Blueprint Grid Pattern Overlay & Ambient Glow -->
+        <div class="conveyor-bg-pattern"></div>
+        <div class="conveyor-ambient-glow"></div>
+        
         <div class="container position-relative z-2">
-            <div class="section-header center gs-reveal-up">
-                <span class="subtitle">Client Feedback</span>
-                <h2>Trusted By Global Brands</h2>
+            <!-- Header -->
+            <div class="section-header center mb-5">
+                <span class="conveyor-eyebrow"><i class="fa-solid fa-sliders"></i> CLIENT VOICES</span>
+                <h2 class="conveyor-heading text-white">
+                    <span class="word-wrap"><span class="word">Trusted</span></span>
+                    <span class="word-wrap"><span class="word">by</span></span>
+                    <span class="word-wrap"><span class="word">Teams</span></span>
+                    <span class="word-wrap"><span class="word">That</span></span>
+                    <span class="word-wrap"><span class="word">Demand</span></span>
+                    <span class="word-wrap"><span class="word">Precision</span></span>
+                </h2>
+                <div class="conveyor-precision-line"></div>
+                <p class="conveyor-desc">Real feedback from manufacturing and engineering teams that rely on Stackly for precision, reliability and consistent performance.</p>
             </div>
             
-            <div class="testimonial-slider gs-reveal-up">
-                <div class="testi-track" id="testiTrack">
-                    <!-- Slide 1 -->
-                    <div class="testi-slide">
-                        <div class="testi-card">
-                            <ul class="testi-rating">
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                            </ul>
-                            <p class="testi-text">"STACKLY executed our plant automation upgrade flawlessly. Their safety standards and precision engineering drastically improved our production line efficiency."</p>
-                            <div class="testi-author">
-                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&fit=crop&w=150&q=50&fm=webp" alt="James Wilson" loading="lazy" decoding="async">
-                                <div>
-                                    <h4>James Wilson</h4>
-                                    <span>Operations Director, AutoCorp</span>
+            <!-- Conveyor Carousel Stage -->
+            <div class="conveyor-stage">
+                <div class="conveyor-track" id="conveyorTrack">
+                    <!-- Card 1 -->
+                    <div class="conveyor-card-wrapper" data-index="0">
+                        <div class="conveyor-card">
+                            <!-- Animated Orange Light Border SVG -->
+                            <svg class="card-border-svg" width="100%" height="100%">
+                                <rect class="card-border-rect" x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="14" ry="14" />
+                            </svg>
+                            <div class="card-inner">
+                                <div class="card-top-row">
+                                    <div class="card-rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="card-badge"><i class="fa-solid fa-location-dot"></i> Detroit, MI • Automotive</span>
+                                    <div class="card-quote-icon">
+                                        <i class="fa-solid fa-quote-right"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-quote-wrapper">
+                                    <p class="card-quote-text">"STACKLY executed our assembly line automation and structural refit with zero operational downtime. Their precision engineering cut our cycle time by 28% while maintaining rigorous safety standards."</p>
+                                </div>
+
+                                <div class="card-divider">
+                                    <span class="divider-node"></span>
+                                </div>
+                                
+                                <div class="card-author-row">
+                                    <div class="author-avatar-wrap">
+                                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&fit=crop&w=200&q=80" alt="Marcus Vance" class="author-avatar" loading="lazy">
+                                    </div>
+                                    <div class="author-info">
+                                        <h4 class="author-name">Marcus Vance</h4>
+                                        <p class="author-role">Director of Plant Operations</p>
+                                        <span class="author-company"><i class="fa-solid fa-industry"></i> Vanguard Manufacturing</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Slide 2 -->
-                    <div class="testi-slide">
-                        <div class="testi-card">
-                            <ul class="testi-rating">
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                            </ul>
-                            <p class="testi-text">"The mechanical refit of our offshore rig was a monumental task. STACKLY'S rapid response and technical execution were simply outstanding."</p>
-                            <div class="testi-author">
-                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&fit=crop&w=150&q=50&fm=webp" alt="Sarah Jenkins" loading="lazy" decoding="async">
-                                <div>
-                                    <h4>Sarah Jenkins</h4>
-                                    <span>VP Engineering, Nexus Energy</span>
+
+                    <!-- Card 2 -->
+                    <div class="conveyor-card-wrapper" data-index="1">
+                        <div class="conveyor-card">
+                            <svg class="card-border-svg" width="100%" height="100%">
+                                <rect class="card-border-rect" x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="14" ry="14" />
+                            </svg>
+                            <div class="card-inner">
+                                <div class="card-top-row">
+                                    <div class="card-rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="card-badge"><i class="fa-solid fa-location-dot"></i> Houston, TX • Energy Grid</span>
+                                    <div class="card-quote-icon">
+                                        <i class="fa-solid fa-quote-right"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-quote-wrapper">
+                                    <p class="card-quote-text">"The predictive maintenance protocol STACKLY installed across our turbine systems prevented critical failure points during peak production. Their 24/7 technical team is unparalleled."</p>
+                                </div>
+
+                                <div class="card-divider">
+                                    <span class="divider-node"></span>
+                                </div>
+                                
+                                <div class="card-author-row">
+                                    <div class="author-avatar-wrap">
+                                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&fit=crop&w=200&q=80" alt="Dr. Elena Rostova" class="author-avatar" loading="lazy">
+                                    </div>
+                                    <div class="author-info">
+                                        <h4 class="author-name">Dr. Elena Rostova</h4>
+                                        <p class="author-role">Chief Quality & Reliability Officer</p>
+                                        <span class="author-company"><i class="fa-solid fa-bolt"></i> Apex Energy Systems</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Slide 3 -->
-                    <div class="testi-slide">
-                        <div class="testi-card">
-                            <ul class="testi-rating">
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star-half-stroke"></i></li>
-                            </ul>
-                            <p class="testi-text">"Finding a partner capable of executing complex HVAC and utility grids for our pharmaceutical facility was critical. STACKLY delivered on every metric."</p>
-                            <div class="testi-author">
-                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&fit=crop&w=150&q=50&fm=webp" alt="Michael Chang" loading="lazy" decoding="async">
-                                <div>
-                                    <h4>Michael Chang</h4>
-                                    <span>Facility Head, BioPharm Solutions</span>
+
+                    <!-- Card 3 -->
+                    <div class="conveyor-card-wrapper" data-index="2">
+                        <div class="conveyor-card">
+                            <svg class="card-border-svg" width="100%" height="100%">
+                                <rect class="card-border-rect" x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="14" ry="14" />
+                            </svg>
+                            <div class="card-inner">
+                                <div class="card-top-row">
+                                    <div class="card-rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="card-badge"><i class="fa-solid fa-location-dot"></i> Boston, MA • BioPharma</span>
+                                    <div class="card-quote-icon">
+                                        <i class="fa-solid fa-quote-right"></i>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-quote-wrapper">
+                                    <p class="card-quote-text">"Managing sterile room mechanical grids requires strict compliance. STACKLY engineered a cleanroom HVAC and electrical solution that exceeded ISO 14644 certification requirements on time."</p>
+                                </div>
+
+                                <div class="card-divider">
+                                    <span class="divider-node"></span>
+                                </div>
+                                
+                                <div class="card-author-row">
+                                    <div class="author-avatar-wrap">
+                                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&fit=crop&w=200&q=80" alt="Robert Thorne" class="author-avatar" loading="lazy">
+                                    </div>
+                                    <div class="author-info">
+                                        <h4 class="author-name">Robert Thorne</h4>
+                                        <p class="author-role">VP of Supply Chain & Facilities</p>
+                                        <span class="author-company"><i class="fa-solid fa-vial"></i> BioSynthetix Labs</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-                
-                <div class="testi-controls">
-                    <button id="testiPrev" aria-label="Previous testimonial"><i class="fa-solid fa-arrow-left"></i></button>
-                    <div class="testi-pagination" id="testiPagination"></div>
-                    <button id="testiNext" aria-label="Next testimonial"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <!-- Conveyor Controls & Counter -->
+            <div class="conveyor-controls-wrap">
+                <button class="conveyor-nav-btn prev-btn" id="conveyorPrev" aria-label="Previous testimonial">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="conveyor-counter" id="testiCounter">
+                    <span class="current-num">01</span> / <span class="total-num">03</span>
                 </div>
+                <button class="conveyor-nav-btn next-btn" id="conveyorNext" aria-label="Next testimonial">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>

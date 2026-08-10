@@ -23,11 +23,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Close sidebar when clicking links on mobile
-    const dbLinks = document.querySelectorAll('.db-menu a');
+    // Close sidebar when clicking links on mobile + TAB SWITCHING
+    const dbLinks = document.querySelectorAll('.db-menu a[data-tab]');
+    const allTabPanes = document.querySelectorAll('.db-tab-pane');
+
     dbLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 991 && sidebar.classList.contains('show')) {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetTabId = link.getAttribute('data-tab');
+            const targetPane = document.getElementById(targetTabId);
+            if (!targetPane) return;
+
+            // 1. Hide all tab panes
+            allTabPanes.forEach(pane => {
+                pane.style.display = 'none';
+            });
+
+            // 2. Remove active class from all sidebar links
+            dbLinks.forEach(l => l.classList.remove('active'));
+
+            // 3. Show target pane with GSAP animation
+            targetPane.style.display = 'block';
+            if (typeof gsap !== 'undefined') {
+                gsap.fromTo(targetPane, 
+                    { opacity: 0, y: 18 }, 
+                    { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' }
+                );
+            }
+
+            // 4. Set clicked link as active
+            link.classList.add('active');
+
+            // 5. Animate counters & progress bars in newly visible tab
+            if (typeof animateCounters === 'function') animateCounters(targetPane);
+            if (typeof animateProgressBars === 'function') animateProgressBars(targetPane);
+
+            // 6. Scroll to top of content area
+            const dbContent = document.querySelector('.db-content');
+            if (dbContent) dbContent.scrollTop = 0;
+            const dbMain = document.querySelector('.db-main');
+            if (dbMain) dbMain.scrollTop = 0;
+
+            // 7. Close sidebar on mobile
+            if (window.innerWidth <= 991 && sidebar && sidebar.classList.contains('show')) {
                 toggleSidebar();
             }
         });

@@ -87,13 +87,20 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="inner-hero" style="height: 450px; display: flex; align-items: center; justify-content: center; position: relative;">
+        <section class="inner-hero contact-hero-section" style="height: 450px; display: flex; align-items: center; justify-content: center; position: relative;">
             <div class="hero-bg-img" style="background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&fit=crop&w=1920&q=80&fm=webp');"></div>
             <div class="blueprint-overlay"></div>
             <div class="inner-hero-overlay"></div>
-            <div class="container relative z-10 gs-reveal-up text-center">
-                <h1 class="text-white mb-3">Let's Talk About Your Industrial Challenge</h1>
-                <p class="text-light lead-text mb-4" style="color: rgba(255,255,255,0.9) !important; max-width: 800px; margin: 0 auto; font-size: 1.15rem; line-height: 1.6;">Get in touch with our engineering experts to discuss your next industrial project or maintenance requirements.</p>
+            <div class="container relative z-10 text-center">
+                <h1 class="text-white mb-3 contact-hero-heading">
+                    <span class="word-wrap"><span class="word">Let's</span></span>
+                    <span class="word-wrap"><span class="word">Talk</span></span>
+                    <span class="word-wrap"><span class="word">About</span></span>
+                    <span class="word-wrap"><span class="word">Your</span></span>
+                    <span class="word-wrap"><span class="word">Industrial</span></span>
+                    <span class="word-wrap"><span class="word">Challenge</span></span>
+                </h1>
+                <p class="text-light lead-text mb-4 contact-hero-desc" style="color: rgba(255,255,255,0.95) !important; max-width: 800px; margin: 0 auto; font-size: 1.15rem; line-height: 1.6;">Get in touch with our engineering experts to discuss your next industrial project or maintenance requirements.</p>
                 <div class="breadcrumbs justify-content-center d-flex mt-4" style="color: white;">
                     <a href="index.html" style="color: white; text-decoration: none;">Home</a> <span style="margin: 0 10px; color: var(--c-orange);">/</span> <span class="current" style="color: var(--c-orange);">Contact</span>
                 </div>
@@ -101,28 +108,28 @@
         </section>
 
         <!-- Contact Info Cards -->
-        <section class="section-padding bg-offwhite" style="margin-top: -80px; position: relative; z-index: 20; padding-top: 0;">
+        <section class="section-padding bg-offwhite contact-cards-container" style="margin-top: -80px; position: relative; z-index: 20; padding-top: 0;">
             <div class="container">
-                <div class="contact-info-grid">
-                    <div class="c-info-card gs-reveal-up" data-delay="0.1">
+                <div class="contact-info-grid" id="contactInfoGrid">
+                    <div class="c-info-card" data-card="1">
                         <div class="c-icon"><i class="fa-solid fa-phone-volume"></i></div>
                         <h4>Phone</h4>
                         <p class="c-detail"><a href="tel:6364321780">6364321780</a></p>
                         <span class="c-sub">24/7 Industrial Support</span>
                     </div>
-                    <div class="c-info-card gs-reveal-up" data-delay="0.2">
+                    <div class="c-info-card" data-card="2">
                         <div class="c-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
                         <h4>Email</h4>
                         <p class="c-detail"><a href="mailto:info@stackly.example">info@stackly.example</a></p>
-                        <span class="c-sub">info@stackly.example</span>
+                        <span class="c-sub">Quick Online Inquiry</span>
                     </div>
-                    <div class="c-info-card gs-reveal-up" data-delay="0.3">
+                    <div class="c-info-card" data-card="3">
                         <div class="c-icon"><i class="fa-solid fa-building"></i></div>
                         <h4>Office</h4>
                         <p class="c-detail">MMR Complex, Chinna Thirupathi</p>
                         <span class="c-sub">Salem - 636008</span>
                     </div>
-                    <div class="c-info-card gs-reveal-up" data-delay="0.4">
+                    <div class="c-info-card" data-card="4">
                         <div class="c-icon"><i class="fa-regular fa-clock"></i></div>
                         <h4>Working Hours</h4>
                         <p class="c-detail">Monday – Saturday</p>
@@ -240,10 +247,16 @@
                                 </div>
                             </div>
                             
-                            <div class="location-details mt-4">
-                                <h5>Headquarters</h5>
-                                <p class="text-light">MMR Complex, chinna thirupathi,<br>near chinna muniyappan kovil,<br>salem -636008</p>
-                                <a href="404.html" class="text-link mt-2">Get Directions <i class="fa-solid fa-arrow-right"></i></a>
+                            <div class="location-details mt-4 p-4" style="background: var(--c-offwhite); border-radius: 10px; border: 1px solid var(--c-border);">
+                                <h5 style="color: var(--c-navy); font-weight: 800; font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                                    <i class="fa-solid fa-building-flag" style="color: var(--c-orange);"></i> Headquarters
+                                </h5>
+                                <p style="color: var(--c-navy) !important; font-weight: 600; font-size: 1rem; line-height: 1.6; margin-bottom: 14px;">
+                                    MMR Complex, Chinna Thirupathi,<br>
+                                    Near Chinna Muniyappan Kovil,<br>
+                                    Salem - 636008
+                                </p>
+                                <a href="404.html" style="color: var(--c-orange); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">Get Directions <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                         

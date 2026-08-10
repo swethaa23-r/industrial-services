@@ -29,9 +29,6 @@
         <div class="split-left" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&fit=crop&w=1920&q=50&fm=webp');">
             <div class="split-overlay"></div>
             <div class="split-content gs-reveal-up">
-                <a href="index.html" class="logo text-white mb-5 d-inline-block">
-                    <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
-                </a>
                 <h1 class="text-white">Powering Industry Through Better Engineering</h1>
                 <p class="text-light mt-3" style="color: rgba(255,255,255,0.8) !important; max-width: 400px;">Join the world's leading industrial platform. Design, monitor, and optimize your plant operations.</p>
             </div>
@@ -47,8 +44,7 @@
                 </a>
 
                 <div class="auth-header">
-                    <a href="index.html" class="text-link d-inline-block mb-3" style="text-decoration:none;"><i class="fa-solid fa-arrow-left"></i> Go Back to Home</a>
-                    <h2>Welcome Back</h2>
+                    <h2 class="smoke-rise-heading"><span class="smoke-word">Welcome</span> <span class="smoke-word">Back</span></h2>
                     <p>Sign in to access your STACKLY dashboard.</p>
                 </div>
                 
@@ -112,13 +108,20 @@
                     </div>
                     
                     <div class="gs-auth-stagger">
-                        <button type="submit" class="btn btn-primary btn-lg w-100 mt-2" id="loginBtn">
+                        <button type="submit" class="btn btn-primary btn-highlight btn-lg w-100 mt-2" id="loginBtn">
                             Sign In <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
                     
-                    <div class="auth-footer gs-auth-stagger text-center mt-4">
-                        <p>Don't have an account? <a href="signup.html" class="text-link font-bold">Sign Up</a></p>
+                    <div class="auth-footer text-center mt-4">
+                        <div class="mb-3 auth-switch-wrapper">
+                            <p class="mb-0 auth-switch-text">Don't have an account? <a href="signup.html" class="text-link font-bold auth-switch-btn ms-1" style="color: var(--c-orange); font-weight: 700; text-decoration: underline;">Sign Up</a></p>
+                        </div>
+                        <div class="pt-3 border-top auth-home-wrapper" style="border-color: rgba(11,31,51,0.08) !important;">
+                            <a href="index.html" class="text-link font-bold d-inline-flex align-items-center gap-2 auth-home-link" style="text-decoration:none; color: var(--c-navy); font-weight: 700;">
+                                <i class="fa-solid fa-house auth-home-icon"></i> Go Back to Home
+                            </a>
+                        </div>
                     </div>
                 </form>
             </div>

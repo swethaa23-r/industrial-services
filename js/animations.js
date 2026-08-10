@@ -7,16 +7,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Robust vanilla JS counter
 function runCounter(el, target, durationMs = 2000) {
+    if (!el) return;
+    const numericTarget = parseInt(target, 10);
+    if (isNaN(numericTarget)) return;
+
+    if (el.dataset.counterRunning === "true") return;
+    el.dataset.counterRunning = "true";
+
     let startTimestamp = null;
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / durationMs, 1);
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        el.innerText = Math.floor(easeOut * target);
+        el.textContent = Math.floor(easeOut * numericTarget);
         if (progress < 1) {
             window.requestAnimationFrame(step);
         } else {
-            el.innerText = target;
+            el.textContent = numericTarget;
+            el.dataset.counterRunning = "false";
         }
     };
     window.requestAnimationFrame(step);
@@ -47,6 +55,12 @@ function initResponsiveAnimations() {
         initFooterAnimation(isMobile);
         initGravityFormAnimation(isMobile);
         initClipPathReveals(isMobile);
+        initIndustrialSectorExplorer(isMobile);
+        initGlobalImpactDashboard(isMobile);
+        initTrustedBrandsTestimonials(isMobile);
+        initContactPageAnimations(isMobile);
+        initSmokeRiseAnimation();
+        initAuthFooterAnimations();
     });
 }
 
@@ -181,19 +195,41 @@ function initScrollReveals(isMobile = false) {
     });
 }
 function initCounters(isMobile = false) {
-    const counters = document.querySelectorAll('.counter');
+    const counters = document.querySelectorAll('.counter, .exp-counter, .counter-num, .stat-number, [data-target]');
     
     counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
+        let rawTarget = counter.getAttribute('data-target');
+        if (!rawTarget || isNaN(parseInt(rawTarget, 10))) {
+            rawTarget = counter.textContent.trim();
+        }
         
-        ScrollTrigger.create({
-            trigger: counter,
-            start: 'top 90%',
-            onEnter: () => {
-                runCounter(counter, target, 2000);
-            },
-            once: true
-        });
+        const target = parseInt(rawTarget, 10);
+        if (isNaN(target)) return;
+
+        counter.setAttribute('data-target', target);
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        runCounter(counter, target, 2000);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            observer.observe(counter);
+        } else if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.create({
+                trigger: counter,
+                start: 'top 90%',
+                once: true,
+                onEnter: () => {
+                    runCounter(counter, target, 2000);
+                }
+            });
+        } else {
+            runCounter(counter, target, 2000);
+        }
     });
 }
 function initAboutAnimation(isMobile = false) {
@@ -268,117 +304,281 @@ function initProcessAnimation(isMobile = false) {
 }
 function initTestimonialAnimation(isMobile = false) {
     const section = document.querySelector('#testimonials');
-    const track = document.getElementById('testiTrack');
-    if (!section || !track) return;
-    const slides = track.querySelectorAll('.testi-slide');
-    const prevBtn = document.getElementById('testiPrev');
-    const nextBtn = document.getElementById('testiNext');
-    const pagination = document.getElementById('testiPagination');
-    let currentIndex = 0;
-    let autoRotateInterval;
-    let isAnimating = false;
-    // Create pagination dots
-    slides.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('testi-dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
-        pagination.appendChild(dot);
-    });
+    if (!section) return;
+
+    const cards = Array.from(section.querySelectorAll('.conveyor-card-wrapper'));
+    const prevBtn = document.getElementById('conveyorPrev');
+    const nextBtn = document.getElementById('conveyorNext');
+    const counterCurrent = section.querySelector('.current-num');
+    const borderRects = section.querySelectorAll('.card-border-rect');
     
-    const dots = pagination.querySelectorAll('.testi-dot');
-    function animateSlideIn(slide) {
-        const img = slide.querySelector('.testi-author img');
-        const stars = slide.querySelectorAll('.testi-rating li');
-        const text = slide.querySelector('.testi-text');
-        const name = slide.querySelector('.testi-author h4');
-        const desc = slide.querySelector('.testi-author span');
-        const tl = gsap.timeline();
-        
-        tl.fromTo(slide, { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out' })
-          .fromTo(img, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.5)' }, '-=0.2')
-          .fromTo(stars, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.1, ease: 'power1.out' }, '-=0.3')
-          .fromTo(text, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.1')
-          .fromTo([name, desc], { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.1, ease: 'power2.out' }, '-=0.2');
-          
-        return tl;
+    if (cards.length === 0) return;
+
+    let currentIndex = 0;
+    let autoPlayTimer = null;
+    let isAnimating = false;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Animated light running around active border SVG
+    borderRects.forEach(rect => {
+        gsap.to(rect, {
+            strokeDashoffset: -490,
+            duration: 4,
+            repeat: -1,
+            ease: "none"
+        });
+    });
+
+    function getSlotConfig(slot, mobile) {
+        if (mobile) {
+            if (slot === 0) {
+                return { x: 0, scale: 1, rotation: 0, opacity: 1, zIndex: 10, pointerEvents: 'auto' };
+            } else if (slot === 1) {
+                return { x: '125%', scale: 0.85, rotation: 0, opacity: 0, zIndex: 1, pointerEvents: 'none' };
+            } else {
+                return { x: '-125%', scale: 0.85, rotation: 0, opacity: 0, zIndex: 1, pointerEvents: 'none' };
+            }
+        } else {
+            if (slot === 0) {
+                return { x: 0, scale: 1, rotation: 0, opacity: 1, zIndex: 10, pointerEvents: 'auto' };
+            } else if (slot === 1) {
+                return { x: 380, scale: 0.88, rotation: 3, opacity: 0.65, zIndex: 2, pointerEvents: 'auto' };
+            } else {
+                return { x: -380, scale: 0.88, rotation: -3, opacity: 0.65, zIndex: 2, pointerEvents: 'auto' };
+            }
+        }
     }
-    function goToSlide(index) {
-        if (isAnimating || index === currentIndex) return;
-        isAnimating = true;
-        const currentSlide = slides[currentIndex];
-        const nextSlide = slides[index];
-        // Update dots
-        dots[currentIndex].classList.remove('active');
-        dots[index].classList.add('active');
-        // Fade out current
-        gsap.to(currentSlide, { 
-            opacity: 0, 
-            x: isMobile ? -20 : -50, 
-            duration: 0.5, 
-            ease: 'power2.in',
-            onComplete: () => {
-                currentSlide.classList.remove('active');
-                nextSlide.classList.add('active');
-                animateSlideIn(nextSlide).eventCallback('onComplete', () => {
-                    isAnimating = false;
+
+    function updateConveyorPositions(immediate = false) {
+        const mobileState = window.innerWidth < 768;
+
+        cards.forEach((card, i) => {
+            const slot = (i - currentIndex + cards.length) % cards.length;
+            const config = getSlotConfig(slot, mobileState);
+            const quoteText = card.querySelector('.card-quote-text');
+            const stars = card.querySelectorAll('.card-rating i');
+            const avatar = card.querySelector('.author-avatar');
+
+            if (slot === 0) {
+                card.classList.add('is-active-card');
+            } else {
+                card.classList.remove('is-active-card');
+            }
+
+            if (immediate || reduceMotion) {
+                gsap.set(card, {
+                    x: config.x,
+                    scale: config.scale,
+                    rotation: config.rotation,
+                    opacity: config.opacity,
+                    zIndex: config.zIndex,
+                    pointerEvents: config.pointerEvents
                 });
+                isAnimating = false;
+            } else {
+                gsap.to(card, {
+                    x: config.x,
+                    scale: config.scale,
+                    rotation: config.rotation,
+                    opacity: config.opacity,
+                    zIndex: config.zIndex,
+                    pointerEvents: config.pointerEvents,
+                    duration: 0.75,
+                    ease: "power3.out",
+                    onComplete: () => {
+                        isAnimating = false;
+                    }
+                });
+
+                if (slot === 0) {
+                    gsap.fromTo(stars, 
+                        { scale: 0, opacity: 0 }, 
+                        { scale: 1, opacity: 1, duration: 0.4, stagger: 0.06, ease: "back.out(1.7)", delay: 0.15 }
+                    );
+                    gsap.fromTo(quoteText, 
+                        { opacity: 0, y: 15 }, 
+                        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", delay: 0.2 }
+                    );
+                    gsap.fromTo(avatar, 
+                        { scale: 0.8, rotation: -10 }, 
+                        { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.5)", delay: 0.25 }
+                    );
+                }
             }
         });
-        currentIndex = index;
-    }
-    function nextSlide() {
-        let nextIndex = (currentIndex + 1) % slides.length;
-        goToSlide(nextIndex);
-    }
-    function prevSlide() {
-        let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-        goToSlide(prevIndex);
-    }
-    if (nextBtn) nextBtn.addEventListener('click', () => {
-        nextSlide();
-        resetAutoRotate();
-    });
-    
-    if (prevBtn) prevBtn.addEventListener('click', () => {
-        prevSlide();
-        resetAutoRotate();
-    });
-    function startAutoRotate() {
-        autoRotateInterval = setInterval(nextSlide, 5000);
-    }
-    function resetAutoRotate() {
-        clearInterval(autoRotateInterval);
-        startAutoRotate();
-    }
-    // Pause on hover
-    track.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
-    track.addEventListener('mouseleave', startAutoRotate);
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
-        prevBtn.addEventListener('mouseleave', startAutoRotate);
-    }
-    if (nextBtn) {
-        nextBtn.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
-        nextBtn.addEventListener('mouseleave', startAutoRotate);
-    }
-    
-    pagination.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
-    pagination.addEventListener('mouseleave', startAutoRotate);
-    // Initial setup
-    slides.forEach(s => s.classList.remove('active'));
-    slides[0].classList.add('active');
-    
-    // Only animate initial slide when section is scrolled into view
-    ScrollTrigger.create({
-        trigger: section,
-        start: 'top 70%',
-        once: true,
-        onEnter: () => {
-            animateSlideIn(slides[0]);
-            startAutoRotate();
+
+        if (counterCurrent) {
+            counterCurrent.textContent = String(currentIndex + 1).padStart(2, '0');
         }
+    }
+
+    // Initialize initial slot positions
+    updateConveyorPositions(true);
+
+    if (!reduceMotion) {
+        // ScrollTrigger entrance timeline
+        const scrollTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: section,
+                start: "top 75%",
+                toggleActions: "play none none none",
+                once: true
+            }
+        });
+
+        // 1. Eyebrow upward with fade-in
+        scrollTl.fromTo(section.querySelectorAll('.conveyor-eyebrow'), 
+            { y: 30, opacity: 0 }, 
+            { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }
+        );
+
+        // 2. Heading split-text style word reveal
+        scrollTl.fromTo(section.querySelectorAll('.conveyor-heading .word'), 
+            { y: '100%', opacity: 0 }, 
+            { y: '0%', opacity: 1, duration: 0.8, stagger: 0.08, ease: 'power3.out' }, 
+            "-=0.4"
+        );
+
+        // 3. Draw horizontal orange precision line
+        scrollTl.fromTo(section.querySelectorAll('.conveyor-precision-line'), 
+            { scaleX: 0 }, 
+            { scaleX: 1, duration: 0.8, ease: 'power3.out' }, 
+            "-=0.5"
+        );
+
+        // 4. Description
+        scrollTl.fromTo(section.querySelectorAll('.conveyor-desc'), 
+            { y: 20, opacity: 0 }, 
+            { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, 
+            "-=0.5"
+        );
+
+        // 5. Conveyor cards entrance from horizontal positions
+        cards.forEach((card, i) => {
+            const slot = (i - currentIndex + cards.length) % cards.length;
+            const config = getSlotConfig(slot, window.innerWidth < 768);
+            const fromX = slot === 0 ? 0 : (slot === 1 ? 450 : -450);
+
+            scrollTl.fromTo(card, 
+                { x: fromX, y: 50, opacity: 0, scale: 0.85 }, 
+                { x: config.x, y: 0, opacity: config.opacity, scale: config.scale, rotation: config.rotation, duration: 0.9, ease: "power3.out" }, 
+                "-=0.7"
+            );
+        });
+
+        // 6. Active card star stagger & quote reveal & avatar animation
+        const activeCard = cards[currentIndex];
+        if (activeCard) {
+            scrollTl.fromTo(activeCard.querySelectorAll('.card-rating i'), 
+                { scale: 0, opacity: 0 }, 
+                { scale: 1, opacity: 1, duration: 0.4, stagger: 0.08, ease: "back.out(1.7)" }, 
+                "-=0.3"
+            );
+            scrollTl.fromTo(activeCard.querySelector('.card-quote-text'), 
+                { opacity: 0, y: 20 }, 
+                { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 
+                "-=0.2"
+            );
+            scrollTl.fromTo(activeCard.querySelector('.author-avatar'), 
+                { scale: 0.8, rotation: -10 }, 
+                { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(1.5)" }, 
+                "-=0.3"
+            );
+        }
+
+        // 7. Controls reveal
+        scrollTl.fromTo(section.querySelectorAll('.conveyor-controls-wrap'), 
+            { y: 20, opacity: 0 }, 
+            { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }, 
+            "-=0.3"
+        );
+
+        scrollTl.call(() => {
+            startAutoplay();
+        });
+    } else {
+        startAutoplay();
+    }
+
+    function goToNext() {
+        if (isAnimating) return;
+        isAnimating = true;
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateConveyorPositions(false);
+    }
+
+    function goToPrev() {
+        if (isAnimating) return;
+        isAnimating = true;
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        updateConveyorPositions(false);
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            goToNext();
+            resetAutoplay();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            goToPrev();
+            resetAutoplay();
+        });
+    }
+
+    cards.forEach((card, i) => {
+        card.addEventListener('click', () => {
+            if (i !== currentIndex && !isAnimating) {
+                isAnimating = true;
+                currentIndex = i;
+                updateConveyorPositions(false);
+                resetAutoplay();
+            }
+        });
+    });
+
+    section.setAttribute('tabindex', '0');
+    section.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            goToNext();
+            resetAutoplay();
+        } else if (e.key === 'ArrowLeft') {
+            goToPrev();
+            resetAutoplay();
+        }
+    });
+
+    function startAutoplay() {
+        if (!autoPlayTimer) {
+            autoPlayTimer = setInterval(goToNext, 4500);
+        }
+    }
+
+    function stopAutoplay() {
+        if (autoPlayTimer) {
+            clearInterval(autoPlayTimer);
+            autoPlayTimer = null;
+        }
+    }
+
+    function resetAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+    }
+
+    section.addEventListener('mouseenter', stopAutoplay);
+    section.addEventListener('mouseleave', startAutoplay);
+    section.addEventListener('focusin', stopAutoplay);
+    section.addEventListener('focusout', startAutoplay);
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            updateConveyorPositions(true);
+        }, 150);
     });
 }
 function initFooterAnimation(isMobile = false) {
@@ -614,173 +814,227 @@ function initAboutPageAnimations() {
             });
         });
     });
-    // --- 7. MISSION / VISION ---
-    mm.add({
-        isDesktop: "(min-width: 992px)",
-        isMobile: "(max-width: 991px)"
-    }, (context) => {
-        let { isDesktop, isMobile } = context.conditions;
-        const mvCards = document.querySelectorAll('.mission-vision-grid > div');
-        if (mvCards.length >= 2) {
-            const mCard = mvCards[0];
-            const vCard = mvCards[1];
-            
-            const moveX = isDesktop ? 80 : 30;
-            const rotY = isDesktop ? 8 : 2;
-            const mvTl = gsap.timeline({ scrollTrigger: { trigger: '.mission-vision-grid', start: "top 75%", once: true } });
-            mvTl.fromTo(mCard, { x: -moveX, rotationY: -rotY, opacity: 0 }, { x: 0, rotationY: isMobile ? 0 : 0, opacity: 1, duration: 1, ease: "power3.out" }, 0)
-                .fromTo(vCard, { x: moveX, rotationY: rotY, opacity: 0 }, { x: 0, rotationY: isMobile ? 0 : 0, opacity: 1, duration: 1, ease: "power3.out" }, 0);
-            
-            const mIcon = mvCards[0].querySelector('i');
-            const vIcon = mvCards[1].querySelector('i');
-            
-            if (mIcon) mvTl.fromTo(mIcon, { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)" }, "-=0.4");
-            if (vIcon) mvTl.fromTo(vIcon, { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)" }, "-=0.6");
-        }
-    });
-    // --- 11. PROFESSIONAL EXPERTISE GRID & STATISTICS ---
-    const proSection = document.querySelector('.expertise-pro-section');
-    if (proSection) {
-        const cards = proSection.querySelectorAll('.gs-sys-pro-card');
-        const statsGrid = proSection.querySelector('.gs-sys-stats');
-        const counters = proSection.querySelectorAll('.exp-counter');
-        if (cards.length > 0) {
-            ScrollTrigger.create({
-                trigger: proSection,
-                start: "top 80%",
-                once: true,
-                onEnter: () => {
-                    gsap.fromTo(cards, 
-                        { opacity: 0, y: 30 }, 
-                        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" }
+    // --- 7. INDUSTRIAL BLUEPRINT SECTION (MISSION, VISION, EXPERTISE & STATS) ---
+    initIndustrialBlueprintSection();
+}
+
+function initIndustrialBlueprintSection() {
+    const section = document.getElementById('blueprintExpertise');
+    if (!section) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.innerWidth < 768;
+
+    // Background technical grid infinite slow drift
+    const gridBg = section.querySelector('.blueprint-grid-bg');
+    if (gridBg && !reduceMotion) {
+        gsap.to(gridBg, {
+            backgroundPosition: "40px 40px",
+            duration: 30,
+            repeat: -1,
+            ease: "none"
+        });
+    }
+
+    if (reduceMotion) {
+        gsap.set(section.querySelectorAll('.mv-blueprint-panel, .bp-card, .bp-stat-card, .connecting-line, .connecting-node, .blueprint-line-draw, .stat-draw-line'), {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            scaleX: 1,
+            rotation: 0,
+            width: '100%'
+        });
+        
+        section.querySelectorAll('.stat-number').forEach(num => {
+            num.textContent = num.getAttribute('data-target');
+        });
+        return;
+    }
+
+    // --- 1. MISSION + VISION ANIMATION ---
+    const mvContainer = section.querySelector('.mission-vision-container');
+    if (mvContainer) {
+        const mvTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: mvContainer,
+                start: "top 75%",
+                toggleActions: "play none none none",
+                once: true
+            }
+        });
+
+        // 1. Thin orange line draws across
+        mvTl.fromTo('.connecting-line',
+            { scaleX: 0 },
+            { scaleX: 1, duration: 1, ease: "power3.inOut" }
+        );
+
+        // 2. Traveling glowing node dot
+        mvTl.fromTo('.connecting-node',
+            { scale: 0, x: '-200px' },
+            { scale: 1, x: '200px', duration: 1.2, ease: "power2.inOut" },
+            "-=0.8"
+        );
+
+        // 3. Mission panel reveals from left
+        mvTl.fromTo('#missionPanel',
+            { x: isMobile ? -30 : -80, opacity: 0, scale: 0.95 },
+            { x: 0, opacity: 1, scale: 1, duration: 0.9, ease: "power3.out" },
+            "-=0.9"
+        );
+
+        // 4. Vision panel reveals from right
+        mvTl.fromTo('#visionPanel',
+            { x: isMobile ? 30 : 80, opacity: 0, scale: 0.95 },
+            { x: 0, opacity: 1, scale: 1, duration: 0.9, ease: "power3.out" },
+            "-=0.9"
+        );
+
+        // 5. Panel text reveals
+        mvTl.fromTo('.panel-text',
+            { y: 15, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, stagger: 0.15, ease: "power2.out" },
+            "-=0.4"
+        );
+    }
+
+    // --- 2. EXPERTISE GRID ANIMATION ---
+    const expHeader = section.querySelector('#expertiseHeader');
+    const cards = section.querySelectorAll('.bp-card');
+
+    if (expHeader && cards.length > 0) {
+        const expTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: expHeader,
+                start: "top 75%",
+                toggleActions: "play none none none",
+                once: true
+            }
+        });
+
+        // 1. Eyebrow appears first
+        expTl.fromTo('.blueprint-eyebrow',
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        );
+
+        // 2. Heading split-word animation
+        expTl.fromTo('.blueprint-heading .word',
+            { y: '100%', opacity: 0 },
+            { y: '0%', opacity: 1, duration: 0.8, stagger: 0.08, ease: "power3.out" },
+            "-=0.4"
+        );
+
+        // 3. Thin orange line draws underneath heading
+        expTl.fromTo('.blueprint-line-draw',
+            { scaleX: 0 },
+            { scaleX: 1, duration: 0.8, ease: "power3.out" },
+            "-=0.5"
+        );
+
+        // 4. Description reveals
+        expTl.fromTo('.blueprint-desc',
+            { y: 15, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+            "-=0.5"
+        );
+
+        // 5. 6 Cards enter sequentially with alternating directions
+        cards.forEach((card, index) => {
+            const cardNum = index + 1;
+            let fromVars = {};
+
+            if (cardNum === 1 || cardNum === 4) {
+                // From left
+                fromVars = { x: isMobile ? -30 : -80, y: 0, opacity: 0, scale: 0.9, rotation: isMobile ? 0 : -3 };
+            } else if (cardNum === 2 || cardNum === 5) {
+                // From bottom
+                fromVars = { x: 0, y: isMobile ? 40 : 80, opacity: 0, scale: 0.9, rotation: 0 };
+            } else {
+                // From right
+                fromVars = { x: isMobile ? 30 : 80, y: 0, opacity: 0, scale: 0.9, rotation: isMobile ? 0 : 3 };
+            }
+
+            expTl.fromTo(card,
+                fromVars,
+                {
+                    x: 0,
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    rotation: 0,
+                    duration: 0.85,
+                    ease: "power3.out",
+                    onComplete: () => {
+                        const beam = card.querySelector('.card-scan-beam');
+                        if (beam) {
+                            gsap.fromTo(beam,
+                                { top: '-100%', opacity: 1 },
+                                { top: '100%', opacity: 0, duration: 0.7, ease: "power1.inOut" }
+                            );
+                        }
+                    }
+                },
+                "-=0.65"
+            );
+        });
+    }
+
+    // --- 3. PERFORMANCE STATS ANIMATION ---
+    const statsWrap = section.querySelector('#blueprintStats');
+    if (statsWrap) {
+        const statsCards = statsWrap.querySelectorAll('.bp-stat-card');
+        const statsLine = statsWrap.querySelector('.stats-top-line');
+
+        ScrollTrigger.create({
+            trigger: statsWrap,
+            start: "top 80%",
+            once: true,
+            onEnter: () => {
+                const statsTl = gsap.timeline();
+
+                if (statsLine) {
+                    statsTl.fromTo(statsLine,
+                        { scaleX: 0 },
+                        { scaleX: 1, duration: 0.8, ease: "power3.out" }
                     );
                 }
-            });
 
-            // 3D Card Animation for Our Expertise
-            cards.forEach(card => {
-                const icon = card.querySelector('i');
-                
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    // Max rotation of 8 degrees
-                    const rotateX = ((y - centerY) / centerY) * -8;
-                    const rotateY = ((x - centerX) / centerX) * 8;
-                    
-                    gsap.to(card, {
-                        rotationX: rotateX,
-                        rotationY: rotateY,
-                        transformPerspective: 1000,
-                        y: -5,
-                        duration: 0.4,
-                        ease: "power1.out"
-                    });
-                });
-                
-                card.addEventListener('mouseenter', () => {
-                    if (icon) {
-                        gsap.fromTo(icon, 
-                            { rotation: -90, scale: 0.5 }, 
-                            { rotation: 0, scale: 1, duration: 0.6, ease: "back.out(1.7)" }
+                statsTl.fromTo(statsCards,
+                    { y: 30, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.6, stagger: 0.15, ease: "power3.out" },
+                    "-=0.4"
+                );
+
+                statsCards.forEach((card, index) => {
+                    const numberEl = card.querySelector('.stat-number');
+                    const suffixEl = card.querySelector('.stat-suffix');
+                    const drawLine = card.querySelector('.stat-draw-line');
+                    const target = parseInt(numberEl.getAttribute('data-target') || '0', 10);
+
+                    if (drawLine) {
+                        gsap.fromTo(drawLine,
+                            { width: '0px' },
+                            { width: '50px', duration: 0.8, ease: "power2.out", delay: index * 0.12 }
+                        );
+                    }
+
+                    runCounter(numberEl, target, 2000);
+
+                    if (suffixEl) {
+                        gsap.fromTo(suffixEl,
+                            { scale: 0, opacity: 0 },
+                            { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)", delay: 0.3 + (index * 0.12) }
                         );
                     }
                 });
-                
-                card.addEventListener('mouseleave', () => {
-                    gsap.to(card, {
-                        rotationX: 0,
-                        rotationY: 0,
-                        y: 0,
-                        duration: 0.6,
-                        ease: "power2.out"
-                    });
-                });
-            });
-        }
-        if (statsGrid) {
-            ScrollTrigger.create({
-                trigger: statsGrid,
-                start: "top 85%",
-                once: true,
-                onEnter: () => {
-                    gsap.fromTo(statsGrid, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
-                    if (counters.length > 0) {
-                        counters.forEach((num, index) => {
-                            const target = parseInt(num.getAttribute('data-target') || '0', 10);
-                            setTimeout(() => {
-                                runCounter(num, target, 2000);
-                            }, index * 100);
-                        });
-                    }
-                }
-            });
-        }
+            }
+        });
     }
-    // --- 13. LEADERSHIP TEAM ---
-    const teamGrid = document.querySelector('.team-grid');
-    if (teamGrid) {
-        const members = teamGrid.querySelectorAll('.team-member');
-        if (members.length >= 4) {
-            const tl = gsap.timeline({ scrollTrigger: { trigger: teamGrid, start: "top 75%", once: true } });
-            
-            tl.fromTo(members[0], { x: isMobile ? -20 : -60, opacity: 0 }, { opacity: 1, x: 0, y: 0, duration: 0.8, ease: "power3.out" }, 0)
-              .fromTo(members[1], { y: isMobile ? 20 : 50, opacity: 0 }, { opacity: 1, x: 0, y: 0, duration: 0.8, ease: "power3.out" }, 0.15)
-              .fromTo(members[2], { y: isMobile ? -20 : -50, opacity: 0 }, { opacity: 1, x: 0, y: 0, duration: 0.8, ease: "power3.out" }, 0.3)
-              .fromTo(members[3], { x: isMobile ? 20 : 60, opacity: 0 }, { opacity: 1, x: 0, y: 0, duration: 0.8, ease: "power3.out" }, 0.45);
-        }
-    }
-    // --- 14. CERTIFICATIONS STAMPS ---
-    const certsGrid = document.querySelector('.cert-grid');
-    if (certsGrid) {
-        const badges = certsGrid.querySelectorAll('.cert-item');
-        gsap.fromTo(badges, 
-            { scale: 1.25, opacity: 0, rotation: -5 },
-            { scale: 1, opacity: 1, rotation: 0, duration: 0.6, stagger: 0.12, ease: "back.out(2)", scrollTrigger: { trigger: certsGrid, start: "top 80%", once: true } }
-        );
-    }
-    // --- 15. CTA ---
-    const cta = document.querySelector('.final-cta');
-    if (cta) {
-        const h2 = cta.querySelector('h2');
-        const btn = cta.querySelector('.btn');
-        const ctaTl = gsap.timeline({ scrollTrigger: { trigger: cta, start: "top 80%", once: true } });
-        
-        if (h2) ctaTl.fromTo(h2, { clipPath: 'inset(100% 0 0 0)', opacity: 0 }, { clipPath: 'inset(0% 0 0 0)', opacity: 1, duration: 0.8, ease: "power3.out" });
-        if (btn) ctaTl.fromTo(btn, { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.5)" });
-    }
-    // --- 16. FINAL IMAGE CTA ---
-    const footerImg = document.querySelector('.footer-cta');
-    if (footerImg) {
-        const bg = footerImg.querySelector('.footer-cta-bg');
-        const txt = footerImg.querySelector('h2'); 
-        const fTl = gsap.timeline({ scrollTrigger: { trigger: footerImg, start: "top 80%", once: true } });
-        if (bg) fTl.fromTo(bg, { scale: 1.08 }, { scale: 1, duration: 1.5, ease: "power2.out" });
-        if (txt) fTl.fromTo(txt, { y: isMobile ? 15 : 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=1");
-    }
-    // --- 17. FOOTER ---
-    const mainFooter = document.querySelector('.stackly-footer-new');
-    if (mainFooter) {
-        const logo = mainFooter.querySelector('.footer-logo');
-        const links = mainFooter.querySelectorAll('.footer-links');
-        const contact = mainFooter.querySelector('.footer-contact');
-        const socials = mainFooter.querySelectorAll('.social-links a');
-        const footTl = gsap.timeline({ scrollTrigger: { trigger: mainFooter, start: "top 85%", once: true } });
-        
-        if(logo) footTl.fromTo(logo, { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" });
-        if(links.length > 0) footTl.fromTo(links, { y: isMobile ? 10 : 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" }, "-=0.4");
-        if(contact) footTl.fromTo(contact, { x: 20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, "-=0.4");
-        if(socials.length > 0) footTl.fromTo(socials, { scale: isMobile ? 0.95 : 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, stagger: 0.05, ease: "back.out(1.5)" }, "-=0.2");
-    }
-    setTimeout(() => { ScrollTrigger.refresh(); }, 500);
 }
-// Dual initialization pattern
-document.addEventListener("DOMContentLoaded", initAboutPageAnimations);
-window.addEventListener("loaderFinished", initAboutPageAnimations);
+
 function initSpotlightReveal(isMobile = false) {
     // Select all main page headings
     const headings = document.querySelectorAll('.inner-hero h1, .hero-content h1, h1.gs-clip-text, .page-header-box h1');
@@ -915,4 +1169,581 @@ function initClipPathReveals(isMobile) {
             );
         }
     });
+}
+
+/* ==========================================================================
+   INDUSTRIAL SECTOR EXPLORER ANIMATIONS & INTERACTIONS
+   ========================================================================== */
+function initIndustrialSectorExplorer(isMobile = false) {
+    const section = document.getElementById('industries');
+    if (!section) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const cards = section.querySelectorAll('.sector-card');
+
+    if (reduceMotion) {
+        gsap.set(section.querySelectorAll('.sector-card, .sector-eyebrow-line, .sector-heading .word'), {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            scaleX: 1,
+            rotation: 0
+        });
+        return;
+    }
+
+    // Background technical lines infinite drift
+    const bpBg = section.querySelector('.sector-blueprint-bg');
+    if (bpBg) {
+        gsap.to(bpBg, {
+            backgroundPosition: "36px 36px",
+            duration: 35,
+            repeat: -1,
+            ease: "none"
+        });
+    }
+
+    // Header & Cards Assembly Entrance Animation
+    const header = section.querySelector('#sectorHeader');
+    if (header && cards.length > 0) {
+        const sectorTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: header,
+                start: "top 75%",
+                toggleActions: "play none none none",
+                once: true
+            }
+        });
+
+        // 1. Eyebrow appears & orange line draws outward
+        sectorTl.fromTo('.sector-eyebrow',
+            { y: 25, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        ).fromTo('.sector-eyebrow-line',
+            { scaleX: 0 },
+            { scaleX: 1, duration: 0.8, ease: "power3.out" },
+            "-=0.4"
+        );
+
+        // 2. Heading split-word reveal
+        sectorTl.fromTo('.sector-heading .word',
+            { y: '100%', opacity: 0 },
+            { y: '0%', opacity: 1, duration: 0.8, stagger: 0.08, ease: "power3.out" },
+            "-=0.5"
+        );
+
+        // 3. Supporting text reveal
+        sectorTl.fromTo('.sector-desc',
+            { y: 25, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+            "-=0.5"
+        );
+
+        // 4. 6 Cards clean Fade Up on Scroll sequence with stagger
+        sectorTl.fromTo(cards,
+            { y: isMobile ? 30 : 60, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.85,
+                stagger: 0.12,
+                ease: "power3.out"
+            },
+            "-=0.4"
+        );
+    }
+
+    // Card Hover & Mobile Tap Interaction + Scanning Beam Effect
+    cards.forEach((card) => {
+        const beam = card.querySelector('.sector-scan-beam');
+
+        const triggerScanner = () => {
+            if (beam && !card.dataset.scanned) {
+                card.dataset.scanned = "true";
+                gsap.fromTo(beam,
+                    { top: '-100%', opacity: 1 },
+                    { top: '100%', opacity: 0, duration: 0.7, ease: "power1.inOut", onComplete: () => {
+                        card.dataset.scanned = "";
+                    }}
+                );
+            }
+        };
+
+        if (isMobile) {
+            // Mobile tap toggle active state
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.sector-link')) return;
+                
+                cards.forEach(c => {
+                    if (c !== card) c.classList.remove('active');
+                });
+
+                const isNowActive = card.classList.toggle('active');
+                if (isNowActive) {
+                    triggerScanner();
+                }
+            });
+        } else {
+            // Desktop mouseenter scanning beam trigger
+            card.addEventListener('mouseenter', () => {
+                triggerScanner();
+            });
+        }
+    });
+}
+
+/* ==========================================================================
+   GLOBAL MANUFACTURING IMPACT DASHBOARD ANIMATIONS & INTERACTIONS
+   ========================================================================== */
+function initGlobalImpactDashboard(isMobile = false) {
+    const section = document.getElementById('globalImpact');
+    if (!section) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+        gsap.set(section.querySelectorAll('.impact-panel, .impact-eyebrow-line, .impact-heading .word, .global-reach-banner'), {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            scale: 1,
+            scaleX: 1
+        });
+        
+        section.querySelectorAll('.impact-counter').forEach(num => {
+            const target = num.getAttribute('data-target');
+            if (num.getAttribute('data-format') === 'comma') {
+                num.textContent = parseInt(target, 10).toLocaleString();
+            } else {
+                num.textContent = target;
+            }
+        });
+        return;
+    }
+
+    // Step 1 & 2: Header & Dashboard Assembly Sequence
+    const header = section.querySelector('#impactHeader');
+    const mainImgPanel = section.querySelector('#panelMainImage');
+    const primaryPanel = section.querySelector('#panelPrimaryMetric');
+    const contentPanel = section.querySelector('#panelContent');
+    const unitsPanel = section.querySelector('#panelUnits');
+    const countriesPanel = section.querySelector('#panelCountries');
+    const qualityPanel = section.querySelector('#panelQuality');
+    const reachBanner = section.querySelector('#globalReachBanner');
+
+    if (header) {
+        const impactTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: header,
+                start: "top 75%",
+                toggleActions: "play none none none",
+                once: true
+            }
+        });
+
+        // Step 1 — Header reveal
+        impactTl.fromTo('.impact-eyebrow',
+            { y: 15, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        ).fromTo('.impact-eyebrow-line',
+            { scaleX: 0 },
+            { scaleX: 1, duration: 0.8, ease: "power3.out" },
+            "-=0.4"
+        ).fromTo('.impact-heading .word',
+            { y: '100%', opacity: 0 },
+            { y: '0%', opacity: 1, duration: 0.8, stagger: 0.08, ease: "power3.out" },
+            "-=0.5"
+        ).fromTo('.impact-desc',
+            { y: 15, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+            "-=0.5"
+        );
+
+        // Step 2 — Assembly Sequence:
+        // 1. Main image slides from left
+        if (mainImgPanel) {
+            impactTl.fromTo(mainImgPanel,
+                { x: isMobile ? -30 : -80, opacity: 0 },
+                { x: 0, opacity: 1, duration: 0.9, ease: "power3.out", onComplete: () => {
+                    // Step 5: Industrial Image Scan Beam Effect
+                    const scanBeam = mainImgPanel.querySelector('.impact-scan-beam');
+                    if (scanBeam) {
+                        gsap.fromTo(scanBeam,
+                            { left: '-100%', opacity: 1 },
+                            { left: '100%', opacity: 0, duration: 1.1, ease: "power1.inOut" }
+                        );
+                    }
+                }},
+                "-=0.4"
+            );
+        }
+
+        // 2. Primary Metric (25+ Years) rises from bottom
+        if (primaryPanel) {
+            impactTl.fromTo(primaryPanel,
+                { y: isMobile ? 30 : 70, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+                "-=0.6"
+            );
+        }
+
+        // 3. Global Strength content slides from right
+        if (contentPanel) {
+            impactTl.fromTo(contentPanel,
+                { x: isMobile ? 30 : 70, opacity: 0 },
+                { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+                "-=0.65"
+            );
+        }
+
+        // 4. Monthly Units scales from 0.8 to 1
+        if (unitsPanel) {
+            impactTl.fromTo(unitsPanel,
+                { scale: 0.8, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.5)" },
+                "-=0.5"
+            );
+        }
+
+        // 5. Countries Served slides up
+        if (countriesPanel) {
+            impactTl.fromTo(countriesPanel,
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
+                "-=0.5"
+            );
+        }
+
+        // 6. Quality & Reliability appears last
+        if (qualityPanel) {
+            impactTl.fromTo(qualityPanel,
+                { scale: 0.9, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.7, ease: "power3.out" },
+                "-=0.5"
+            );
+        }
+
+        // 7. Global reach banner reveal
+        if (reachBanner) {
+            impactTl.fromTo(reachBanner,
+                { y: 30, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+                "-=0.4"
+            );
+        }
+    }
+
+    // Step 3 — Counter Animation with formatted output
+    const counters = section.querySelectorAll('.impact-counter');
+    if (counters.length > 0) {
+        ScrollTrigger.create({
+            trigger: section.querySelector('#impactDashboardGrid') || section,
+            start: "top 80%",
+            once: true,
+            onEnter: () => {
+                counters.forEach((counterEl, idx) => {
+                    const target = parseInt(counterEl.getAttribute('data-target') || '0', 10);
+                    const isComma = counterEl.getAttribute('data-format') === 'comma';
+                    const duration = target > 10000 ? 1600 : 2000;
+
+                    setTimeout(() => {
+                        let startTimestamp = null;
+                        const step = (timestamp) => {
+                            if (!startTimestamp) startTimestamp = timestamp;
+                            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                            const easeOut = 1 - Math.pow(1 - progress, 3);
+                            const val = Math.floor(easeOut * target);
+                            counterEl.textContent = isComma ? val.toLocaleString() : val;
+
+                            if (progress < 1) {
+                                window.requestAnimationFrame(step);
+                            } else {
+                                counterEl.textContent = isComma ? target.toLocaleString() : target;
+                            }
+                        };
+                        window.requestAnimationFrame(step);
+                    }, idx * 120);
+                });
+            }
+        });
+    }
+
+    // Step 4 — Traveling Network Line Nodes
+    const pulseNodes = section.querySelectorAll('.network-pulse-node');
+    if (pulseNodes.length > 0) {
+        gsap.to('.node-a', {
+            x: 300,
+            y: 150,
+            duration: 6,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+        gsap.to('.node-b', {
+            x: -300,
+            y: -100,
+            duration: 8,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    }
+}
+
+/* ==========================================================================
+   TRUSTED BY GLOBAL BRANDS TESTIMONIAL GRID ANIMATIONS
+   ========================================================================== */
+function initTrustedBrandsTestimonials(isMobile) {
+    const section = document.querySelector('.trusted-brands-section');
+    if (!section) return;
+
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isReduced) return;
+
+    const header = section.querySelector('.tb-header');
+    const cards = section.querySelectorAll('.tb-card');
+
+    if (header) {
+        gsap.fromTo(header, 
+            { y: isMobile ? 25 : 40, opacity: 0 }, 
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: header,
+                    start: "top 80%",
+                    once: true
+                }
+            }
+        );
+    }
+
+    if (cards.length > 0) {
+        gsap.fromTo(cards, 
+            { y: isMobile ? 30 : 50, opacity: 0, rotationX: isMobile ? 0 : 8 }, 
+            {
+                y: 0,
+                opacity: 1,
+                rotationX: 0,
+                duration: 0.85,
+                stagger: 0.15,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: section.querySelector('.tb-grid') || section,
+                    start: "top 75%",
+                    once: true
+                }
+            }
+        );
+    }
+
+    // Subtle avatar floating animation
+    const avatars = section.querySelectorAll('.tb-avatar');
+    if (avatars.length > 0 && !isMobile) {
+        avatars.forEach((avatar, i) => {
+            gsap.to(avatar, {
+                y: -4,
+                duration: 2.5 + i * 0.5,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        });
+    }
+}
+
+/* ==========================================================================
+   CONTACT PAGE UNIQUE GSAP ANIMATIONS
+   ========================================================================== */
+function initContactPageAnimations(isMobile) {
+    const hero = document.querySelector('.contact-hero-section');
+    const cardsSection = document.querySelector('.contact-cards-container');
+
+    if (!hero && !cardsSection) return;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isReduced) return;
+
+    // 1. Hero Split-Word Title & Desc Reveal
+    const heroTl = gsap.timeline();
+    
+    if (hero) {
+        heroTl.fromTo('.contact-hero-section .hero-bg-img',
+            { opacity: 0, scale: 1.08 },
+            { opacity: 1, scale: 1, duration: 1.4, ease: "power2.out" }
+        ).fromTo('.contact-hero-heading .word',
+            { y: '100%', opacity: 0 },
+            { y: '0%', opacity: 1, duration: 0.75, stagger: 0.08, ease: "power3.out" },
+            "-=0.9"
+        ).fromTo('.contact-hero-desc',
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+            "-=0.4"
+        ).fromTo('.contact-hero-section .breadcrumbs',
+            { y: 15, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+            "-=0.3"
+        );
+    }
+
+    // 2. 3D Magnet Spotlight Cards Assembly Reveal
+    const cards = document.querySelectorAll('.contact-info-grid .c-info-card');
+    if (cards.length > 0) {
+        gsap.fromTo(cards,
+            { y: isMobile ? 30 : 60, opacity: 0, rotationY: isMobile ? 0 : 15, scale: 0.92 },
+            {
+                y: 0,
+                opacity: 1,
+                rotationY: 0,
+                scale: 1,
+                duration: 0.85,
+                stagger: 0.12,
+                ease: "back.out(1.4)",
+                scrollTrigger: {
+                    trigger: '#contactInfoGrid',
+                    start: "top 85%",
+                    once: true
+                }
+            }
+        );
+    }
+}
+
+/* ==========================================================================
+   SMOKE RISE TEXT GSAP ANIMATION (WELCOME BACK / CREATE YOUR ACCOUNT)
+   ========================================================================== */
+function initSmokeRiseAnimation() {
+    const headings = document.querySelectorAll('.smoke-rise-heading');
+    if (!headings.length) return;
+
+    if (typeof gsap === 'undefined') return;
+
+    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isReduced) return;
+
+    headings.forEach((heading) => {
+        const words = heading.querySelectorAll('.smoke-word');
+        const targetElements = words.length > 0 ? words : [heading];
+
+        gsap.fromTo(targetElements,
+            {
+                opacity: 0,
+                y: 40,
+                scale: 1.15,
+                filter: "blur(14px)",
+                transformOrigin: "50% 100%"
+            },
+            {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                filter: "blur(0px)",
+                duration: 1.25,
+                stagger: 0.12,
+                ease: "power3.out",
+                delay: 0.2
+            }
+        );
+    });
+}
+
+/* ==========================================================================
+   AUTH FOOTER STAGGERED REVEAL & INTERACTION ANIMATIONS
+   ========================================================================== */
+function initAuthFooterAnimations() {
+    const footer = document.querySelector('.auth-footer');
+    if (!footer) return;
+
+    if (typeof gsap === 'undefined') return;
+
+    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isReduced) return;
+
+    const switchText = footer.querySelector('.auth-switch-text');
+    const switchBtn = footer.querySelector('.auth-switch-btn');
+    const homeWrapper = footer.querySelector('.auth-home-wrapper');
+    const homeLink = footer.querySelector('.auth-home-link');
+    const homeIcon = footer.querySelector('.auth-home-icon');
+
+    // Create sequenced timeline starting right after main form button animation
+    const footerTl = gsap.timeline({ delay: 0.75 });
+
+    // 1. Account switch text: fade-up + blur to sharp reveal
+    if (switchText) {
+        footerTl.fromTo(switchText,
+            { opacity: 0, y: 15, filter: "blur(6px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.65, ease: "power2.out" }
+        );
+    }
+
+    // 2. Sign Up / Sign In link animation
+    if (switchBtn) {
+        const isHighlightPill = switchBtn.classList.contains('auth-highlight-btn');
+        footerTl.fromTo(switchBtn,
+            { opacity: 0, y: 12, scale: 0.94 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" },
+            "-=0.4"
+        );
+
+        if (isHighlightPill) {
+            footerTl.to(switchBtn, {
+                scale: 1.03,
+                duration: 0.22,
+                yoyo: true,
+                repeat: 1,
+                ease: "sine.inOut"
+            });
+        }
+
+        // Hover animations
+        switchBtn.addEventListener('mouseenter', () => {
+            gsap.to(switchBtn, {
+                y: -2,
+                boxShadow: isHighlightPill ? "0 8px 25px rgba(242, 140, 40, 0.45)" : "none",
+                duration: 0.25,
+                ease: "power2.out"
+            });
+        });
+
+        switchBtn.addEventListener('mouseleave', () => {
+            gsap.to(switchBtn, {
+                y: 0,
+                boxShadow: isHighlightPill ? "0 4px 15px rgba(242, 140, 40, 0.18)" : "none",
+                duration: 0.25,
+                ease: "power2.out"
+            });
+        });
+    }
+
+    // 3. "Go Back to Home" separate subtle fade-up + icon movement
+    if (homeWrapper) {
+        footerTl.fromTo(homeWrapper,
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+            "-=0.35"
+        );
+    }
+
+    if (homeIcon) {
+        footerTl.fromTo(homeIcon,
+            { x: -6, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.4, ease: "back.out(1.8)" },
+            "-=0.4"
+        );
+    }
+
+    if (homeLink && homeIcon) {
+        homeLink.addEventListener('mouseenter', () => {
+            gsap.to(homeIcon, { x: -3, duration: 0.25, ease: "power2.out" });
+        });
+        homeLink.addEventListener('mouseleave', () => {
+            gsap.to(homeIcon, { x: 0, duration: 0.25, ease: "power2.out" });
+        });
+    }
 }

@@ -314,8 +314,15 @@
 <!-- Global Impact Item End -->
 <!-- Global Impact Item Start -->
 <div class="global-impact-item box-3" data-wow-delay="0.4s">
-<!-- Global Impact Item Header Start -->
-<div class="global-impact-item-header">
+<!-- Global Impact Image Start -->
+<div class="global-impact-image">
+<figure class="image-anime">
+<img src="assets/service_featured.webp" alt="Units Produced Monthly" loading="lazy" decoding="async">
+</figure>
+</div>
+<!-- Global Impact Image End -->
+<!-- Global Impact Body Start -->
+<div class="global-impact-body">
 <!-- Global Impact Body List Start -->
 <div class="global-impact-body-list">
 <ul>
@@ -323,21 +330,14 @@
 </ul>
 </div>
 <!-- Global Impact Body List End -->
-<!-- Global Impact Icon Start -->
-<div class="global-impact-icon">
-<div class="icon-box" style="opacity: 1 !important; visibility: visible !important; transform: none !important;">
-<i class="fa-solid fa-chart-line" style="font-size: 2rem; color: var(--c-navy);"></i>
-</div>
-</div>
-<!-- Global Impact Icon End -->
-</div>
-<!-- Global Impact Item Header End -->
 <!-- Global Impact Counter Box Start -->
 <div class="global-impact-counter-box">
 <h2><span class="counter">150000</span>+</h2>
 <p>High capacity production lines ensuring consistent quality and output.</p>
 </div>
 <!-- Global Impact Counter Box End -->
+</div>
+<!-- Global Impact Body End -->
 </div>
 <!-- Global Impact Item End -->
 </div>
@@ -499,7 +499,7 @@
 <!-- Why Choose Counter Item End -->
 <!-- Why Choose Counter Item Start -->
 <div class="why-choose-counter-item">
-<h2><span class="counter">24</span>/7</h2>
+<h2><span class="counter" data-target="24">24</span>/7</h2>
 <p>Production & support capability</p>
 </div>
 <!-- Why Choose Counter Item End -->
@@ -639,117 +639,177 @@
 <!-- Our Expertise Section End -->
 
 <!-- Testimonial Section Start -->
-<div class="our-testimonials dark-section" style="background-image: none !important;">
-<div class="container">
-<div class="row section-row">
-<div class="col-lg-12">
-<!-- Section Title Start -->
-<div class="section-title section-title-center">
-<span class="section-sub-title">Our Testimonials</span>
-<h2 class="text-anime-style-3" data-cursor="-opaque">Success stories from our industry partners</h2>
-</div>
-<!-- Section Title End -->
-</div>
-</div>
-<div class="row">
-<div class="col-lg-12">
-<!-- Testimonial Slider Start -->
-<div class="testimonial-slider">
-<div class="swiper">
-<div class="swiper-wrapper" data-cursor-text="Drag">
-<!-- Testimonial Slide Start -->
-<div class="swiper-slide">
-<!-- Testimonial Item Start -->
-<div class="testimonial-item">
-<!-- Testimonial Item Header Start -->
-<div class="testimonial-item-header">
-<!-- Testimonial Item Rating Start -->
-<div class="testimonial-item-rating">
-<p>4.9 Rating</p>
-<span class="testimonial-item-rating-star">
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-</span>
-</div>
-<!-- Testimonial Item Rating End -->
-<!-- Testimonial Item Content Start -->
-<div class="testimonial-item-content">
-<p>“Their manufacturing standards are outstanding. Every component delivered meets our exact specifications with consistent precision and durability. A truly dependable partner.”</p>
-</div>
-<!-- Testimonial Item Content End -->
-</div>
-<!-- Testimonial Item Header End -->
-<!-- Testimonial Author Box Start -->
-<div class="testimonial-author-box">
-<div class="testimonial-author-image">
-<figure class="image-anime">
-<img src="assets/service_featured.webp" alt="" loading="lazy" decoding="async">
-</figure>
-</div>
-<div class="testimonial-author-content">
-<h2>Rohan Verma</h2>
-<p>Supply Chain Manager</p>
-</div>
-</div>
-<!-- Testimonial Author Box End -->
-</div>
-<!-- Testimonial Item End -->
-</div>
-<!-- Testimonial Slide End -->
-<div class="swiper-slide">
-<div class="testimonial-item">
-<div class="testimonial-item-header">
-<div class="testimonial-item-rating">
-<p>4.9 Rating</p>
-<span class="testimonial-item-rating-star">
-<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-</span>
-</div>
-<div class="testimonial-item-content">
-<p>“Their manufacturing standards are outstanding. Every component delivered meets our exact specifications with consistent precision and durability. A truly dependable partner.”</p>
-</div>
-</div>
-<div class="testimonial-author-box">
-<div class="testimonial-author-image">
-<figure class="image-anime"><img src="assets/process_analyze.webp" alt="" loading="lazy" decoding="async"></figure>
-</div>
-<div class="testimonial-author-content">
-<h2>Priya Shah</h2>
-<p>Quality Control Manager</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Testimonial Slider End -->
-</div>
-<div class="col-lg-12">
-<!-- Section Footer Text Start -->
-<div class="section-footer-text section-satisfy-img" data-wow-delay="0.2s">
-<p>Where Precision Meets Performance - <a href="404.html">Trusted Manufacturing Starts Here.</a></p>
-<ul>
-<li><span class="counter">4.9</span></li>
-<li>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-<i class="fa-solid fa-star"></i>
-</li>
-<li>Over 2000 Reviews</li>
-</ul>
-</div>
-<!-- Section Footer Text End -->
-</div>
-</div>
-</div>
-</div>
-<!-- Testimonial Section End -->
+<section class="precision-conveyor-section section-padding bg-navy position-relative overflow-hidden" id="testimonials">
+    <!-- Blueprint Grid Pattern Overlay & Ambient Glow -->
+    <div class="conveyor-bg-pattern"></div>
+    <div class="conveyor-ambient-glow"></div>
+    
+    <div class="container position-relative z-2">
+        <!-- Header -->
+        <div class="section-header center mb-5">
+            <span class="conveyor-eyebrow"><i class="fa-solid fa-sliders"></i> CLIENT VOICES</span>
+            <h2 class="conveyor-heading text-white">
+                <span class="word-wrap"><span class="word">Trusted</span></span>
+                <span class="word-wrap"><span class="word">by</span></span>
+                <span class="word-wrap"><span class="word">Teams</span></span>
+                <span class="word-wrap"><span class="word">That</span></span>
+                <span class="word-wrap"><span class="word">Demand</span></span>
+                <span class="word-wrap"><span class="word">Precision</span></span>
+            </h2>
+            <div class="conveyor-precision-line"></div>
+            <p class="conveyor-desc">Real feedback from manufacturing and engineering teams that rely on Stackly for precision, reliability and consistent performance.</p>
+        </div>
+        
+        <!-- Conveyor Carousel Stage -->
+        <div class="conveyor-stage">
+            <div class="conveyor-track" id="conveyorTrack">
+                <!-- Card 1 -->
+                <div class="conveyor-card-wrapper" data-index="0">
+                    <div class="conveyor-card">
+                        <!-- Animated Orange Light Border SVG -->
+                        <svg class="card-border-svg" width="100%" height="100%">
+                            <rect class="card-border-rect" x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="14" ry="14" />
+                        </svg>
+                        <div class="card-inner">
+                            <div class="card-top-row">
+                                <div class="card-rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <span class="card-badge"><i class="fa-solid fa-location-dot"></i> Detroit, MI • Automotive</span>
+                                <div class="card-quote-icon">
+                                    <i class="fa-solid fa-quote-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="card-quote-wrapper">
+                                <p class="card-quote-text">"STACKLY executed our assembly line automation and structural refit with zero operational downtime. Their precision engineering cut our cycle time by 28% while maintaining rigorous safety standards."</p>
+                            </div>
+
+                            <div class="card-divider">
+                                <span class="divider-node"></span>
+                            </div>
+                            
+                            <div class="card-author-row">
+                                <div class="author-avatar-wrap">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&fit=crop&w=200&q=80" alt="Marcus Vance" class="author-avatar" loading="lazy">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Marcus Vance</h4>
+                                    <p class="author-role">Director of Plant Operations</p>
+                                    <span class="author-company"><i class="fa-solid fa-industry"></i> Vanguard Manufacturing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="conveyor-card-wrapper" data-index="1">
+                    <div class="conveyor-card">
+                        <svg class="card-border-svg" width="100%" height="100%">
+                            <rect class="card-border-rect" x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="14" ry="14" />
+                        </svg>
+                        <div class="card-inner">
+                            <div class="card-top-row">
+                                <div class="card-rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <span class="card-badge"><i class="fa-solid fa-location-dot"></i> Houston, TX • Energy Grid</span>
+                                <div class="card-quote-icon">
+                                    <i class="fa-solid fa-quote-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="card-quote-wrapper">
+                                <p class="card-quote-text">"The predictive maintenance protocol STACKLY installed across our turbine systems prevented critical failure points during peak production. Their 24/7 technical team is unparalleled."</p>
+                            </div>
+
+                            <div class="card-divider">
+                                <span class="divider-node"></span>
+                            </div>
+                            
+                            <div class="card-author-row">
+                                <div class="author-avatar-wrap">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&fit=crop&w=200&q=80" alt="Dr. Elena Rostova" class="author-avatar" loading="lazy">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Dr. Elena Rostova</h4>
+                                    <p class="author-role">Chief Quality & Reliability Officer</p>
+                                    <span class="author-company"><i class="fa-solid fa-bolt"></i> Apex Energy Systems</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="conveyor-card-wrapper" data-index="2">
+                    <div class="conveyor-card">
+                        <svg class="card-border-svg" width="100%" height="100%">
+                            <rect class="card-border-rect" x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)" rx="14" ry="14" />
+                        </svg>
+                        <div class="card-inner">
+                            <div class="card-top-row">
+                                <div class="card-rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <span class="card-badge"><i class="fa-solid fa-location-dot"></i> Boston, MA • BioPharma</span>
+                                <div class="card-quote-icon">
+                                    <i class="fa-solid fa-quote-right"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="card-quote-wrapper">
+                                <p class="card-quote-text">"Managing sterile room mechanical grids requires strict compliance. STACKLY engineered a cleanroom HVAC and electrical solution that exceeded ISO 14644 certification requirements on time."</p>
+                            </div>
+
+                            <div class="card-divider">
+                                <span class="divider-node"></span>
+                            </div>
+                            
+                            <div class="card-author-row">
+                                <div class="author-avatar-wrap">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&fit=crop&w=200&q=80" alt="Robert Thorne" class="author-avatar" loading="lazy">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Robert Thorne</h4>
+                                    <p class="author-role">VP of Supply Chain & Facilities</p>
+                                    <span class="author-company"><i class="fa-solid fa-vial"></i> BioSynthetix Labs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Conveyor Controls & Counter -->
+        <div class="conveyor-controls-wrap">
+            <button class="conveyor-nav-btn prev-btn" id="conveyorPrev" aria-label="Previous testimonial">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="conveyor-counter" id="testiCounter">
+                <span class="current-num">01</span> / <span class="total-num">03</span>
+            </div>
+            <button class="conveyor-nav-btn next-btn" id="conveyorNext" aria-label="Next testimonial">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
 
 <!-- Our Faqs Section Start -->
 <div class="our-faqs">

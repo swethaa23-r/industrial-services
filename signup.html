@@ -37,12 +37,9 @@
 
     <div class="split-layout">
         <!-- Left Side: Visual -->
-        <div class="split-left" style="background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&fit=crop&w=1920&q=50&fm=webp');">
+        <div class="split-left" style="background-image: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&fit=crop&w=1920&q=80&fm=webp');">
             <div class="split-overlay"></div>
             <div class="split-content gs-reveal-up">
-                <a href="index.html" class="logo text-white mb-5 d-inline-block">
-                    <img src="assets/stackly logo orange.webp" alt="STACKLY" class="brand-logo">
-                </a>
                 <h1 class="text-white">Join the Future of Smart Manufacturing</h1>
                 <p class="text-light mt-3" style="color: rgba(255,255,255,0.8) !important; max-width: 400px;">Access cutting-edge engineering solutions, track project progress, and optimize your industrial operations in one unified dashboard.</p>
             </div>
@@ -58,7 +55,7 @@
                 </a>
 
                 <div class="auth-header">
-                    <h2>Create Your Account</h2>
+                    <h2 class="smoke-rise-heading"><span class="smoke-word">Create</span> <span class="smoke-word">Your</span> <span class="smoke-word">Account</span></h2>
                     <p>Fill in your details below to get started.</p>
                 </div>
                 
@@ -158,8 +155,15 @@
                         </button>
                     </div>
                     
-                    <div class="auth-footer gs-auth-stagger text-center mt-4">
-                        <p>Already have an account? <a href="login.html" class="text-link font-bold">Sign In</a></p>
+                    <div class="auth-footer text-center mt-4">
+                        <div class="mb-3 auth-switch-wrapper">
+                            <p class="mb-0 auth-switch-text">Already have an account? <a href="login.html" class="text-link font-bold auth-switch-btn ms-1" style="color: var(--c-orange); font-weight: 700; text-decoration: underline;">Sign In</a></p>
+                        </div>
+                        <div class="pt-3 border-top auth-home-wrapper" style="border-color: rgba(11,31,51,0.08) !important;">
+                            <a href="index.html" class="text-link font-bold d-inline-flex align-items-center gap-2 auth-home-link" style="text-decoration:none; color: var(--c-navy); font-weight: 700;">
+                                <i class="fa-solid fa-house auth-home-icon"></i> Go Back to Home
+                            </a>
+                        </div>
                     </div>
                 </form>
             </div>
