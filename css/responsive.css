@@ -788,16 +788,424 @@
   .d-none-mobile {
     display: none !important;
   }
+  
+  /* Ensure text wrapping for labels and errors */
+  label, .error-message, .form-text, .help-block, .invalid-feedback {
+      white-space: normal !important;
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      max-width: 100% !important;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   FOOTER MOBILE OPTIMIZATION
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Stack columns vertically */
+  .footer-grid, .footer-top {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 30px !important; /* Reduce unnecessary spacing */
+  }
+  
+  /* Center or left-align consistently - opting for left-align for easier reading on mobile */
+  .footer-col {
+      text-align: left !important;
+      align-items: flex-start !important;
+      width: 100% !important;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  .footer-col:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+  }
+  
+  /* Reduce excessive margins */
+  .footer-container {
+      padding: 40px 15px 20px 15px !important;
+  }
+  
+  .footer-col-title {
+      margin-bottom: 15px !important;
+  }
+  
+  /* Social icons remain touch-friendly */
+  .footer-socials {
+      display: flex !important;
+      justify-content: flex-start !important;
+      gap: 15px !important;
+      flex-wrap: wrap;
+  }
+  
+  .footer-socials a {
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  /* No overflow, full width constraints */
+  .stackly-footer-new, .stackly-footer-light, .footer-bottom, .footer-cta {
+      max-width: 100% !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+  }
+  
+  /* Copyright text wraps naturally */
+  .footer-bottom {
+      flex-direction: column !important;
+      text-align: center !important;
+      padding: 20px 15px !important;
+      white-space: normal !important;
+      word-wrap: break-word !important;
+  }
+  
+  .footer-bottom p, .footer-bottom-links {
+      white-space: normal !important;
+      word-wrap: break-word !important;
+  }
+  
+  .footer-bottom-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   TOUCH EXPERIENCE UX OVERRIDES (MOBILE)
+   -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  
+  /* 1. Reveal Hover-Hidden Content */
+  .mc-extra {
+      max-height: 500px !important;
+      opacity: 1 !important;
+      margin-top: 15px !important;
+      padding-top: 15px !important;
+      border-top: 1px solid rgba(255,255,255,0.1) !important;
+  }
+  
+  .evs-node-body {
+      max-height: 500px !important;
+      opacity: 1 !important;
+      margin-top: 10px !important;
+  }
+  
+  .evs-node-inner::before {
+      opacity: 1 !important;
+  }
+  
+  .page-blog .post-item-btn {
+      opacity: 1 !important;
+      transform: none !important;
+      position: relative !important;
+      bottom: auto !important;
+      margin-top: 15px !important;
+  }
+  
+  .about-page .team-member::after {
+      width: 100% !important;
+      opacity: 1 !important;
+      background: linear-gradient(to top, rgba(11,31,51,0.95) 0%, rgba(11,31,51,0) 100%) !important;
+  }
+
+  /* 2. Prevent Accidental Hover Jumping */
+  .value-card,
+  .team-member,
+  .pro-card,
+  .post-item,
+  .matrix-card,
+  .evs-node-inner,
+  .evs-node-body,
+  .evs-icon,
+  .exp-card-inner {
+      transform: none !important;
+  }
+  
+  .value-card:hover,
+  .team-member:hover,
+  .pro-card:hover,
+  .post-item:hover,
+  .matrix-card:hover,
+  .matrix-card.active .mc-glow,
+  .page-blog .post-item:hover {
+      transform: none !important;
+  }
+
+  /* 3. Minimum Touch Targets (44px - 48px) */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-login-pill,
+  .db-btn,
+  .post-item-btn a,
+  .page-pagination a,
+  .mobile-toggle-btn {
+      min-height: 48px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+  }
+  
+  .footer-socials a,
+  .team-socials a,
+  .topbar-socials a {
+      min-width: 44px !important;
+      min-height: 44px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+  }
+  
+  .nav-link,
+  .dropdown-item,
+  .footer-links a,
+  .db-menu a {
+      padding-top: 12px !important;
+      padding-bottom: 12px !important;
+      min-height: 44px !important;
+      display: flex !important;
+      align-items: center !important;
+  }
+}
+
+
+/* Force d-none-mobile to always win */
+@media (max-width: 1024px) {
+  .d-none-mobile {
+    display: none !important;
+  }
 }
 
 
 /* Fix Header Overlap on Mobile */
 @media (max-width: 1024px) {
   .site-header {
-      position: sticky !important;
+      position: fixed !important;
       top: 0;
       background-color: var(--c-navy) !important;
       padding: 15px 0 !important;
       z-index: 1000 !important;
   }
 }
+
+/* ==========================================================================
+   SERVICES PAGE RESPONSIVE FIXES
+   ========================================================================== */
+
+/* --- Tablets (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+  .global-impact-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .global-impact-item.box-2 {
+    grid-column: span 2;
+  }
+
+  .why-choose-video-image img {
+    height: 280px;
+  }
+
+  .expertise-image img {
+    height: 380px;
+  }
+}
+
+/* --- Tablets Portrait (max-width: 768px) --- */
+@media (max-width: 768px) {
+  .inner-hero {
+    height: auto !important;
+    min-height: 300px !important;
+    padding: 100px 0 50px !important;
+  }
+
+  .inner-hero h1 {
+    font-size: 2rem !important;
+  }
+
+  .inner-hero .lead-text,
+  .inner-hero p.lead-text {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .page-services {
+    padding: 60px 0;
+  }
+
+  .global-impact {
+    padding: 60px 0;
+  }
+
+  .global-impact-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .global-impact-item.box-2 {
+    grid-column: span 1;
+  }
+
+  .company-slider-box {
+    padding: 20px;
+  }
+
+  .why-choose-us {
+    padding: 60px 0;
+  }
+
+  .why-choose-video-image img {
+    height: 250px;
+  }
+
+  .why-choose-counter-item h2 {
+    font-size: 1.8rem;
+  }
+
+  .intro-video {
+    padding: 80px 0;
+    background-attachment: scroll;
+  }
+
+  .intro-video-circle a {
+    width: 70px;
+    height: 70px;
+  }
+
+  .our-expertise {
+    padding: 60px 0;
+  }
+
+  .expertise-image img {
+    height: 300px;
+  }
+
+  .expertise-image-content {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+
+  .expertise-footer {
+    gap: 20px;
+  }
+
+  .our-faqs {
+    padding: 60px 0;
+  }
+
+  .faq-info-body-box {
+    padding: 20px;
+  }
+}
+
+/* --- Mobile Phones (max-width: 480px) --- */
+@media (max-width: 480px) {
+  .inner-hero {
+    min-height: 260px !important;
+    padding: 90px 0 40px !important;
+  }
+
+  .inner-hero h1 {
+    font-size: 1.6rem !important;
+  }
+
+  .page-services {
+    padding: 40px 0;
+  }
+
+  .service-item-image img {
+    height: 200px;
+  }
+
+  .service-item-body {
+    padding: 20px;
+  }
+
+  .service-item-content h2 {
+    font-size: 1.15rem;
+  }
+
+  .global-impact {
+    padding: 40px 0;
+  }
+
+  .global-impact-counter-box h2 {
+    font-size: 2rem;
+  }
+
+  .why-choose-us {
+    padding: 40px 0;
+  }
+
+  .why-choose-video-image img {
+    height: 200px;
+  }
+
+  .why-choose-counter-item-list {
+    grid-template-columns: 1fr;
+  }
+
+  .why-choose-counter-item:first-child {
+    border-right: none;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .why-choose-counter-item {
+    padding: 20px;
+  }
+
+  .intro-video {
+    padding: 60px 0;
+  }
+
+  .intro-video-circle a {
+    width: 60px;
+    height: 60px;
+  }
+
+  .intro-video-circle a i {
+    font-size: 2rem !important;
+  }
+
+  .our-expertise {
+    padding: 40px 0;
+  }
+
+  .expertise-image img {
+    height: 250px;
+  }
+
+  .skill-title,
+  .skill-no {
+    font-size: 0.85rem;
+  }
+
+  .about-us-contact-box {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .our-faqs {
+    padding: 40px 0;
+  }
+
+  .faq-accordion .accordion-button {
+    font-size: 0.95rem;
+    padding: 15px 20px;
+  }
+}
+

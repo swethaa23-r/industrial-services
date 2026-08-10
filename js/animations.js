@@ -763,8 +763,8 @@ function initAboutPageAnimations() {
             { opacity: 0, x: 30 }, 
             { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" }, "-=0.8")
           .fromTo('.gs-clip-text', 
-            { opacity: 0, y: isMobile ? 20 : 60, clipPath: 'inset(100% 0 0 0)' }, 
-            { opacity: 1, y: 0, clipPath: 'inset(0% 0 0 0)', duration: 1, ease: "power4.out" }, "-=0.5");
+            { opacity: 0 }, 
+            { opacity: 1, duration: 0.4, ease: "power2.out" }, "-=0.5");
           
     if(heroDesc) heroTl.fromTo(heroDesc, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.5");
     if(heroBread) heroTl.fromTo(heroBread, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.4");
@@ -1036,35 +1036,104 @@ function initIndustrialBlueprintSection() {
 }
 
 function initSpotlightReveal(isMobile = false) {
-    // Select all main page headings
+    // INK BLEED ANIMATION — Characters reveal as if ink is spreading onto paper
     const headings = document.querySelectorAll('.inner-hero h1, .hero-content h1, h1.gs-clip-text, .page-header-box h1');
     
     headings.forEach(heading => {
         // Prevent double initialization
-        if(heading.classList.contains('spotlight-initialized')) return;
-        heading.classList.add('spotlight-initialized');
+        if(heading.classList.contains('inkbleed-initialized')) return;
+        heading.classList.add('inkbleed-initialized');
         
-        // Ensure text is clean from previous spans
-        const text = heading.innerText;
-        if (!text.trim()) return;
-        heading.innerHTML = text; // reset
+        const originalText = heading.innerText;
+        if (!originalText.trim()) return;
         
-        // Apply Spotlight CSS Inline
-        heading.style.backgroundImage = 'linear-gradient(110deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0.1) 100%)';
-        heading.style.backgroundSize = '250% 100%';
-        heading.style.backgroundPosition = '100% 0';
-        heading.style.webkitBackgroundClip = 'text';
-        heading.style.webkitTextFillColor = 'transparent';
-        heading.style.backgroundClip = 'text';
-        heading.style.color = 'transparent';
+        // Get the computed color before we modify anything
+        const computedColor = window.getComputedStyle(heading).color || '#ffffff';
         
-        // GSAP Spotlight Animation
-        gsap.to(heading, {
-            backgroundPosition: '0% 0',
-            duration: 1.8,
-            ease: "power2.inOut",
-            delay: 0.2
+        // Split text into words, then each word into characters
+        heading.innerHTML = '';
+        heading.style.overflow = 'visible';
+        
+        const words = originalText.split(/(\s+)/); // Preserve whitespace
+        
+        words.forEach(segment => {
+            if (/^\s+$/.test(segment)) {
+                // Whitespace — preserve it
+                const spaceSpan = document.createElement('span');
+                spaceSpan.innerHTML = '&nbsp;';
+                spaceSpan.style.display = 'inline';
+                heading.appendChild(spaceSpan);
+                return;
+            }
+            
+            // Create a word wrapper to prevent mid-word breaks
+            const wordWrap = document.createElement('span');
+            wordWrap.style.display = 'inline-block';
+            wordWrap.style.whiteSpace = 'nowrap';
+            
+            const chars = segment.split('');
+            chars.forEach(char => {
+                const charSpan = document.createElement('span');
+                charSpan.className = 'ink-char';
+                charSpan.textContent = char;
+                charSpan.style.display = 'inline-block';
+                charSpan.style.opacity = '0';
+                charSpan.style.transform = 'scale(0.3) translateY(8px)';
+                charSpan.style.filter = 'blur(12px)';
+                charSpan.style.color = computedColor;
+                charSpan.style.willChange = 'transform, opacity, filter';
+                charSpan.style.transformOrigin = 'center bottom';
+                wordWrap.appendChild(charSpan);
+            });
+            
+            heading.appendChild(wordWrap);
         });
+        
+        // Get all ink characters
+        const inkChars = heading.querySelectorAll('.ink-char');
+        if (inkChars.length === 0) return;
+        
+        // Create the ink bleed timeline
+        const tl = gsap.timeline({ delay: 0.3 });
+        
+        // Phase 1: Ink drop — characters appear from a point with blur (the "bleed" effect)
+        tl.to(inkChars, {
+            opacity: 1,
+            scale: 1.15,           // Overshoot slightly — ink spreading past boundary
+            filter: 'blur(4px)',   // Still slightly blurred mid-bleed
+            y: 0,
+            duration: 0.5,
+            stagger: {
+                each: 0.035,
+                from: 'start'
+            },
+            ease: 'power2.out'
+        });
+        
+        // Phase 2: Ink settles — blur clears to sharp, scale normalizes
+        tl.to(inkChars, {
+            scale: 1,
+            filter: 'blur(0px)',
+            duration: 0.6,
+            stagger: {
+                each: 0.02,
+                from: 'start'
+            },
+            ease: 'power3.out'
+        }, '-=0.35');  // Overlap with phase 1 for organic feel
+        
+        // Phase 3: Subtle ink shimmer — a quick brightness pulse like wet ink catching light
+        tl.fromTo(inkChars, 
+            { textShadow: '0 0 0px rgba(255,255,255,0)' },
+            {
+                textShadow: '0 0 8px rgba(255,255,255,0.3)',
+                duration: 0.4,
+                stagger: { each: 0.015, from: 'start' },
+                ease: 'power1.inOut',
+                yoyo: true,
+                repeat: 1
+            }, '-=0.5'
+        );
     });
 }
 function initCascadeReveal(isMobile = false) {

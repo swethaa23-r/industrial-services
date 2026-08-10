@@ -16,6 +16,7 @@ if (typeof Lenis !== 'undefined') {
         smoothTouch: false,
         touchMultiplier: 2
     });
+    window.lenis = lenis;
 
     function raf(time) {
         lenis.raf(time);
@@ -152,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(mobileOverlay) mobileOverlay.classList.add('open');
         document.body.classList.add('menu-open');
         if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
+        if (typeof window.lenis !== 'undefined') window.lenis.stop();
         
         // Push state to history for back button support
         if(window.history && window.history.pushState) {
@@ -164,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(mobileOverlay) mobileOverlay.classList.remove('open');
         document.body.classList.remove('menu-open');
         if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+        if (typeof window.lenis !== 'undefined') window.lenis.start();
     }
     
     if (mobileToggle) mobileToggle.addEventListener('click', openMenu);
