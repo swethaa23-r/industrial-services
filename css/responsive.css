@@ -1026,7 +1026,7 @@
   .inner-hero {
     height: auto !important;
     min-height: 300px !important;
-    padding: 100px 0 50px !important;
+    padding: 140px 0 60px !important;
   }
 
   .inner-hero h1 {
@@ -1115,7 +1115,7 @@
 @media (max-width: 480px) {
   .inner-hero {
     min-height: 260px !important;
-    padding: 90px 0 40px !important;
+    padding: 140px 0 50px !important;
   }
 
   .inner-hero h1 {
