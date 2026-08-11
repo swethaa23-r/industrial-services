@@ -145,13 +145,13 @@
                     <p class="error-desc mx-auto">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
                     
                     <div class="error-btns">
-                        <!-- Go Back Button -->
-                        <a href="index.html" onclick="if(document.referrer && document.referrer.indexOf(window.location.host) !== -1) { history.back(); return false; }" class="btn-back">
+                        <!-- Go Back Button (Returns to exact section) -->
+                        <a href="index.html" id="btnGoBack" class="btn-back">
                             <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Go Back
                         </a>
                         
-                        <!-- Go To Home Button -->
-                        <a href="index.html" class="btn-home">
+                        <!-- Go To Home Button (Always goes to top of Home page) -->
+                        <a href="index.html" id="btnGoHome" class="btn-home">
                             Go to Home <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
                         </a>
                     </div>
@@ -160,5 +160,48 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnGoBack = document.getElementById('btnGoBack');
+            const btnGoHome = document.getElementById('btnGoHome');
+
+            if (btnGoBack) {
+                btnGoBack.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const lastPage = sessionStorage.getItem('stackly_last_page');
+                    const lastSection = sessionStorage.getItem('stackly_last_section');
+
+                    // If browser history exists within current domain, return via history.back()
+                    if (document.referrer && document.referrer.indexOf(window.location.host) !== -1 && window.history.length > 1) {
+                        window.history.back();
+                        return;
+                    }
+
+                    // Fallback for new tabs or direct links: Return to specific page & section
+                    if (lastPage && lastSection) {
+                        window.location.href = lastPage + '#' + lastSection;
+                    } else if (lastSection) {
+                        window.location.href = 'index.html#' + lastSection;
+                    } else if (lastPage) {
+                        window.location.href = lastPage;
+                    } else if (document.referrer) {
+                        window.location.href = document.referrer;
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                });
+            }
+
+            if (btnGoHome) {
+                btnGoHome.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Navigate directly to top of Home Page (index.html)
+                    window.location.href = 'index.html';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

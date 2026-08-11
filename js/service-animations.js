@@ -29,18 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if(gridPattern) heroTl.to(gridPattern, { clipPath: 'inset(0 0% 0 0)', duration: 1.5, ease: "power2.inOut" }, 0.2);
     
     if(title) {
-        const words = title.innerText.split(' ');
-        title.innerHTML = '';
-        words.forEach(word => {
-            const span = document.createElement('span');
-            span.innerText = word + ' ';
-            span.style.opacity = '0';
-            span.style.display = 'inline-block';
-            span.style.transform = 'translateY(20px)';
-            title.appendChild(span);
-        });
-        const wordSpans = title.querySelectorAll('span');
-        heroTl.to(wordSpans, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 }, 0.8);
+        if (isMobile) {
+            title.style.opacity = '1';
+            title.style.visibility = 'visible';
+        } else {
+            const words = title.innerText.split(' ');
+            title.innerHTML = '';
+            words.forEach(word => {
+                const span = document.createElement('span');
+                span.innerText = word + ' ';
+                span.style.opacity = '0';
+                span.style.display = 'inline-block';
+                span.style.transform = 'translateY(20px)';
+                title.appendChild(span);
+            });
+            const wordSpans = title.querySelectorAll('span');
+            heroTl.to(wordSpans, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 }, 0.8);
+        }
     }
     
     if(desc) heroTl.fromTo(desc, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8 }, 1.2);

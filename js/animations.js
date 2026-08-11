@@ -93,12 +93,24 @@ setTimeout(startAnimations, 1500);
 
 function initHeroAnimations(isMobile = false) {
     document.body.classList.add('gsap-initialized');
+    
+    const heroTitle = document.getElementById('heroTitle');
+    const heroDesc = document.getElementById('heroDesc');
+    const heroActions = document.getElementById('heroActions');
+    
+    if (isMobile) {
+        if (heroTitle) { heroTitle.style.opacity = '1'; heroTitle.style.visibility = 'visible'; }
+        if (heroDesc) { heroDesc.style.opacity = '1'; heroDesc.style.visibility = 'visible'; }
+        if (heroActions) { heroActions.style.opacity = '1'; heroActions.style.visibility = 'visible'; }
+        return;
+    }
+
     const tl = gsap.timeline();
     
     // Hero Title
-    if (document.getElementById('heroTitle')) {
+    if (heroTitle) {
         tl.from('#heroTitle', {
-            y: isMobile ? 20 : 50,
+            y: 50,
             opacity: 0,
             duration: 1,
             ease: 'power3.out'
@@ -106,9 +118,9 @@ function initHeroAnimations(isMobile = false) {
     }
     
     // Hero Desc
-    if (document.getElementById('heroDesc')) {
+    if (heroDesc) {
         tl.from('#heroDesc', {
-            y: isMobile ? 15 : 30,
+            y: 30,
             opacity: 0,
             duration: 0.8,
             ease: 'power3.out'
@@ -116,9 +128,9 @@ function initHeroAnimations(isMobile = false) {
     }
     
     // Hero Actions
-    if (document.getElementById('heroActions')) {
+    if (heroActions) {
         tl.from('#heroActions', {
-            y: isMobile ? 15 : 30,
+            y: 30,
             opacity: 0,
             duration: 0.8,
             ease: 'power3.out'
@@ -128,7 +140,7 @@ function initHeroAnimations(isMobile = false) {
     // Hero Floats (Stagger)
     if (document.getElementById('heroFloats')) {
         tl.from('.float-card', {
-            x: isMobile ? 20 : 50,
+            x: 50,
             opacity: 0,
             duration: 0.8,
             stagger: 0.2,
@@ -137,6 +149,14 @@ function initHeroAnimations(isMobile = false) {
     }
 }
 function initScrollReveals(isMobile = false) {
+    if (isMobile) {
+        document.querySelectorAll('.gs-reveal-up, .gs-reveal-left, .gs-reveal-right').forEach(el => {
+            el.style.opacity = '1';
+            el.style.visibility = 'visible';
+            el.style.transform = 'none';
+        });
+        return;
+    }
     // Reveal Up
     const revealUpElements = document.querySelectorAll('.gs-reveal-up');
     revealUpElements.forEach((el) => {
@@ -1137,10 +1157,15 @@ function initSpotlightReveal(isMobile = false) {
     });
 }
 function initCascadeReveal(isMobile = false) {
-    // Select all section page headings (h2) not in hero sections
     const headings = document.querySelectorAll('.section-header h2, .section-title h2');
     
     headings.forEach(heading => {
+        if (isMobile) {
+            heading.style.opacity = '1';
+            heading.style.visibility = 'visible';
+            return;
+        }
+
         if(heading.classList.contains('cascade-initialized')) return;
         heading.classList.add('cascade-initialized');
         

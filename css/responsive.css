@@ -26,7 +26,7 @@
   }
   
   .hero-floats {
-    display: none;
+    display: none !important;
   }
   
   .desktop-nav {
@@ -35,6 +35,10 @@
   
   .mobile-toggle {
     display: block;
+  }
+  
+  .is-sidebar {
+    display: none !important;
   }
   
   .d-none-mobile {
@@ -156,7 +160,8 @@
   
   /* Optimize video loading on mobile by hiding and using a static poster */
   .hero-bg video {
-    display: none !important;
+    display: block !important;
+    object-fit: cover;
   }
   
   .hero-bg {
@@ -421,7 +426,8 @@
   }
   
   .split-left {
-    display: none; /* Hide visual on mobile to focus on form */
+    display: flex !important;
+    min-height: 220px;
   }
   
   .split-right {
@@ -1208,4 +1214,36 @@
     padding: 15px 20px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   MOBILE HEADING & REVEAL ACCESSIBILITY OVERRIDES (PREVENT HIDDEN HEADINGS)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Guarantee Hero and Section Headings are 100% visible on Mobile without needing page refresh */
+  #heroTitle,
+  #heroDesc,
+  #heroActions,
+  .hero-title,
+  .hero-desc,
+  .hero-actions,
+  .section-header h2,
+  .section-title h2,
+  .about-heading,
+  .why-heading,
+  .conveyor-heading,
+  .sector-heading,
+  .impact-heading,
+  .smoke-rise-heading,
+  .cascade-word,
+  .gs-reveal-up,
+  .gs-reveal-left,
+  .gs-reveal-right {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    clip-path: none !important;
+    filter: none !important;
+  }
+}
+
 

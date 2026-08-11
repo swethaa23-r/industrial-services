@@ -562,7 +562,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mapObserver.observe(lazyMap);
         });
     } else {
-        // Fallback for older browsers
         lazyMaps.forEach(function(lazyMap) {
             if(lazyMap.dataset.src) {
                 lazyMap.src = lazyMap.dataset.src;
@@ -570,3 +569,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // 404 Link Click Tracker for Section-Specific Go Back
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a[href*="404.html"]');
+        if (link) {
+            const parentSection = link.closest('section[id], footer[id], div[id]');
+            const sectionId = (parentSection && parentSection.id) ? parentSection.id : '';
+            const currentUrl = window.location.pathname.split('/').pop() || 'index.html';
+            
+            sessionStorage.setItem('stackly_last_page', currentUrl);
+            sessionStorage.setItem('stackly_last_section', sectionId);
+        }
+    });
+
